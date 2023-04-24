@@ -1,0 +1,26 @@
+{
+    "id": "F2C0EE4A",
+    "path": "~/git_icra/polars_nodejs_r_test/R/test.R",
+    "project_path": "R/test.R",
+    "type": "r_source",
+    "hash": "211294880",
+    "contents": "",
+    "dirty": false,
+    "created": 1682335563233.0,
+    "source_on_save": false,
+    "relative_order": 1,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "0,19",
+        "scrollLine": "0"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1682339001,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1682339001,
+    "read_only": false,
+    "read_only_alternatives": []
+}
