@@ -1,0 +1,50 @@
+h3 {
+    background-color: #065566;
+    color:white;
+    padding: 1em;
+}
+
+details {
+    margin: 1em 0em 1em 0em;
+}
+
+details > summary:hover {
+    cursor: pointer;
+}
+li {
+    list-style: none;
+    margin-left: 1em;
+}
+
+.code-block {
+    background-color: #202020;
+    color: white !important;
+    padding: 1em !important;
+}
+
+.parent {
+    font-weight: bold;
+    margin-bottom: 1em;
+}
+.route {
+    background-color: #065566;
+    color: white;
+    padding: 0.2em;
+    margin-right: 1em;
+}
+
+.btn-default {
+    border-color: black !important;
+}
+
+.btn-default:hover{
+    background-color: #AAAAAA;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.indent {
+    margin-left: 2em;
+}

@@ -1,0 +1,42 @@
+extends layout
+
+block content
+    // GET sci-studies
+    details
+        summary
+            span.route GET /sci-studies
+            span Get all scientific studies used in the tool
+        ul <b>Parameters</b>
+            li records (string): if records is true, the array returned is object oriented. Otherwise, it is column oriented (polars dataframe).
+        ul <b>Responses</b>
+            li 200: Returns an array with all scientific studies that are used in the tool
+        ul.bold Example
+            div
+                code #{url}/treatment/sci-studies?records=true
+    // GET technologies
+    details
+        summary
+            span.route GET /technologies
+            span Get the list of technologies
+        ul <b>Parameters:</b>
+            li id (string): The id of the technology to retrieve (only one).
+        ul <b>Responses:</b>
+            li 200: Returns an array with technologies
+            li 400: Bad request if <code>id</code> does not exist
+
+        ul.bold Example
+            div
+                code #{url}/treatment/technologies?id=French_CW
+        ul Table with ids and the corresponding technology
+        .col-6
+            table.indent.table.table-striped
+                tr
+                    th id
+                    th Description
+                each tech in technologies
+                    tr
+                        td
+                            a(href = url+'/treatment/technologies?id='+tech.id)= tech.id
+                        td=tech.name
+
+

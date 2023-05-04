@@ -15,6 +15,7 @@
     "morgan": "~1.9.1",
     "mysql": "^2.18.1",
     "nodejs-polars": "^0.7.3",
+    "nodemon": "^2.0.22",
     "pug": "2.0.0-beta11",
     "util": "^0.12.5"
   }
