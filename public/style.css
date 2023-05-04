@@ -11,9 +11,28 @@ details {
 details > summary:hover {
     cursor: pointer;
 }
+
+code, .code {
+    background-color: #eee;
+    border-radius: 3px;
+    font-family: courier, monospace;
+    padding: 0 3px;
+    color: black;
+}
+
+.code {
+    display: inline-block;
+    position: absolute;
+}
+
 li {
-    list-style: none;
+    /*list-style: none;*/
     margin-left: 1em;
+    list-style-type: "- "
+}
+
+.list {
+    list-style-type: "- ";
 }
 
 .code-block {

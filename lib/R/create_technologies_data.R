@@ -29,6 +29,8 @@ df <- df |>
     ))
   )
 
+stopifnot(!any(c("camping_wastewater", "offices_wastewater") %in% names(df)))
+
 df <- df |>
   mutate(camping_wastewater = raw_domestic_wastewater, .after = river_diluted_wastewater) |>
   mutate(offices_wastewater = raw_domestic_wastewater, .after = river_diluted_wastewater)
