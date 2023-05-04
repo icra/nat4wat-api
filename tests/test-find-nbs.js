@@ -1,5 +1,6 @@
 const findNBS = require("../lib/find-nbs").findNBS
 const expect = require("chai").expect
+const should = require("chai").should()
 
 
 const avgKey = function(object, key){
@@ -59,7 +60,7 @@ describe("Test /find-nbs", () => {
                 expect(tech.ratio_continental_climate).lt(1000000)
             });
         });
-    })
+    });
     describe("Filters works properly", () => {
        it('waterType is filtered', () => {
             let waterType = 'raw_domestic_wastewater'
@@ -84,6 +85,23 @@ describe("Test /find-nbs", () => {
           expect(avgKey(result, 'c_removal')).to.eql(1)
           expect(avgKey(result, 'n_removal_nitrification')).to.eql(1)
           expect(avgKey(result, 'p_removal')).lt(1)
+       });
+    });
+    describe("Estimation of surface", () => {
+       it('confidence is estimated', () => {
+           let result = findNBS({"inhabitants": 200})
+           result.forEach(tech => {
+               expect(tech).to.have.any.keys("surface_mean")
+               expect(tech).to.have.any.keys("surface_low")
+               expect(tech).to.have.any.keys("surface_high")
+           });
+       });
+       it('larger inflow return larger surface', () => {
+          let low = findNBS({"inflow": 1000})
+          let high = findNBS({"inflow": 10000})
+           for (let i = 0; i < low.length; i++) {
+               expect(low[i].surface_mean).lt(high[i].surface_mean)
+           };
        });
     });
 });

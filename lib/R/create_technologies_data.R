@@ -29,6 +29,10 @@ df <- df |>
     ))
   )
 
+df <- df |>
+  mutate(camping_wastewater = raw_domestic_wastewater, .after = river_diluted_wastewater) |>
+  mutate(offices_wastewater = raw_domestic_wastewater, .after = river_diluted_wastewater)
+
 which(sapply(df, anyNA))
 
 
