@@ -25,14 +25,19 @@ router.get('/sci-studies', async function(req, res){
 });
 
 router.post('/find-nbs', function(req, res){
-  let result = findNBS.findNBS(req.body)
+  try {
+    let result = findNBS.findNBS(req.body)
 
-  if (result.error) {
-    res.statusMessage = result.error
-    res.status(400).end()
-  } else {
-    res.send(result)
-  };
+    if (result.error) {
+      res.statusMessage = result.error
+      res.status(400).end()
+    } else {
+      res.send(result)
+    }
+  }
+  catch (e){
+    res.send(e)
+  }
 });
 
 module.exports = router;
