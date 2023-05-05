@@ -24,13 +24,21 @@ router.get('/sci-studies', async function(req, res){
   res.send(db)
 });
 
+// TODO: Covert to a post route with filter options
+router.get('/testdb', async function(req, res){
+  let result = await readDB.read_all_db()
+  res.send(result)
+});
+
+
 router.post('/find-nbs', function(req, res){
   try {
     let result = findNBS.findNBS(req.body)
 
     if (result.error) {
       res.statusMessage = result.error
-      res.status(400).end()
+      res.status(400)
+      res.send(result.error)
     } else {
       res.send(result)
     }
