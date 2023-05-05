@@ -26,8 +26,15 @@ router.get('/sci-studies', async function(req, res){
 
 // TODO: Covert to a post route with filter options
 router.get('/testdb', async function(req, res){
-  let result = await readDB.read_all_db()
-  res.send(result)
+
+  try{
+    let result = await readDB.read_all_db()
+    res.send(result)
+  }
+  catch (e){
+    res.send(e)
+  }
+
 });
 
 
