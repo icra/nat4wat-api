@@ -63,17 +63,57 @@ block content
         ul <b>Responses</b>
             li 200: Returns an array with all suitable technologies.
             li 400: Bad request with an error message if body or some parameters are not in the expected format.
-        ul <b>Example body</b>
-            div.indent.code
-                code {<br>
-                        | &emsp; "waterType": "greywater",<br>
-                        | &emsp; "inhabitants": 200,<br>
-                        | &emsp; "litresPerson": 120,<br>
-                        | &emsp; "inflow": 3000,<br>
-                        | &emsp; "area": 200,<br>
-                        | &emsp; "climate": "tropical",<br>
-                        | &emsp; "avgTemperature": 21<br>
-                        | }
+
+        div.indent
+            | <b>Example body</b>
+            pre
+                code.code {<br>
+                    | &emsp; "waterType": "greywater",
+                    | &emsp; "inhabitants": 200,
+                    | &emsp; "litresPerson": 120,
+                    | &emsp; "inflow": 3000,
+                    | &emsp; "area": 200,
+                    | &emsp; "climate": "tropical",
+                    | &emsp; "avgTemperature": 21
+                    | }
+    // POST find-nbs-multiple
+    details
+        summary
+            span.route POST treatment/find-nbs-multiple
+            span Vectorized version of
+                code /find-nbs
+        ul
+            b Parameters
+            li It accepts the same parameters as
+                code find-nbs
+                span but it expects an array of objects instead of an object in the request body.
+        ul
+            b Responses
+            li 200: Returns an array containing an array of technologies for each object (scenario) in the body request.
+            li 400: Returns a bad request when the request body is not an array
+        ul
+            b Details
+            li If some of the scenarios (objects in the array) returns a bad request, that item contains an error message
+            | instead of the technology as follows:
+            code [{error: error message}]
+        div.indent
+            | <b>Example body</b>
+            pre
+                code.code [<br>
+                    | &emsp; {
+                    | &emsp; &emsp; "waterType": "greywater",
+                    | &emsp; &emsp; "inhabitants": 200,
+                    | &emsp; &emsp; "litresPerson": 120,
+                    | &emsp; &emsp; "inflow": 3000,
+                    | &emsp; &emsp; "area": 200,
+                    | &emsp; &emsp; "climate": "tropical",
+                    | &emsp; &emsp; "avgTemperature": 21
+                    | &emsp; },
+                    | &emsp; {
+                    | &emsp; &emsp; "waterType": "raw_domestic_wastewater"
+                    | &emsp; }
+                    | ]
+
 
 
 

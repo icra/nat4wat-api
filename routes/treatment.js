@@ -16,7 +16,7 @@ router.get('/technologies', function(req, res) {
   }
 });
 
-// TODO: Covert to a post route with filter options
+// TODO: Convert to a post route with filter options
 router.get('/sci-studies', function(req, res){
   let recordsParam = false
   if (req.query.records === 'true') recordsParam = true

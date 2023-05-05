@@ -21,8 +21,8 @@ code, .code {
 }
 
 .code {
-    display: inline-block;
-    position: absolute;
+    display: block;
+    max-width: 30vw;
 }
 
 li {
