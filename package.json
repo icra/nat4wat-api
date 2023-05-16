@@ -13,6 +13,7 @@
     "dotenv": "^16.0.3",
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
+    "jstat": "^1.9.6",
     "ml-regression-multivariate-linear": "^2.0.4",
     "mocha": "^10.2.0",
     "morgan": "~1.9.1",
