@@ -8,18 +8,25 @@ df$id <- df$sub_type
 df$id <- str_replace_all(df$id, "\\+", "\\-")
 df$id <- str_replace_all(df$id, "\\/", "\\-")
 
+df <- df |>
+  mutate(vertical = case_match(
+    vertical,
+    "Y" ~ 1,
+    "N" ~ 0,
+    .default = NA
+  ))
+
+stopifnot(sum(is.na(df$vertical)) == 0)
+
 # Replace facotrs by binaries
 df <- df |>
-  mutate(across(8:19, ~ case_match(
+  mutate(across(c_removal:river_diluted_wastewater, ~ case_match(
     .x,
     "active" ~ 1,
     "inactive" ~ 0,
     "possible" ~ 1,
     .default =  NA
   )))
-
-# Chech if there is any NA
-stopifnot(!anyNA(df[,8:19]))
 
 # Convert factors to likert scales
 df <- df |>
@@ -51,7 +58,7 @@ df <- df |>
   mutate(
     across(
       starts_with("ratio_"),
-                ~ plyr::round_any(60 / .x, accuracy = 0.5),
+                ~ 60 / .x,
                 .names = "dbo_treated_{str_remove(.col, 'ratio_')}"
     ),
     .after = ratio_continental_climate
