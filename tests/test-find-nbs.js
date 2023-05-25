@@ -80,6 +80,14 @@ describe("Test /find-nbs", () => {
            expect(avg).gt(0)
            expect(avg).lt(1)
        });
+       it('vertical filters properly', ()=>{
+          let result = findNBS({vertical: false})
+          expect(avgKey(result, 'vertical')).to.eql(0)
+          result = findNBS({})
+          let pattern = new RegExp('_GW$')
+          result = result.filter(e => e.id.match(pattern))
+          expect(result.length).gt(0)
+       });
        it('pollutants filter properly', () => {
           let result = findNBS({pollutants: ['c_removal', 'n_removal_nitrification']})
           expect(avgKey(result, 'c_removal')).to.eql(1)
@@ -102,9 +110,6 @@ describe("Test /find-nbs", () => {
            for (let i = 0; i < low.length; i++) {
                expect(low[i].surface_mean).lt(high[i].surface_mean)
            };
-       });
-       it('check that fails', ()=>{
-          expect(2).gt(3)
        });
     });
 });
