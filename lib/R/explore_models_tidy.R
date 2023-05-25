@@ -145,7 +145,7 @@ techs_polls_fit |>
 
 # Explore results ---------------------------------------------------------------------------------------
 
-results <- readRDS("explore_models.rds")
+results <- readRDS("lib/R/explore_models.rds")
 
 results |>
   mutate(predictors = case_match(predictors,
