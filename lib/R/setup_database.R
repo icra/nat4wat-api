@@ -65,7 +65,8 @@ nbs_tu <- tbl(con, "NBS_TU") |>
 nbs <- tbl(con, "treatment_plant") |>
   select(id_source, id_NBS, water_type) |>
   left_join(nbs_tu, by = "id_NBS", multiple = "all") |>
-  collect()
+  collect() |>
+  mutate(across(c(hrt, inflow, concentration_out), ~ if_else(.x == 0, NA, .x)))
 
 source_sannat <- tbl(con, "source") |>
   filter(doc_type == "") |>
@@ -80,8 +81,8 @@ source_sophie <- tbl(con, "source") |>
   mutate(doc_data = toJSON(across(-id_source), auto_unbox = TRUE)) |>
   ungroup() |>
   select(id_source, doc_data) |>
-  mutate(doc_data = str_replace(doc_data, fixed("[{"), "{")) |>
-  mutate(doc_data = str_replace(doc_data, fixed("}]"), "}")) |>
+  mutate(doc_data = str_replace(doc_data, "\\[\\{", "{")) |>
+  mutate(doc_data = str_replace(doc_data, "\\}\\]", "}")) |>
   mutate(check = map(doc_data, fromJSON)) |>
   select(-check)
 
@@ -111,7 +112,7 @@ wider_db <- final_db |>
     pollutants == "nh3-n" ~ "nh4",
     TRUE ~ pollutants
   )) |>
-  mutate(pollutants = str_remove(pollutants, fixed("-n"))) |>
+  mutate(pollutants = str_remove(pollutants, "\\-n")) |>
   filter(pollutants %in% sannat_pollutants) |>
   select(id_sampling, !starts_with("id_")) |>
   rename(`in` = concentration_in, out = concentration_out) |>
