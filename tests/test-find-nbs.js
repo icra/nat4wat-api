@@ -103,5 +103,8 @@ describe("Test /find-nbs", () => {
                expect(low[i].surface_mean).lt(high[i].surface_mean)
            };
        });
+       it('check that fails', ()=>{
+          expect(2).gt(3)
+       });
     });
 });
