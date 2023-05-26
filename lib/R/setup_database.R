@@ -132,5 +132,7 @@ all_df <- sannat |>
   select(-year_publication)
 
 copy_to(con, all_df, overwrite = TRUE, temporary = FALSE)
+write_csv(all_df, "public/all_df.csv")
 
+stopifnot(all_case_studies <- sannat <- tbl(con_sannat, "all_case_studies"))
 

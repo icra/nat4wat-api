@@ -4,4 +4,5 @@ sudo -u icradev git pull ;
 sudo -u icradev find . -type f -exec chmod 644 {} \; ;
 sudo -u icradev find . -type d -exec chmod 755 {} \; ;
 touch ./tmp/restart.txt ;
+echo 'Deployment done!'
 "
