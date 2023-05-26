@@ -122,7 +122,10 @@ describe("Test /find-nbs", () => {
           let low = findNBS({"inflow": 1000})
           let high = findNBS({"inflow": 10000})
            for (let i = 0; i < low.length; i++) {
-               expect(low[i].surface_mean).lt(high[i].surface_mean)
+               if (low[i].vertical === 0)
+                  expect(low[i].surface_mean).lt(high[i].surface_mean)
+               if (low[i].vertical === 1)
+                   expect(low[i].vertical_surface_mean).lt(high[i].vertical_surface_mean)
            }
        });
     });
