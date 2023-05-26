@@ -1,6 +1,7 @@
 const findNBS = require("../lib/find-nbs").findNBS
 const expect = require("chai").expect
 const should = require("chai").should()
+const jstat = require("jstat")
 
 
 const avgKey = function(object, key){
@@ -94,6 +95,19 @@ describe("Test /find-nbs", () => {
           expect(avgKey(result, 'n_removal_nitrification')).to.eql(1)
           expect(avgKey(result, 'p_removal')).lt(1)
        });
+       it('both surfaces filter properly', () => {
+           let inflow = 1000
+           let result = findNBS({inflow: inflow, waterType: 'greywater'})
+           let area = result.filter(a => a.surface_low > 0).map(a => a.surface_low);
+           let median_area = jstat.median(area)
+           let vertical_area = result.filter(a => a.vertical_surface_low > 0).map(a => a.vertical_surface_low)
+           let median_vert_area = jstat.median(vertical_area)
+           let resultArea = findNBS({inflow: inflow, waterType: 'greywater', area: median_area, verticalArea: median_vert_area})
+           resultArea.forEach(tech => {
+               expect(tech.surface_low).to.lte(median_area)
+               expect(tech.vertical_surface_low).to.lte(median_vert_area)
+           })
+       });
     });
     describe("Estimation of surface", () => {
        it('confidence is estimated', () => {
@@ -109,7 +123,7 @@ describe("Test /find-nbs", () => {
           let high = findNBS({"inflow": 10000})
            for (let i = 0; i < low.length; i++) {
                expect(low[i].surface_mean).lt(high[i].surface_mean)
-           };
+           }
        });
     });
 });
