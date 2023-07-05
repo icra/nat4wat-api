@@ -52,13 +52,13 @@ describe("Test /find-nbs", () => {
         it('climate is calculated if not provided', () => {
             let result = findNBS({avgTemperature: -4})
             result.forEach(tech => {
-                expect(tech.ratio_continental_climate).lt(1000000)
+                expect(tech.m2_pe_continental).lt(1000000)
             });
         });
         it('climate is kept regardless of avgTemperature', () => {
             let result = findNBS({avgTemperature: 15, climate: "continental"})
             result.forEach(tech => {
-                expect(tech.ratio_continental_climate).lt(1000000)
+                expect(tech.m2_pe_continental).lt(1000000)
             });
         });
     });

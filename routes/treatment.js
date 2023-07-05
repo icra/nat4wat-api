@@ -22,7 +22,7 @@ router.get('/sci-studies', async function(req, res){
   let recordsParam = false
   if (req.query.records === 'true') recordsParam = true
   let db = await readDB.db_to_polars(records = recordsParam);
-  console.log(db)
+
   res.send(db)
 });
 
@@ -46,7 +46,7 @@ router.post('/find-nbs', function(req, res){
 router.post('/find-nbs-multiple', function(req, res){
   try {
     let result = findNBS.findNBSMultiple(req.body)
-      console.log("result", result)
+
     if (result.error){
       res.statusMessage = result.error
       // res.status(400)
