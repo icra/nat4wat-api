@@ -63,6 +63,11 @@ block content
             li vertical (boolean): If <code>false</code>, green wall technologies are rejected.
             li verticalArea (positive number): The available vertical surface to allocate vertical technologies.
             li household (boolean): If <code>true</code>, only technologies that are available at house scale are selected.
+            li ecosystemServices (key:value object): The technologies are filtered in terms of the provision of ecosystem services. The values admitted are from 0 (none) to 3 (high). All technologies providing the ecosystem services at that level or higher are included in the list of technologies returned.
+                ul The ecosystem services admitted are:
+                    each es in ecosystemServices
+                        li.indent
+                            code=es
 
         ul <b>Responses</b>
             li 200: Returns an array with all suitable technologies.
@@ -80,7 +85,10 @@ block content
                     | &emsp; "climate": "tropical",
                     | &emsp; "avgTemperature": 21,
                     | &emsp; "vertical": false,
-                    | &emsp; "verticalArea": 50
+                    | &emsp; "verticalArea": 50,
+                    | &emsp; "ecosystemServices" : {
+                    | &emsp; &emsp; "es_biodiversity_fauna: 2,
+                    | &emsp; &emsp; "es_recreation: 3,
                     | }
     // POST find-nbs-multiple
     details

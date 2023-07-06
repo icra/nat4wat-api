@@ -10,7 +10,8 @@ router.get(['/', '/docs', '/treatment'], function(req, res){
         url: process.env.URL,
         technologies: excels.read_excel(),
         waterTypes: Object.keys(gl.waterTypes),
-        climates: gl.climate
+        climates: gl.climate,
+        ecosystemServices: gl.ecosystemServices
     });
 });
 

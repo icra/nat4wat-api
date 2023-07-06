@@ -27,9 +27,9 @@ VSSF-HSSF_CW,Vertical flow + Horizontal flow treatment wetland,MS,VSSF+HSSF_CW,C
 VF_GW,Vertical flow green wall,GW,VF_GW,GW - Green wall with vertical flow,6_LIVING WALLS for GREYWATER TREATMENT.png,NA,1,1,1,0,0,1,0,0,1,1,0,0,0,0,1,1,2,10,60,60,30,6,2,3,3,0,0,2,1,3,1,3,1,3,0,1,1,3,3,1,NA
 VSSF_CW,Vertical flow treatment wetland,CW,VSSF_CW,CW - Subsurface flow - Vertical Flow,1_VERTICAL FLOW _WETLANDS.png,NA,0,1,1,0,0,1,0,1,1,1,0,1,0,0,1,1,2,10,60,60,30,6,2,1,0,0,0,1,2,1,1,0,0,3,0,1,0,2,2,2,09_Vertical Flow wetlands.pdf
 WS,Willow system,WS,WS,CW - zero discharge - Willow systems,13_WILLOW SYSTEM.png,NA,0,1,1,1,1,1,0,1,1,1,0,0,0,0,15,15,30,70,4,4,2,0.857142857142857,2,2,0,2,0,3,3,2,2,3,0,0,0,1,0,2,2,1,03_Willow systems.pdf
-A_FWS,Aerated + free water surface wetland,MS,A_FWS,Aerated + free water surface wetland,NA,NA,0,1,1,1,0,1,0,1,1,1,1,1,1,1,2,1000000,3,1000000,156.6153846153846,200,200,181.53846153846155,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,NA,0,0,NA,NA,NA,NA,NA
-WW,Hybrid living wall,GW,WW,Hybrid living wall,NA,NA,1,1,1,1,0,NA,0,0,1,1,0,0,0,0,1.5,1.5,2.5,7,45,45,25,7.166666666666667,NA,NA,NA,0,0,NA,NA,NA,0,NA,NA,NA,0,1,NA,NA,NA,NA,NA
-Phyto,Phytoparking,CW,Phyto,Phytoparking,NA,NA,0,1,1,1,0,1,0,1,1,1,0,0,1,1,0.3,0.875,0.75,1000000,181.8,89.6,89.6,0,NA,NA,NA,0,0,NA,0,NA,0,0,0,NA,0,0,NA,NA,NA,NA,NA
-RG-T,Rain garden with treatment,CW,RG-T,Rain garden with treatment,NA,NA,0,1,1,0,1,0,0,0,2,0,0,0,0,0,1000000,1000000,1000000,1000000,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,NA,0,1,NA,NA,NA,NA,NA
-Rair_FrW,Rhizosph'air aerated french wetland,CW,Rair_FrW,Rhizosph'air aerated french wetland,NA,NA,0,1,1,1,0,1,1,1,0,0,0,0,1,1,0.5,1,1,1.5,60,0,80,120,NA,NA,NA,0,0,NA,NA,NA,NA,0,0,NA,0,0,NA,NA,NA,NA,NA
-VF-RPS,Vertical flow wetland with recycle and partial saturation,CW,VF-RPS,Vertical flow wetland with recycle and partial saturation,NA,NA,0,1,1,1,1,1,0,1,1,1,0,0,1,1,1.5,1000000,1000000,1000000,60,0,0,120,NA,NA,NA,0,0,NA,NA,NA,NA,NA,0,NA,0,1,NA,NA,NA,NA,NA
+A_FWS,Aerated + free water surface wetland,MS,A_FWS,Aerated + free water surface wetland,NA,NA,0,1,1,1,0,1,0,1,1,1,1,1,1,1,2,1000000,3,1000000,156.6153846153846,200,200,181.53846153846155,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,NA
+WW,Hybrid living wall,GW,WW,Hybrid living wall,NA,NA,1,1,1,1,0,NA,0,0,1,1,0,0,0,0,1.5,1.5,2.5,7,45,45,25,7.166666666666667,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,NA
+Phyto,Phytoparking,CW,Phyto,Phytoparking,NA,NA,0,1,1,1,0,1,0,1,1,1,0,0,1,1,0.3,0.875,0.75,1000000,181.8,89.6,89.6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,NA
+RG-T,Rain garden with treatment,CW,RG-T,Rain garden with treatment,NA,NA,0,1,1,0,1,0,0,0,2,0,0,0,0,0,1000000,1000000,1000000,1000000,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,NA
+Rair_FrW,Rhizosph'air aerated french wetland,CW,Rair_FrW,Rhizosph'air aerated french wetland,NA,NA,0,1,1,1,0,1,1,1,0,0,0,0,1,1,0.5,1,1,1.5,60,0,80,120,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,NA
+VF-RPS,Vertical flow wetland with recycle and partial saturation,CW,VF-RPS,Vertical flow wetland with recycle and partial saturation,NA,NA,0,1,1,1,1,1,0,1,1,1,0,0,1,1,1.5,1000000,1000000,1000000,60,0,0,120,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,NA

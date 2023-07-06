@@ -47,16 +47,21 @@ describe("Test /find-nbs", () => {
            expect(findNBS({pollutants: 'c_removel'})).to.have.key('error')
            expect(findNBS({pollutants: ['c_removal', 'phosphours']})).to.have.key('error')
         });
+        it('avgTemperature and climate do not match', () => {
+           expect(findNBS({avgTemperature: -5, climate: 'tropical'})).to.have.key('error')
+        });
+        it('ecosystemServices is not an object or some key or value is not right', () => {
+            expect(findNBS({ecosystemServices: true})).to.have.key('error')
+            expect(findNBS({ecosystemServices: "a"})).to.have.key('error')
+            expect(findNBS({ecosystemServices: 1})).to.have.key('error')
+            expect(findNBS({ecosystemServices: {es_biodiversity: 2}})).to.have.key('error')
+            expect(findNBS({ecosystemServices: {es_biodiversity_fauna: true}})).to.have.key('error')
+
+        })
     });
     describe("Value conversions works properly", () => {
         it('climate is calculated if not provided', () => {
             let result = findNBS({avgTemperature: -4})
-            result.forEach(tech => {
-                expect(tech.m2_pe_continental).lt(1000000)
-            });
-        });
-        it('climate is kept regardless of avgTemperature', () => {
-            let result = findNBS({avgTemperature: 15, climate: "continental"})
             result.forEach(tech => {
                 expect(tech.m2_pe_continental).lt(1000000)
             });
@@ -108,6 +113,26 @@ describe("Test /find-nbs", () => {
                expect(tech.vertical_surface_low).to.lte(median_vert_area)
            })
        });
+       it('when area is almost 0 only green walls should be returned', () => {
+           let result = findNBS({inflow: 1000, area: 0.00001});
+           result.forEach(tech => {
+               expect(tech.vertical).to.eq(1)
+           });
+       });
+        it('when verticalArea is almost 0 only green walls should be returned', () => {
+            let result = findNBS({inflow: 1000, verticalArea: 0.00001});
+            result.forEach(tech => {
+                expect(tech.vertical).to.eq(0)
+            });
+        });
+        it('ecosystemServices filters properly', () => {
+            let result = findNBS({ecosystemServices: {es_biodiversity_fauna: 2, es_recreation: 3, es_biosolids: 0}})
+            result.forEach(tech => {
+                expect(tech.es_biodiversity_fauna).to.gte(2)
+                expect(tech.es_recreation).to.gte(3)
+            })
+            expect(result.filter(e => e.es_biosolids === 0)).to.have.length.gt(0)
+        })
     });
     describe("Estimation of surface", () => {
        it('confidence is estimated', () => {
