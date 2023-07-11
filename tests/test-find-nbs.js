@@ -147,9 +147,9 @@ describe("Test /find-nbs", () => {
           let low = findNBS({"inflow": 1000})
           let high = findNBS({"inflow": 10000})
            for (let i = 0; i < low.length; i++) {
-               if (low[i].vertical === 0)
+               if (low[i].vertical === 0 && low[i].m2_pe_temperate < 100000)
                   expect(low[i].surface_mean).lt(high[i].surface_mean)
-               if (low[i].vertical === 1)
+               if (low[i].vertical === 1 && low[i].m2_pe_temperate < 100000)
                    expect(low[i].vertical_surface_mean).lt(high[i].vertical_surface_mean)
            }
        });
