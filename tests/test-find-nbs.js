@@ -1,6 +1,5 @@
 const findNBS = require("../lib/find-nbs").findNBS
 const expect = require("chai").expect
-const should = require("chai").should()
 const jstat = require("jstat")
 
 
@@ -12,7 +11,7 @@ describe("Test /find-nbs", () => {
     describe('findNBS returns an array of technologies', () => {
        let result = findNBS({})
        it("result is an array", () => {
-           result.should.be.an('array')
+           expect(result).to.be.an('array')
        });
        it('technologies have id', () => {
            expect(result[1]).to.have.any.keys("id")

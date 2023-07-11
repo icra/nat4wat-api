@@ -62,6 +62,23 @@ router.post('/find-nbs-multiple', function(req, res){
   }
 })
 
+router.post('/mcda', function (req, res) {
+  try {
+    let result = findNBS.findNBS(req.body)
+
+    if (result.error) {
+      res.statusMessage = result.error
+      res.status(400)
+      res.send(result.error)
+    } else {
+      res.send(result)
+    }
+  }
+  catch (e){
+    res.send(e)
+  }
+})
+
 module.exports = router;
 
 
