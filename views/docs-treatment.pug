@@ -68,7 +68,11 @@ block content
                     each es in ecosystemServices
                         li.indent
                             code=es
-
+            li energy (string 'yes'|'no'): If 'no' technologies not using energy are selected. If 'yes' only technologies using energy are selected.
+            li manPower (int 0:3): Manpower is the level of work hours required for the operation of the technologies. When provided, all technologies with a higher level of manpower are rejected.
+            li skills (int 0:3): Skills refer to the required technical knowledge to operate the technology. When provided, all technologies with a higher level of manpower are rejected.
+            li biohazardRisk (int 0:3): Biohazard risks include microorganisms, viruses and toxins that can affect human health. When provided, all technologies with a higher level of manpower are rejected.
+            li techID (string): This is a backdoor to get a specific technology. It returns an array of length 1.
         ul <b>Responses</b>
             li 200: Returns an array with all suitable technologies.
             li 400: Bad request with an error message if body or some parameters are not in the expected format.
@@ -87,8 +91,13 @@ block content
                     | &emsp; "vertical": false,
                     | &emsp; "verticalArea": 50,
                     | &emsp; "ecosystemServices" : {
-                    | &emsp; &emsp; "es_biodiversity_fauna: 2,
-                    | &emsp; &emsp; "es_recreation: 3,
+                    | &emsp; &emsp; "es_biodiversity_fauna": 2,
+                    | &emsp; &emsp; "es_recreation": 3
+                    | &emsp; &nbsp;},
+                    | &emsp; "energy": "no"
+                    | &emsp; "manPower": 3
+                    | &emsp; "skills": 2
+                    | &emsp; "biohazardRisk": 1
                     | }
     // POST find-nbs-multiple
     details

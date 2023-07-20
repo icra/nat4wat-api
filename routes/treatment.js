@@ -17,7 +17,6 @@ router.get('/technologies', function(req, res) {
 });
 
 // TODO: Convert to a post route with filter options
-// TODO: Decide whether to use Mysql or sqlite
 router.get('/sci-studies', async function(req, res){
   let recordsParam = false
   if (req.query.records === 'true') recordsParam = true

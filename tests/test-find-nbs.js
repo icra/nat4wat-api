@@ -1,11 +1,7 @@
 const findNBS = require("../lib/find-nbs").findNBS
+const avgKey = require("../lib/utils").avgKey
 const expect = require("chai").expect
 const jstat = require("jstat")
-
-
-const avgKey = function(object, key){
-    return object.reduce((total, next) => total + next[key], 0) / object.length
-};
 
 describe("Test /find-nbs", () => {
     describe('findNBS returns an array of technologies', () => {
@@ -55,7 +51,12 @@ describe("Test /find-nbs", () => {
             expect(findNBS({ecosystemServices: 1})).to.have.key('error')
             expect(findNBS({ecosystemServices: {es_biodiversity: 2}})).to.have.key('error')
             expect(findNBS({ecosystemServices: {es_biodiversity_fauna: true}})).to.have.key('error')
-
+        })
+        it('energy must be yes or no', ()=> {
+            expect(findNBS({energy: true})).to.have.key('error')
+            expect(findNBS({energy: "a"})).to.have.key('error')
+            expect(findNBS({energy: 1})).to.have.key('error')
+            expect(findNBS({energy: ['yes', 'no']})).to.have.key('error')
         })
     });
     describe("Value conversions works properly", () => {
@@ -67,6 +68,9 @@ describe("Test /find-nbs", () => {
         });
     });
     describe("Filters works properly", () => {
+       it('techID returns an array of length 1', () => {
+           expect(findNBS({techIds: ["WW", "French_CW"]}).length).eql(2)
+       })
        it('waterType is filtered', () => {
             let waterType = 'raw_domestic_wastewater'
             let result = findNBS({waterType: waterType})
@@ -114,15 +118,11 @@ describe("Test /find-nbs", () => {
        });
        it('when area is almost 0 only green walls should be returned', () => {
            let result = findNBS({inflow: 1000, area: 0.00001});
-           result.forEach(tech => {
-               expect(tech.vertical).to.eq(1)
-           });
+           expect(avgKey(result, 'vertical')).to.eq(1)
        });
-        it('when verticalArea is almost 0 only green walls should be returned', () => {
+        it('when verticalArea is almost 0 no green walls should be returned', () => {
             let result = findNBS({inflow: 1000, verticalArea: 0.00001});
-            result.forEach(tech => {
-                expect(tech.vertical).to.eq(0)
-            });
+            expect(avgKey(result, 'vertical')).to.eq(0)
         });
         it('ecosystemServices filters properly', () => {
             let result = findNBS({ecosystemServices: {es_biodiversity_fauna: 2, es_recreation: 3, es_biosolids: 0}})
@@ -131,6 +131,27 @@ describe("Test /find-nbs", () => {
                 expect(tech.es_recreation).to.gte(3)
             })
             expect(result.filter(e => e.es_biosolids === 0)).to.have.length.gt(0)
+        });
+        it('energy filters properly', () => {
+            let result = findNBS({energy: 'no'})
+            expect(avgKey(result, 'energy')).to.eq(0)
+            result = findNBS({energy: 'yes'})
+            expect(avgKey(result, 'energy')).to.eq(1)
+        });
+        it('manPower filters properly', () => {
+            let result = findNBS({manPower: 2})
+            expect(result.filter(e=> e.inv_es_manpower > 2).length).to.eq(0)
+            expect(result.filter(e=> e.inv_es_manpower < 2).length).to.gt(0)
+        });
+        it('skills filters properly', () => {
+            let result = findNBS({skills: 2})
+            expect(result.filter(e=> e.inv_es_skills > 2).length).to.eq(0)
+            expect(result.filter(e=> e.inv_es_skills < 2).length).to.gt(0)
+        });
+        it('biohazardrisk filters properly', () => {
+            let result = findNBS({biohazardRisk: 2})
+            expect(result.filter(e=> e.inv_es_biohazard > 2).length).to.eq(0)
+            expect(result.filter(e=> e.inv_es_biohazard < 2).length).to.gt(0)
         })
     });
     describe("Estimation of surface", () => {
