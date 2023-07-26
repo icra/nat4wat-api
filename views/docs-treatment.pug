@@ -136,6 +136,34 @@ block content
                     | &emsp; &emsp; "waterType": "raw_domestic_wastewater"
                     | &emsp; }
                     | ]
+    // MCDA
+    details(open)
+        summary
+            span.route POST treatment/mcda
+            span Calculate scores for MultiCriteria Decision Analysis
+        ul
+            b Parameters
+            li techs (array): An array of technologies with features as provided by <code>treatment/find-nbs</code>.
+            li techIds (array): An array of ids of technologies. If <code>techs</code> is provided, this parameter is ignored.
+            li weights (key:value object): An object with the weights of each score in the mcda between 0 and 5. Weights not provided default to 2.5.
+                ul The ecosystem services admitted are:
+                    each w in weights
+                        li.indent
+                            code=w
+        ul
+            b Responses
+            li 200: Returns an array containing an array of technologies for each object (scenario) in the body request.
+            li 400: Returns a bad request when the request body is not an array
+        div.indent
+            | <b>Example body</b>
+            pre
+                code.code {<br>
+                    | &emsp; "techIds": ["WW", "HSSF_CW", "GR"],
+                    | &emsp; "weights" : {
+                    | &emsp; &emsp; "wOperation": 2,
+                    | &emsp; &emsp; "wEnvImpact": 3
+                    | &emsp; &nbsp;}
+                    | }
 
 
 

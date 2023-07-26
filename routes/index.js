@@ -11,7 +11,8 @@ router.get(['/', '/docs', '/treatment'], function(req, res){
         technologies: excels.read_excel(),
         waterTypes: Object.keys(gl.waterTypes),
         climates: gl.climate,
-        ecosystemServices: gl.ecosystemServices
+        ecosystemServices: gl.ecosystemServices,
+        weights: gl.wAccepted
     });
 });
 
