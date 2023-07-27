@@ -1,0 +1,567 @@
+{
+	"info": {
+		"_postman_id": "39438c99-48d2-492b-b8b4-78c82c81dc74",
+		"name": "SNAPP API v2 test local",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "find-nbs local",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful POST request\", () => {\r",
+							"  pm.expect(pm.response.code).to.be.oneOf([200, 201,202]);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response is array\", () => {\r",
+							"    pm.expect(pm.response.json()).to.be.an(\"array\")\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"waterType\": \"offices_wastewater\",\r\n    \"inflow\": 2000,\r\n    \"litresPerson\": 100,\r\n    \"avgTemperature\": -5,\r\n    \"household\": true,\r\n    \"pollutants\": [\"c_removal\", \"n_removal_nitrification\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/technologies/find-nbs",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"technologies",
+						"find-nbs"
+					],
+					"query": [
+						{
+							"key": "validationToken",
+							"value": "04F8DC7D71EB64D796F025A995C3B13550D9A5F8E2BFF9E98C3022175A9852B4",
+							"disabled": true
+						},
+						{
+							"key": "orderNumber",
+							"value": "1115704489",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "sci-studies local",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful GET request\", () => {\r",
+							"  pm.expect(pm.response.code).to.be.oneOf([200,201,202]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"waterType\": \"offices_wastewater\",\r\n    \"inflow\": 2000,\r\n    \"litresPerson\": 100,\r\n    \"avgTemperature\": -5,\r\n    \"household\": true,\r\n    \"pollutants\": [\"c_removal\", \"n_removal_nitrification\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/sci-studies/sci-studies",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"sci-studies",
+						"sci-studies"
+					],
+					"query": [
+						{
+							"key": "validationToken",
+							"value": "04F8DC7D71EB64D796F025A995C3B13550D9A5F8E2BFF9E98C3022175A9852B4",
+							"disabled": true
+						},
+						{
+							"key": "orderNumber",
+							"value": "1115704489",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "sci-studies record true local",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful GET request\", () => {\r",
+							"  pm.expect(pm.response.code).to.be.oneOf([200,201,202]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"waterType\": \"offices_wastewater\",\r\n    \"inflow\": 2000,\r\n    \"litresPerson\": 100,\r\n    \"avgTemperature\": -5,\r\n    \"household\": true,\r\n    \"pollutants\": [\"c_removal\", \"n_removal_nitrification\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/sci-studies/sci-studies?record=true",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"sci-studies",
+						"sci-studies"
+					],
+					"query": [
+						{
+							"key": "validationToken",
+							"value": "04F8DC7D71EB64D796F025A995C3B13550D9A5F8E2BFF9E98C3022175A9852B4",
+							"disabled": true
+						},
+						{
+							"key": "orderNumber",
+							"value": "1115704489",
+							"disabled": true
+						},
+						{
+							"key": "record",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "docs local",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful POST request\", () => {\r",
+							"  pm.expect(pm.response.code).to.be.oneOf([200,201,202]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"waterType\": \"offices_wastewater\",\r\n    \"inflow\": 2000,\r\n    \"litresPerson\": 100,\r\n    \"avgTemperature\": -5,\r\n    \"household\": true,\r\n    \"pollutants\": [\"c_removal\", \"n_removal_nitrification\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/docs",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"docs"
+					],
+					"query": [
+						{
+							"key": "validationToken",
+							"value": "04F8DC7D71EB64D796F025A995C3B13550D9A5F8E2BFF9E98C3022175A9852B4",
+							"disabled": true
+						},
+						{
+							"key": "orderNumber",
+							"value": "1115704489",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "idnex local",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful POST request\", () => {\r",
+							"  pm.expect(pm.response.code).to.be.oneOf([200,201,202]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"waterType\": \"offices_wastewater\",\r\n    \"inflow\": 2000,\r\n    \"litresPerson\": 100,\r\n    \"avgTemperature\": -5,\r\n    \"household\": true,\r\n    \"pollutants\": [\"c_removal\", \"n_removal_nitrification\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						""
+					],
+					"query": [
+						{
+							"key": "validationToken",
+							"value": "04F8DC7D71EB64D796F025A995C3B13550D9A5F8E2BFF9E98C3022175A9852B4",
+							"disabled": true
+						},
+						{
+							"key": "orderNumber",
+							"value": "1115704489",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "technologies local",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful POST request\", () => {\r",
+							"  pm.expect(pm.response.code).to.be.oneOf([200,201,202]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"waterType\": \"offices_wastewater\",\r\n    \"inflow\": 2000,\r\n    \"litresPerson\": 100,\r\n    \"avgTemperature\": -5,\r\n    \"household\": true,\r\n    \"pollutants\": [\"c_removal\", \"n_removal_nitrification\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/technologies/technologies",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"technologies",
+						"technologies"
+					],
+					"query": [
+						{
+							"key": "validationToken",
+							"value": "04F8DC7D71EB64D796F025A995C3B13550D9A5F8E2BFF9E98C3022175A9852B4",
+							"disabled": true
+						},
+						{
+							"key": "orderNumber",
+							"value": "1115704489",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "technologies param id local",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful POST request\", () => {\r",
+							"  pm.expect(pm.response.code).to.be.oneOf([200,201,202]);\r",
+							"});\r",
+							"\r",
+							"pm.test('Number of friends = ' + data.length, function () {\r",
+							"    pm.expect(pm.response.json().length).to.equal(1);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"waterType\": \"offices_wastewater\",\r\n    \"inflow\": 2000,\r\n    \"litresPerson\": 100,\r\n    \"avgTemperature\": -5,\r\n    \"household\": true,\r\n    \"pollutants\": [\"c_removal\", \"n_removal_nitrification\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/technologies/technologies?id=WW",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"technologies",
+						"technologies"
+					],
+					"query": [
+						{
+							"key": "validationToken",
+							"value": "04F8DC7D71EB64D796F025A995C3B13550D9A5F8E2BFF9E98C3022175A9852B4",
+							"disabled": true
+						},
+						{
+							"key": "orderNumber",
+							"value": "1115704489",
+							"disabled": true
+						},
+						{
+							"key": "id",
+							"value": "WW"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "find-nbs-multiple server",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful POST request\", () => {\r",
+							"  pm.expect(pm.response.code).to.be.oneOf([200, 201,202]);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response is array\", () => {\r",
+							"    pm.expect(pm.response.json()).to.be.an(\"array\")\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Second object gives error\", () => {\r",
+							"    let errorObject = pm.response.json()[1][0]\r",
+							"    pm.expect(errorObject).to.have.key(\"error\")\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[{\r\n    \"waterType\": \"offices_wastewater\",\r\n    \"inflow\": 2000,\r\n    \"litresPerson\": 100,\r\n    \"avgTemperature\": -5,\r\n    \"household\": true,\r\n    \"pollutants\": [\"c_removal\", \"n_removal_nitrification\"]\r\n},\r\n{\r\n    \"waterType\": \"incorrect\"\r\n}]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/technologies/find-nbs-multiple",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"technologies",
+						"find-nbs-multiple"
+					],
+					"query": [
+						{
+							"key": "validationToken",
+							"value": "04F8DC7D71EB64D796F025A995C3B13550D9A5F8E2BFF9E98C3022175A9852B4",
+							"disabled": true
+						},
+						{
+							"key": "orderNumber",
+							"value": "1115704489",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "mcda local",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful POST request\", () => {\r",
+							"  pm.expect(pm.response.code).to.be.oneOf([200, 201,202]);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response is array\", () => {\r",
+							"    pm.expect(pm.response.json()).to.be.an(\"array\")\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"techIds\": [\"WW\", \"French_CW\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/technologies/mcda",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"technologies",
+						"mcda"
+					],
+					"query": [
+						{
+							"key": "validationToken",
+							"value": "04F8DC7D71EB64D796F025A995C3B13550D9A5F8E2BFF9E98C3022175A9852B4",
+							"disabled": true
+						},
+						{
+							"key": "orderNumber",
+							"value": "1115704489",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

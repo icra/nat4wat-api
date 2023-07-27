@@ -19,11 +19,18 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// TODO: Add a middleware to count requests to the db
+
 const index = require('./routes/index');
-const treatment = require('./routes/treatment');
+const technologies = require('./routes/technologies');
+const sciStudies = require('./routes/sci-studies')
+const treatmentDeprectaed = require('./routes/treatment-deprecated')
 
 app.use('/', index);
-app.use('/treatment', treatment)
+app.use('/technologies', technologies)
+app.use('/sci-studies', sciStudies)
+// Deprecation warning
+app.use('/treatment', treatmentDeprectaed)
 app.use(express.static('public'))
 
 // catch 404 and forward to error handler

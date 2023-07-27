@@ -4,7 +4,7 @@ block content
     // GET sci-studies
     details
         summary
-            span.route GET treatment/sci-studies
+            span.route GET sci-studies/sci-studies
             span Get all scientific studies used in the tool
         ul <b>Parameters</b>
             li records (string): if records is true, the array returned is object oriented. Otherwise, it is column oriented (polars dataframe).
@@ -12,11 +12,11 @@ block content
             li 200: Returns an array with all scientific studies that are used in the tool
         ul.bold Example
             div
-                code #{url}/treatment/sci-studies?records=true
+                code #{url}/sci-studies/sci-studies?records=true
     // GET technologies
     details
         summary
-            span.route GET treatment/technologies
+            span.route GET technologies/technologies
             span Get the list of technologies
         ul <b>Parameters:</b>
             li id (string): The id of the technology to retrieve (only one).
@@ -26,7 +26,7 @@ block content
 
         ul.bold Example
             div
-                code #{url}/treatment/technologies?id=French_CW
+                code #{url}/technologies/technologies?id=French_CW
         ul Table with ids and the corresponding technology:
         .col-6.indent
             table.indent.table.table-striped
@@ -36,12 +36,12 @@ block content
                 each tech in technologies
                     tr
                         td
-                            a(href = url+'/treatment/technologies?id='+tech.id)= tech.id
+                            a(href = url+'/technologies/technologies?id='+tech.id)= tech.id
                         td=tech.name
     // POST find-nbs
     details
         summary
-            span.route POST treatment/find-nbs
+            span.route POST technologies/find-nbs
             span Find all the NBS suitable for a scenario
         ul <b>Parameters</b>
             li waterType (string): The type of water in the scenario. Default: <code>any_wastewater</code> (without rejecting any technology).
@@ -102,7 +102,7 @@ block content
     // POST find-nbs-multiple
     details
         summary
-            span.route POST treatment/find-nbs-multiple
+            span.route POST technologies/find-nbs-multiple
             span Vectorized version of
                 code /find-nbs
         ul
@@ -137,13 +137,13 @@ block content
                     | &emsp; }
                     | ]
     // MCDA
-    details(open)
+    details
         summary
-            span.route POST treatment/mcda
+            span.route POST technologies/mcda
             span Calculate scores for MultiCriteria Decision Analysis
         ul
             b Parameters
-            li techs (array): An array of technologies with features as provided by <code>treatment/find-nbs</code>.
+            li techs (array): An array of technologies with features as provided by <code>technologies/find-nbs</code>.
             li techIds (array): An array of ids of technologies. If <code>techs</code> is provided, this parameter is ignored.
             li weights (key:value object): An object with the weights of each score in the mcda between 0 and 5. Weights not provided default to 2.5.
                 ul The ecosystem services admitted are:
