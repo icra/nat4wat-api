@@ -9,9 +9,9 @@ const mcda = require('../lib/mcda')
 router.get('/technologies', function(req, res) {
   let id = req.query.id;
   let result = xls.readTechnologiesExcel(id);
-  if (result === null) {
+  if (result.error) {
     res.statusMessage = "id does not return any technology";
-    res.status(400).end();
+    res.status(400).send(result);
   } else {
     res.send(result);
   }

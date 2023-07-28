@@ -73,7 +73,7 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Successful GET request\", () => {\r",
+							"pm.test(\"Successful POST request\", () => {\r",
 							"  pm.expect(pm.response.code).to.be.oneOf([200,201,202]);\r",
 							"});"
 						],
@@ -133,7 +133,7 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Successful GET request\", () => {\r",
+							"pm.test(\"Successful POST request\", () => {\r",
 							"  pm.expect(pm.response.code).to.be.oneOf([200,201,202]);\r",
 							"});"
 						],
@@ -250,7 +250,7 @@
 			"response": []
 		},
 		{
-			"name": "idnex local",
+			"name": "index local",
 			"event": [
 				{
 					"listen": "test",
@@ -546,6 +546,61 @@
 					"path": [
 						"technologies",
 						"mcda"
+					],
+					"query": [
+						{
+							"key": "validationToken",
+							"value": "04F8DC7D71EB64D796F025A995C3B13550D9A5F8E2BFF9E98C3022175A9852B4",
+							"disabled": true
+						},
+						{
+							"key": "orderNumber",
+							"value": "1115704489",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add-sci-study local",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"jospueyo\",\r\n    \"token\": \"e1fh3udlup5vprrbbpm6fq\",\r\n    \"email\": \"jpueyo@icra.cat\",\r\n    \"technology\": {\r\n        \"techId\": \"WW\",\r\n        \"surface\": \"1\"\r\n        },\r\n    \"water\": {\r\n        \"inflow\": \"100\"\r\n    },\r\n    \"pollutants\": {},\r\n    \"document\": {\r\n        \"doi\": \"10.12688/openreseurope.16054.1\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/sci-studies/add-sci-study",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"sci-studies",
+						"add-sci-study"
 					],
 					"query": [
 						{
