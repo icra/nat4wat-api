@@ -17,7 +17,7 @@ describe('Test /add-sci-study', ()=> {
             expect(result).to.have.key('error')
         })
         it('Returns error when email is not provided', () =>{
-            let result = 1
+
         })
     });
     describe('Close DB connect', ()=> {
