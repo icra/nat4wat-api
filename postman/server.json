@@ -101,7 +101,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://snappapi-v2.icradev.cat/technologies/sci-studies",
+					"raw": "https://snappapi-v2.icradev.cat/sci-studies/sci-studies",
 					"protocol": "https",
 					"host": [
 						"snappapi-v2",
@@ -109,7 +109,7 @@
 						"cat"
 					],
 					"path": [
-						"technologies",
+						"sci-studies",
 						"sci-studies"
 					],
 					"query": [
@@ -162,7 +162,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://snappapi-v2.icradev.cat/technologies/sci-studies?record=true",
+					"raw": "https://snappapi-v2.icradev.cat/sci-studies/sci-studies?record=true",
 					"protocol": "https",
 					"host": [
 						"snappapi-v2",
@@ -170,7 +170,7 @@
 						"cat"
 					],
 					"path": [
-						"technologies",
+						"sci-studies",
 						"sci-studies"
 					],
 					"query": [
@@ -227,7 +227,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://snappapi-v2.icradev.cat/docs/",
+					"raw": "https://snappapi-v2.icradev.cat/docs",
 					"protocol": "https",
 					"host": [
 						"snappapi-v2",
@@ -235,8 +235,7 @@
 						"cat"
 					],
 					"path": [
-						"technologies",
-						""
+						"docs"
 					],
 					"query": [
 						{
@@ -255,7 +254,7 @@
 			"response": []
 		},
 		{
-			"name": "index",
+			"name": "index server",
 			"event": [
 				{
 					"listen": "test",
@@ -288,7 +287,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://snappapi-v2.icradev.cat/technologies/",
+					"raw": "https://snappapi-v2.icradev.cat/",
 					"protocol": "https",
 					"host": [
 						"snappapi-v2",
@@ -296,7 +295,6 @@
 						"cat"
 					],
 					"path": [
-						"technologies",
 						""
 					],
 					"query": [
@@ -557,6 +555,62 @@
 					"path": [
 						"technologies",
 						"mcda"
+					],
+					"query": [
+						{
+							"key": "validationToken",
+							"value": "04F8DC7D71EB64D796F025A995C3B13550D9A5F8E2BFF9E98C3022175A9852B4",
+							"disabled": true
+						},
+						{
+							"key": "orderNumber",
+							"value": "1115704489",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add-sci-study server",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"jospueyo\",\r\n    \"token\": \"e1fh3udlup5vprrbbpm6fq\",\r\n    \"email\": \"jpueyo@icra.cat\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://snappAPI-v2.icradev.cat/sci-studies/add-sci-study",
+					"protocol": "https",
+					"host": [
+						"snappAPI-v2",
+						"icradev",
+						"cat"
+					],
+					"path": [
+						"sci-studies",
+						"add-sci-study"
 					],
 					"query": [
 						{

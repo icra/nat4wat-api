@@ -17,5 +17,8 @@ describe('Test /add-sci-study', ()=> {
             console.log(result)
             expect(result).to.have.key('error')
         });
+        it('Returns error when email is not provided', () =>{
+
+        })
     });
 })

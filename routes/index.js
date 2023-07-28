@@ -8,7 +8,7 @@ const gl = require("../lib/globals")
 const {insertTokens} = require("../lib/database");
 
 router.get(['/', '/docs'], function(req, res){
-    res.render('docs-treatment.pug', {
+    res.render('docs.pug', {
         title: "SNAPP API v2 - documentation",
         url: process.env.URL,
         technologies: excels.readTechnologiesExcel(),
@@ -32,6 +32,6 @@ router.post('/insert-token', async function(req, res){
         }
     }
 
-})
+});
 
 module.exports = router;

@@ -113,6 +113,11 @@ describe('Test /mcda', () => {
             expect(result.wEnvImpact).gt(result.wOperation)
             expect(result.wMultifunctionality).lt(result.wOperation)
         });
+        it('if all scores are 0 weights are converted to 1', () => {
+           let result = calculateWeights({wEnvImpact: 0, wMultifunctionality: 0, wOperation: 0, wSpaceRequirements: 0})
+            console.log(result)
+           expect(Object.values(result).filter(e => e == 0.25).length).eq(Object.values(result).length)
+        });
         it('percentages are correct', () => {
             let result = calculateWeights({wOperation: 1, wMultifunctionality: 2})
             expect(Object.values(result).reduce((a, b) => a + b)).eq(1)
