@@ -1,3 +1,18 @@
+# check are in branch main
+if [ $(git branch --show-current) != 'main' ]
+then
+  echo 'You are not in main branch'
+  exit 1
+fi
+
+git status --porcelain
+# if output not equal to empty string
+if [ $? != '' ]
+then
+  echo 'There are uncommited changes'
+  exit 1
+fi
+
 npm run test
 if [ $? -eq 1 ]
 then

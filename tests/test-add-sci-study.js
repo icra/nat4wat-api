@@ -61,7 +61,15 @@ describe('Test /add-sci-study', ()=> {
             expect(await addSciStudy(body)).to.have.key('error')
             body.technology.peopleServed = '-1'
             expect(await addSciStudy(body)).to.have.key('error')
-        })
+        });
+        it('Return error if water.inflow is not a positive number', async () => {
+            body.water.inflow = 0
+            expect(await addSciStudy(body)).to.have.key('error')
+        });
+        it('Return error if water.type is not any water type', async () => {
+            body.water.type = "fake"
+            expect(await addSciStudy(body)).to.have.key('error')
+        });
     });
     describe('Close DB connect', ()=> {
         it('Close DB connect', () => {
