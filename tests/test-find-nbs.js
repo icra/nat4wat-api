@@ -98,9 +98,9 @@ describe("Test /find-nbs", () => {
           expect(result.length).gt(0)
        });
        it('pollutants filter properly', () => {
-          let result = findNBS({pollutants: ['c_removal', 'n_removal_nitrification']})
+          let result = findNBS({pollutants: ['c_removal', 'pathogens_reduction']})
           expect(avgKey(result, 'c_removal')).to.eql(1)
-          expect(avgKey(result, 'n_removal_nitrification')).to.eql(1)
+          expect(avgKey(result, 'pathogens_reduction')).to.eql(1)
           expect(avgKey(result, 'p_removal')).lt(1)
        });
        it('both surfaces filter properly', () => {

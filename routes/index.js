@@ -15,7 +15,8 @@ router.get(['/', '/docs'], function(req, res){
         waterTypes: Object.keys(gl.waterTypes),
         climates: gl.climate,
         ecosystemServices: gl.ecosystemServices,
-        weights: gl.wAccepted
+        weights: gl.wAccepted,
+        pollutants: gl.pollutants
     });
 });
 

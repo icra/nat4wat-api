@@ -62,6 +62,11 @@ block content
             li area (positive number): The available surface to allocate the technology.
             li vertical (boolean): If <code>false</code>, green wall technologies are rejected.
             li verticalArea (positive number): The available vertical surface to allocate vertical technologies.
+            li pollutants (array): The pollutants to be removed by the technology.
+                ul Any of the following:
+                    each pollutant in pollutants
+                        li.indent
+                            code=pollutant
             li household (boolean): If <code>true</code>, only technologies that are available at house scale are selected.
             li ecosystemServices (key:value object): The technologies are filtered in terms of the provision of ecosystem services. The values admitted are from 0 (none) to 3 (high). All technologies providing the ecosystem services at that level or higher are included in the list of technologies returned.
                 ul The ecosystem services admitted are:
@@ -86,6 +91,7 @@ block content
                     | &emsp; "litresPerson": 120,
                     | &emsp; "inflow": 3000,
                     | &emsp; "area": 200,
+                    | &emsp; "pollutants": ["c_removal", "p_removal"],
                     | &emsp; "climate": "tropical",
                     | &emsp; "avgTemperature": 21,
                     | &emsp; "vertical": false,
