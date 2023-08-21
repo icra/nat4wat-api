@@ -142,7 +142,7 @@ block content
                     | &emsp; &emsp; "waterType": "raw_domestic_wastewater"
                     | &emsp; }
                     | ]
-    // MCDA
+    // POST MCDA
     details
         summary
             span.route POST technologies/mcda
@@ -170,6 +170,32 @@ block content
                     | &emsp; &emsp; "wEnvImpact": 3
                     | &emsp; &nbsp;}
                     | }
+    // POST add-sci-study
+    details
+        summary
+            span.route POST sci-studies/add-sci-study
+            span Add scientific study to the knowledge base
+        ul
+            b Parameters
+            li username (string)*: The username of the user adding the study.
+            li token (string)*: The token of the user adding the study (provided by API administrators).
+            li email (string)*: The email of the user adding the study.
+            li company (string): The company of the user adding the study.
+            li year_operation (positive int)*: The year of operation of the technology.
+            li techId (string)*: The id of the technology according to knowledge base:
+                ul One of the following ids:
+                    .col-6.indent
+                        table.indent.table.table-striped
+                            tr
+                                th id
+                                th Description
+                            each tech in technologies
+                                tr
+                                    td
+                                        a(href = url+'/technologies/technologies?id='+tech.id)= tech.id
+                                    td=tech.name
+            // TODO: Finish documentation
+
 
 
 

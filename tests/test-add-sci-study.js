@@ -73,6 +73,14 @@ describe('Test /add-sci-study', ()=> {
             body.technology.hrt = 1
             body.technology.peopleServed = 1000
         });
+        it('Return error if yearOperation is not between 1950 and current year', async () => {
+            body.yearOperation = 1949
+            expect(await addSciStudy(body)).to.have.key('error')
+            body.yearOperation = new Date().getFullYear() + 1
+            expect(await addSciStudy(body)).to.have.key('error')
+            body.yearOperation = 2020
+
+        });
         it('Return error if water.inflow is not a positive number', async () => {
             body.water.inflow = 0
             expect(await addSciStudy(body)).to.have.key('error')
@@ -86,7 +94,6 @@ describe('Test /add-sci-study', ()=> {
         it('Return error if out is provided but not in for pollutant concentration', async () => {
             let old_pollutants = body.pollutants
             body.pollutants = {bod_out: 1}
-            console.log(body.pollutants)
             expect(await addSciStudy(body)).to.have.key('error')
             body.pollutants = old_pollutants
         });
@@ -109,6 +116,7 @@ describe('Test /add-sci-study', ()=> {
             expect(inserted[0].no3_out).eq(2)
             expect(inserted[0].tn_in).eq(null)
             expect(inserted[0].type).eq("GW")
+            expect(inserted[0].year_operation).eq(2020)
             let document = JSON.parse(inserted[0].doc_data)
             expect(document.title).eq(body.document.title)
         });
