@@ -5,7 +5,7 @@ then
   exit 1
 fi
 
-echo 'Running endpoint test against local server...'
+echo 'Running endpoint tests against local server...'
 newman run ./postman/local.json --bail --silent
 if [ $? -eq 1 ]
 then
