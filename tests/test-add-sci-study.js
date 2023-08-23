@@ -74,11 +74,11 @@ describe('Test /add-sci-study', ()=> {
             body.technology.peopleServed = 1000
         });
         it('Return error if yearOperation is not between 1950 and current year', async () => {
-            body.yearOperation = 1949
+            body.technology.yearOperation = 1949
             expect(await addSciStudy(body)).to.have.key('error')
-            body.yearOperation = new Date().getFullYear() + 1
+            body.technology.yearOperation = new Date().getFullYear() + 1
             expect(await addSciStudy(body)).to.have.key('error')
-            body.yearOperation = 2020
+            body.technology.yearOperation = 2020
 
         });
         it('Return error if water.inflow is not a positive number', async () => {

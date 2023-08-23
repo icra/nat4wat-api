@@ -5,9 +5,9 @@ dotenv.config()
 
 const excels = require("../lib/excel_utils")
 const gl = require("../lib/globals")
-const {insertTokens} = require("../lib/database");
+const {insertTokens, getUws} = require("../lib/database");
 
-router.get(['/', '/docs'], function(req, res){
+router.get(['/', '/docs'], async function(req, res){
     res.render('docs.pug', {
         title: "SNAPP API v2 - documentation",
         url: process.env.URL,
@@ -16,7 +16,9 @@ router.get(['/', '/docs'], function(req, res){
         climates: gl.climate,
         ecosystemServices: gl.ecosystemServices,
         weights: gl.wAccepted,
-        pollutants: gl.pollutants
+        pollutants: gl.pollutants,
+        uws: await getUws(),
+        polUnits: gl.concentrationsUnits
     });
 });
 

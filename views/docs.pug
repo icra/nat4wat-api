@@ -29,7 +29,7 @@ block content
                 code #{url}/technologies/technologies?id=French_CW
         ul Table with ids and the corresponding technology:
         .col-6.indent
-            table.indent.table.table-striped
+            table.indent.table.table-striped.table-sm
                 tr
                     th id
                     th Description
@@ -171,30 +171,76 @@ block content
                     | &emsp; &nbsp;}
                     | }
     // POST add-sci-study
-    details
+    details(open)
         summary
             span.route POST sci-studies/add-sci-study
-            span Add scientific study to the knowledge base
+            span Add scientific study to the knowledge base.
+        p.mt-2 If your study has more than one sample with different concentrations in the inflow or in the outflow, please upload as separate studies repeating the corresponding information.
         ul
             b Parameters
             li username (string)*: The username of the user adding the study.
             li token (string)*: The token of the user adding the study (provided by API administrators).
             li email (string)*: The email of the user adding the study.
             li company (string): The company of the user adding the study.
-            li year_operation (positive int)*: The year of operation of the technology.
-            li techId (string)*: The id of the technology according to knowledge base:
-                ul One of the following ids:
-                    .col-6.indent
-                        table.indent.table.table-striped
-                            tr
-                                th id
-                                th Description
-                            each tech in technologies
+            li technology (key:value object)*: Information on the technology features.
+                details.indent
+                    summary It can contain the following keys, some of them are mandatory (*):
+                    ul
+                        li techId (string)*: The id of the technology according to knowledge base:
+                            details.indent
+                                summary One of the following ids:
+                                table.indent.table.table-striped.table-sm
+                                    tr
+                                        th id
+                                        th Description
+                                    each tech in technologies
+                                        tr
+                                            td
+                                                a(href = url + '/technologies/technologies?id=' + tech.id)= tech.id
+                                            td=tech.name
+                        li surface (positive number)*: The surface of the technology in m<sup>2</sup>.
+                        li year_operation (positive int)*: The year of operation of the technology.
+                        li hrt (positive number): The hydraulic retention time in days.
+                        li peopleServed (positive number): The number of people served by the technology.
+            li water (key:value object)*: Information on the water features
+                details.indent
+                    summary It can contain the following keys, some of them are mandatory (*):
+                    ul
+                        li type (string)*: The type of water used in the study. One of the following:
+                            ul
+                                each water in waterTypes
+                                    li.indent
+                                        code=water
+                            p If your water does not fit with any of the above categories, please contact us.
+                        li inflow (positive number)*: The inflow in m<sup>3</sup>/day.
+                        li urbanWaterSystem (string): The urban water system where the technology is located. One of the following:
+                            ul
+                                each s in uws
+                                    li.indent
+                                        code=s
+                        li temperature (positive number): The temperature of the water in ºC.
+                        li airTemperature (number): The temperature of the air in ºC.
+                        li pollutants (key:value object): The pollutants concentrations in the inflow and outflow. The name of the polluntats must be suffixed with <code>_in</code> or <code>_out</code> depending on the location of the pollutant. The value of the pollutant must be a positive number. For example: <code>{"bod_in": 50, "bod_out": 10}</code>. The pollutants admitted and the units are in the following table:
+                            table.indent.table.table-striped.table-sm
                                 tr
-                                    td
-                                        a(href = url+'/technologies/technologies?id='+tech.id)= tech.id
-                                    td=tech.name
-            // TODO: Finish documentation
+                                    th Pollutant
+                                    th Units
+                                each pol in polUnits
+                                    tr
+                                        td=pol.name
+                                        td=pol.units
+            li document (key:value object)*: Information of the publication presenting the data.
+                details.indent
+                    summary It may contain the following keys, some of them are mandatory (*):
+                    ul
+                        li title (string)*: The title of the publication.
+                        li doi (string)*: The doi of the publication. If the publication does not have a doi, you can upload it to a repository that provides a doi (e.g. Zenodo).
+                        li year (positive int)*: The year of publication.
+                        li authors (string): The authors of the publication. The authors shpould follow the format <code>last_name, first_name initials</code>. If there are more than one author, they should be separated by <code>;</code>.
+                        li journal (string): The journal where the publication was published.
+                        li issue (string): The issue of the journal where the publication was published.
+                        li startPage (positive int): The start page of the publication in the journal.
+                        li endPage (positive int): The end page of the publication in the journal.
 
 
 
