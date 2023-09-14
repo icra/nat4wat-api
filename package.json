@@ -21,7 +21,7 @@
     "node-fetch": "^2.6.12",
     "nodejs-polars": "^0.8.0",
     "nodemon": "^2.0.22",
-    "pug": "2.0.0-beta11",
+    "pug": ">=3.0.1",
     "sqlite3": "^5.1.6",
     "util": "^0.12.5"
   }
