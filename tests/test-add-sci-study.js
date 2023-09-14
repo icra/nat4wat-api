@@ -14,7 +14,8 @@ let body = {
     email: "jpueyo@icra.cat",
     technology: {
         techId: "WW",
-        surface: 100
+        surface: 100,
+        yearOperation: 2020
     },
     water: {
         inflow: 100,
@@ -109,7 +110,7 @@ describe('Test /add-sci-study', ()=> {
         it('Insert case study', async () => {
             let result = await addSciStudy(body)
             expect(result).eq('Case study inserted')
-            let inserted = await readSciStudies()
+            let inserted = await readSciStudies(status = 'pending')
             inserted = inserted.filter(s => s.username === body.username)
             expect(inserted.length).eq(1)
             expect(inserted[0].po43_in).eq(43)

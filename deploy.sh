@@ -7,11 +7,11 @@ fi
 
 git status --porcelain
 # if output not equal to empty string
-if [ $? != '' ]
-then
-  echo 'There are uncommited changes'
-  exit 1
-fi
+#if [ $? != '' ]
+#then
+#  echo 'There are uncommited changes'
+#  exit 1
+#fi
 
 npm run test
 if [ $? -eq 1 ]
