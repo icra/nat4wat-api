@@ -126,6 +126,7 @@ describe("Test /find-nbs", () => {
         });
         it('ecosystemServices filters properly', () => {
             let result = findNBS({ecosystemServices: {es_biodiversity_fauna: 2, es_recreation: 3, es_biosolids: 0}})
+            console.log(result)
             result.forEach(tech => {
                 expect(tech.es_biodiversity_fauna).to.gte(2)
                 expect(tech.es_recreation).to.gte(3)

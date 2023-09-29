@@ -12,7 +12,7 @@ router.get(['/', '/docs'], async function(req, res){
         title: "SNAPP API v2 - documentation",
         url: process.env.URL,
         technologies: excels.readTechnologiesExcel(),
-        waterTypes: Object.keys(gl.waterTypes),
+        waterTypes: Object.keys(gl.wasteWaterTypes),
         climates: gl.climate,
         ecosystemServices: gl.ecosystemServices,
         weights: gl.wAccepted,
