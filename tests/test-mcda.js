@@ -31,10 +31,9 @@ describe('Test /mcda', () => {
         });
     });
     describe("techs and techIds work", ()=> {
-        let selection = findNBS({waterType: "any_wastewater"})
+        let selection = findNBS({})
         let resultTechs = mcda({techs: selection})
         let resultTechIds = mcda({techIds: ['A_HA', 'WW']})
-        console.log(resultTechIds)
         it('result is an array', () => {
             expect(resultTechs).to.be.an('array')
             expect(resultTechIds).to.be.an('array')
@@ -96,7 +95,7 @@ describe('Test /mcda', () => {
         });
     });
     describe('environmental impacts is calculated', () => {
-        let selection = findNBS({waterType: "any_wastewater" })
+        let selection = findNBS({})
         let result = mcda({techs: selection})
         it('the key envImpact is generated', () => {
             expect(result[10]).to.have.property('envImpact')

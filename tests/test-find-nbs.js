@@ -75,9 +75,16 @@ describe("Test /find-nbs", () => {
             let waterType = 'raw_domestic_wastewater'
             let result = findNBS({waterType: waterType})
             result.forEach(tech => {
-                expect(tech[waterType]).to.eql(1)
-            })
+                expect(tech['raw_domestic_wastewater']).to.eql(1)
+            });
+
+            waterType = 'rain_water'
+            result = findNBS({waterType: waterType})
+            result.forEach(tech => {
+               expect(tech['module']).to.eql("swm")
+            });
        });
+
        it('household works only when true', () => {
            let result = findNBS({household: true})
            result.forEach(tech => {
@@ -126,7 +133,6 @@ describe("Test /find-nbs", () => {
         });
         it('ecosystemServices filters properly', () => {
             let result = findNBS({ecosystemServices: {es_biodiversity_fauna: 2, es_recreation: 3, es_biosolids: 0}})
-            console.log(result)
             result.forEach(tech => {
                 expect(tech.es_biodiversity_fauna).to.gte(2)
                 expect(tech.es_recreation).to.gte(3)
@@ -165,8 +171,8 @@ describe("Test /find-nbs", () => {
            });
        });
        it('larger inflow return larger surface', () => {
-          let low = findNBS({"inflow": 1000})
-          let high = findNBS({"inflow": 10000})
+          let low = findNBS({waterType: "raw_domestic_wasterwater", "inflow": 1000})
+          let high = findNBS({waterType: "raw_domestic_wasterwater", "inflow": 10000})
            for (let i = 0; i < low.length; i++) {
                if (low[i].vertical === 0 && low[i].m2_pe_temperate < 100000)
                   expect(low[i].surface_mean).lt(high[i].surface_mean)
