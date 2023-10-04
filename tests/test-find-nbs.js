@@ -1,8 +1,10 @@
 const findNBS = require("../lib/find-nbs").findNBS
 const avgKey = require("../lib/utils").avgKey
+const chai = require("chai")
 const expect = require("chai").expect
 const jstat = require("jstat")
-const gl = require("../lib/globals")
+const chaiAlmost = require('chai-almost');
+chai.use(chaiAlmost(0.0001));
 
 describe("Test /find-nbs", () => {
     describe('findNBS returns an array of treatment technologies', () => {
@@ -201,6 +203,19 @@ describe("Test /find-nbs", () => {
                   else if (low[i].infiltration === 0)
                       expect(low[i].surface_mean).eq(high[i].surface_mean)
               }
-       })
+       });
+       it('daily volume is properly estimated', () => {
+          let result = findNBS({waterType: "runoff_water", volume: 500, infiltration: 10, area: 1000})
+          result.filter(e => e.enough_area === true).map(e => expect(e.daily_volume).eq(500))
+          result.filter(e => e.enough_area === true).map(e => expect(e.surface_high).lte(1000))
+          result.filter(e => e.enough_area === false).map(e => expect(e.daily_volume).lt(500))
+          result.filter(e => e.enough_area === false).map(e => expect(e.surface_mean).gt(1000))
+       });
+       it('when area is not provided, daily_volume always equal to volume', () => {
+           let result = findNBS({waterType: "runoff_water", volume: 500})
+           console.log(result)
+           // TODO: Cal filtrar les tecnologies que només infiltren quan nop hi ha infiltració
+           result.map(e => expect(e.daily_volume).to.almost.equal(500))
+       });
     });
 });

@@ -27,7 +27,7 @@ Q = S(\frac{I· 24}{1000} + C · D)
 $$
 where:
 
-- _Q_ = Daily volume that the technology can retain or infiltrate (m^3^3/day).
+- _Q_ = Daily flow that the technology can retain or infiltrate (m^3^3/day).
 - _S_ = surface of the technology (m^2^2)
 - _I_ = infiltration rate of the receiving environment (mm/hour)
 - _C_ = storage capacity of the technology (m^3^/m^3^)
@@ -40,7 +40,9 @@ From the previous equation, the surface can be estimated as follows:
 $$
 S = \frac{Q}{0.024I + C · D}
 $$
+The output contains the surface needed to retain or infiltrate the volume reported and the daily volume that can be retained or infiltrated by the technology with the high interval of the surface.
 
+When the user also provides the available area, the surface estimated is to manage all the volume reported, regardless of the available area. However, the `daily_flow` reports the maximum volume that can be retained or infiltrated by the technology using the available area. If the surface needed is lower than the available area, the daily flow always equal to the volume reported by the user. A flag named `enough_area` indicates when the available area is larger than the surface needed to manage the reported flow.
 
 # Multicriteria decision analysis
 

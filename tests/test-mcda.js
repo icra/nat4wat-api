@@ -29,6 +29,9 @@ describe('Test /mcda', () => {
            expect(mcda({techIds: ['WW'], weights: {wEnvImpact: 3, wSpaceRequirements: 6}}))
            expect(mcda({techIds: ['WW'], weights: {wEnvImpact: 3, wSpaceRequirements: 'a'}}))
         });
+        it('returns an error if all technologies are not in the same module', () => {
+            expect(mcda({techIds: ['WW', 'I-SRS']})).to.have.key('error')
+        })
     });
     describe("techs and techIds work", ()=> {
         let selection = findNBS({})
