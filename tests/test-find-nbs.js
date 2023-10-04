@@ -2,9 +2,10 @@ const findNBS = require("../lib/find-nbs").findNBS
 const avgKey = require("../lib/utils").avgKey
 const expect = require("chai").expect
 const jstat = require("jstat")
+const gl = require("../lib/globals")
 
 describe("Test /find-nbs", () => {
-    describe('findNBS returns an array of technologies', () => {
+    describe('findNBS returns an array of treatment technologies', () => {
        let result = findNBS({})
        it("result is an array", () => {
            expect(result).to.be.an('array')
@@ -12,6 +13,9 @@ describe("Test /find-nbs", () => {
        it('technologies have id', () => {
            expect(result[1]).to.have.any.keys("id")
        });
+       it('default options return treatment technologies', () => {
+           result.map(e => expect(e.module).eq("treatment"))
+       })
     });
     describe("Raise error if some value is not correct", () => {
         it('waterType is not a string', () => {
@@ -32,8 +36,14 @@ describe("Test /find-nbs", () => {
         it("area is not a positive number", ()  => {
            expect(findNBS({area: 0})).to.have.key('error')
         });
+        it("verticalArea is not a positive number", ()  => {
+            expect(findNBS({verticalArea: -2})).to.have.key('error')
+        });
+        it("volume is not a positive number", ()  => {
+            expect(findNBS({waterType: "rain_water", volume: -2})).to.have.key('error')
+        });
         it("climate is not in the list", () => {
-           expect(findNBS({climate: "mediterranean"})).to.have.key('error')
+           expect(findNBS({inflow: 1000, climate: "mediterranean"})).to.have.key('error')
         });
         it('household is not boolean', () => {
             expect(findNBS({household: "true"})).to.have.key('error')
@@ -43,7 +53,7 @@ describe("Test /find-nbs", () => {
            expect(findNBS({pollutants: ['c_removal', 'phosphours']})).to.have.key('error')
         });
         it('avgTemperature and climate do not match', () => {
-           expect(findNBS({avgTemperature: -5, climate: 'tropical'})).to.have.key('error')
+           expect(findNBS({inflow: 100, avgTemperature: -5, climate: 'tropical'})).to.have.key('error')
         });
         it('ecosystemServices is not an object or some key or value is not right', () => {
             expect(findNBS({ecosystemServices: true})).to.have.key('error')
@@ -61,15 +71,17 @@ describe("Test /find-nbs", () => {
     });
     describe("Value conversions works properly", () => {
         it('climate is calculated if not provided', () => {
-            let result = findNBS({avgTemperature: -4})
+            let result = findNBS({inflow: 100, avgTemperature: -4})
             result.forEach(tech => {
                 expect(tech.m2_pe_continental).lt(1000000)
             });
         });
     });
     describe("Filters works properly", () => {
-       it('techID returns an array of length 1', () => {
-           expect(findNBS({techIds: ["WW", "French_CW"]}).length).eql(2)
+       it('techIds returns correspondent ids', () => {
+           let result = findNBS({techIds: ["WW", "DB_DB"]})
+           expect(result.length).eql(2)
+           result.map(e => expect(e.id).to.be.oneOf(["WW", "DB_DB"]))
        })
        it('waterType is filtered', () => {
             let waterType = 'raw_domestic_wastewater'
@@ -180,5 +192,15 @@ describe("Test /find-nbs", () => {
                    expect(low[i].vertical_surface_mean).lt(high[i].vertical_surface_mean)
            }
        });
+       it('no infiltration returns larger surface than with infiltration only in technologies that allow infiltration', () => {
+           let low = findNBS({waterType: "rain_water", volume: 1000, infiltration: 10})
+           let high = findNBS({waterType: "rain_water", volume: 1000, infiltration: 2})
+              for (let i = 0; i < low.length; i++) {
+                  if (low[i].infiltration === 1)
+                    expect(low[i].surface_mean).lt(high[i].surface_mean)
+                  else if (low[i].infiltration === 0)
+                      expect(low[i].surface_mean).eq(high[i].surface_mean)
+              }
+       })
     });
 });

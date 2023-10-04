@@ -44,7 +44,7 @@ block content
             span.route POST technologies/find-nbs
             span Find all the NBS suitable for a scenario
         ul <b>Parameters</b>
-            li waterType* (string): The type of water in the scenario.
+            li waterType* (string): The type of water in the scenario. Defaults to <code<any_wastewater</code>, and so, it returns only technologies for water treatment.
                 ul One of the following:
                     each water in waterTypes
                         li.indent
