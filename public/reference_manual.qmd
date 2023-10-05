@@ -11,6 +11,23 @@ This document is work in progress. Content will evolve as the tool evolves.
 
 :::
 
+# Knowledge base
+
+## Technologies
+
+## Scientific case-studies
+
+## Commercial case-studies
+
+## Types of water
+
+```{r water_types}
+
+
+
+```
+
+
 # Selection of technologies
 
 
