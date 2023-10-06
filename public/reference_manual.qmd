@@ -3,8 +3,23 @@ title: "ENTSAPP Reference manual"
 author: "Josep Pueyo-Ros"
 format: html
 toc: true
-number-sections: true
+execute: 
+  echo: false
+editor_options: 
+  chunk_output_type: console
 ---
+
+```{r setup}
+#| include: false
+
+library(tidyverse)
+library(httr2)
+library(jsonlite)
+library(gt)
+
+url_api <- "https://snappapi-v2.icradev.cat/"
+```
+
 
 ::: {.callout-note}
 
@@ -24,13 +39,56 @@ This document is work in progress. Content will evolve as the tool evolves.
 
 ### Water types
 
+The water types is the primary selector of technologies. In the knowledge base, each technology is assigned to one or several types of water. In treatment scenarios, if any more data is provided, the BOD concentration and the inflow as estimated from the type of water according to the values in @tbl-water-types.
+
 ```{r water_types}
+#| label: tbl-water-types
+#| tbl-cap: Water types accepted as input
 
+resp <- request(paste0(url_api, "utils/water-types")) |> 
+  req_perform() |> 
+  resp_body_json()
 
+water_types <- tibble(
+  module = map_chr(resp, \(x) x$module),
+  name = map_chr(resp, \(x) x$name),
+  pe = map_dbl(resp, \(x) x$pe),
+  litresPerson = map_int(resp, \(x) pluck(x, "litresPerson", .default = NA))
+) |> 
+  mutate(bod = pe * 60, .after = pe)
+
+water_types |> 
+  mutate(module = case_match(
+    module,
+    "swm" ~ "Storm water management scenario",
+    "treatment" ~ "Water treatment scenario"
+  )) |> 
+  gt(
+      rowname_col = "name",
+      groupname_col = "module"
+     ) |> 
+  fmt_number(
+    columns = pe,
+    decimals = 2
+    ) |> 
+  fmt_number(
+    columns = bod,
+    decimals = 0
+  ) |> 
+  sub_missing(missing_text = "") |> 
+  cols_label(pe ~ "people equivalent",
+             bod ~ "gr BOD/day",
+             litresPerson ~ "litres/person/day")
 
 ```
 
 ### Conversions
+
+As mentioned above, in treatment scenarios, when input data is not provided, the required data to estimate the surface is estimated as follows. To estimate the surface, user must provide, at least, the people served by the technology or the inflow.
+
+If people served is provided, daily inflow is estimated as $people · litresPerson$.
+
+If BOD concentration is not provided, it is estimated as $\frac{L_{BOD}}{Q}$
 
 # Selection of technologies
 
@@ -61,6 +119,7 @@ From the previous equation, the surface can be estimated as follows:
 $$
 S = \frac{Q}{0.024I + C · D}
 $$
+
 The output contains the surface needed to retain or infiltrate the volume reported and the daily volume that can be retained or infiltrated by the technology with the high interval of the surface.
 
 When the user also provides the available area, the surface estimated is to manage all the volume reported, regardless of the available area. However, the `daily_flow` reports the maximum volume that can be retained or infiltrated by the technology using the available area. If the surface needed is lower than the available area, the daily flow always equal to the volume reported by the user. A flag named `enough_area` indicates when the available area is larger than the surface needed to manage the reported flow.
@@ -98,7 +157,7 @@ Space requirements is the surface needed for the technology. In case, the scenar
 $$
 SR_i = \frac{s_{min}}{s_i}
 $$
-where $SR_i$ is the space requirements ($\in(0,1]$) for technology $i$; $s_{min}$ is the minimum surface among all compared technologies and $s_i$ is the surface of technology $i$. when the data to estimate the surface is not provided, the ratio of $m^2/pe$ is used for treatment technologies (larger ratio equals to smaller score) and $sc * d$ is used for stormwater management technologies. See @sec-surface-estimation for more details.
+where $SR_i$ is the space requirements ($\in(0,1]$) for technology $i$; $s_{min}$ is the minimum surface among all compared technologies and $s_i$ is the surface of technology $i$. when the data to estimate the surface is not provided, the ratio of $m^2/pe$ is used for treatment technologies (larger ratio equals to smaller score) and $sc * d$ is used for stormwater management technologies. See @sec-surface-estimation for more details about surface estimation.
 
 ### Operation and manteinance
 
