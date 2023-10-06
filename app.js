@@ -24,13 +24,17 @@ app.use(express.static(path.join(__dirname, 'public')));
 const index = require('./routes/index');
 const technologies = require('./routes/technologies');
 const sciStudies = require('./routes/sci-studies')
-const treatmentDeprectaed = require('./routes/treatment-deprecated')
+const utils = require('./routes/utils')
+const treatmentDeprecated = require('./routes/treatment-deprecated')
+
 
 app.use('/', index);
 app.use('/technologies', technologies)
 app.use('/sci-studies', sciStudies)
+app.use('/utils', utils)
 // Deprecation warning
-app.use('/treatment', treatmentDeprectaed)
+app.use('/treatment', treatmentDeprecated)
+
 app.use(express.static('public'))
 
 // catch 404 and forward to error handler
