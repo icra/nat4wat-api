@@ -81,9 +81,9 @@ describe("Test /find-nbs", () => {
     });
     describe("Filters works properly", () => {
        it('techIds returns correspondent ids', () => {
-           let result = findNBS({techIds: ["WW", "DB_DB"]})
+           let result = findNBS({techIds: ["I-SRS", "DB_DB"]})
            expect(result.length).eql(2)
-           result.map(e => expect(e.id).to.be.oneOf(["WW", "DB_DB"]))
+           result.map(e => expect(e.id).to.be.oneOf(["I-SRS", "DB_DB"]))
        })
        it('waterType is filtered', () => {
             let waterType = 'raw_domestic_wastewater'
@@ -173,6 +173,10 @@ describe("Test /find-nbs", () => {
             let result = findNBS({biohazardRisk: 2})
             expect(result.filter(e=> e.inv_es_biohazard > 2).length).to.eq(0)
             expect(result.filter(e=> e.inv_es_biohazard < 2).length).to.gt(0)
+        });
+        it('when infiltration is not provided, technologies with sc == 0 are rejected', () => {
+            let result = findNBS({waterType: "rain_water"})
+            result.map(e => expect(e.storage_capacity_low).gt(0))
         })
     });
     describe("Estimation of surface", () => {
@@ -213,8 +217,6 @@ describe("Test /find-nbs", () => {
        });
        it('when area is not provided, daily_volume always equal to volume', () => {
            let result = findNBS({waterType: "runoff_water", volume: 500})
-           console.log(result)
-           // TODO: Cal filtrar les tecnologies que només infiltren quan nop hi ha infiltració
            result.map(e => expect(e.daily_volume).to.almost.equal(500))
        });
     });

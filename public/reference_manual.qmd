@@ -3,6 +3,7 @@ title: "ENTSAPP Reference manual"
 author: "Josep Pueyo-Ros"
 format: html
 toc: true
+number-sections: true
 ---
 
 ::: {.callout-note}
@@ -19,7 +20,9 @@ This document is work in progress. Content will evolve as the tool evolves.
 
 ## Commercial case-studies
 
-## Types of water
+## Water inputs and transformations
+
+### Water types
 
 ```{r water_types}
 
@@ -27,11 +30,12 @@ This document is work in progress. Content will evolve as the tool evolves.
 
 ```
 
+### Conversions
 
 # Selection of technologies
 
 
-# Surface estimation
+# Surface estimation {#sec-surface-estimation}
 
 ## Treatment surface
 
@@ -69,7 +73,7 @@ Multicriteria decision analysis (MCDA) is a method to weight different criteria 
 
 ### Environmental impact
 
-It is calculated as a combination of energy use, eutrophication risks and biohazard risks:
+It is calculated as a combination of energy use, eutrophication risks and biohazard risks, at this moment it is not calculated from rain and runoff technologies because all variables used have the same value and, therefore, the environmental impact is the same for all technologies:
 
 $$
 EI = \frac{(1 - e) + r_{NH_4} + r_{NO_2} + (1 - \frac{br}{3})}{4}
@@ -94,7 +98,7 @@ Space requirements is the surface needed for the technology. In case, the scenar
 $$
 SR_i = \frac{s_{min}}{s_i}
 $$
-where $SR_i$ is the space requirements ($\in(0,1]$) for technology $i$; $s_{min}$ is the minimum surface among all compared technologies and $s_i$ is the surface of technology $i$.
+where $SR_i$ is the space requirements ($\in(0,1]$) for technology $i$; $s_{min}$ is the minimum surface among all compared technologies and $s_i$ is the surface of technology $i$. when the data to estimate the surface is not provided, the ratio of $m^2/pe$ is used for treatment technologies (larger ratio equals to smaller score) and $sc * d$ is used for stormwater management technologies. See @sec-surface-estimation for more details.
 
 ### Operation and manteinance
 
@@ -104,6 +108,15 @@ $$
 OM = 1 - \frac{m + s}{6}
 $$
 Where $OM$ is the operation and manteinance score ($\in[0,1]$) being 1 the lowest operation and manteinance requirements; $m$ is the level of required manpower ($\in[0,3]$); and $s$ is the level of required skills ($\in[0,3]$).
+
+### Cost
+
+The cost is calculated as the total construction cost using the estimated surface. The costs for all technologies are normalized regarding the technology with the minimal cost.
+
+$$
+\hat{c}_i = \frac{c_{min}}{c_i}
+$$
+where $\hat{c}_i$ is the normalized construction cost ($\in(0,1]$) for technology $i$; $c_{min}$ is the minimum cost among all compared technologies and $c_i$ is the cost of technology $i$.
 
 ## Weights
 
