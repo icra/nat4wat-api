@@ -228,15 +228,15 @@ block content
                                         code=s
                         li temperature (positive number): The temperature of the water in ºC.
                         li airTemperature (number): The temperature of the air in ºC.
-                        li pollutants (key:value object): The pollutants concentrations in the inflow and outflow. The name of the polluntats must be suffixed with <code>_in</code> or <code>_out</code> depending on the location of the pollutant. The value of the pollutant must be a positive number. For example: <code>{"bod_in": 50, "bod_out": 10}</code>. The pollutants admitted and the units are in the following table:
-                            table.indent.table.table-striped.table-sm
-                                tr
-                                    th Pollutant
-                                    th Units
-                                each pol in polUnits
-                                    tr
-                                        td=pol.name
-                                        td=pol.units
+            li pollutants (key:value object): The pollutants concentrations in the inflow and outflow. The name of the polluntats must be suffixed with <code>_in</code> or <code>_out</code> depending on the location of the pollutant. The value of the pollutant must be a positive number. For example: <code>{"bod_in": 50, "bod_out": 10}</code>. The pollutants admitted and the units are in the following table:
+                table.indent.table.table-striped.table-sm
+                    tr
+                        th Pollutant
+                        th Units
+                    each pol in polUnits
+                        tr
+                            td=pol.name
+                            td=pol.units
             li document (key:value object)*: Information of the publication presenting the data.
                 details.indent
                     summary It may contain the following keys, some of them are mandatory (*):
