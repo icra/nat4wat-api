@@ -22,19 +22,4 @@ router.get(['/', '/docs'], async function(req, res){
     });
 });
 
-router.post('/insert-token', async function(req, res){
-    if (req.body.password !== process.env.TOKEN_PASSWORD) {
-        res.status(401).end()
-    } else {
-        try {
-            let result = await insertTokens(req.body.username)
-            res.send(result)
-        }
-        catch (e) {
-            res.status(400).send(e)
-        }
-    }
-
-});
-
 module.exports = router;
