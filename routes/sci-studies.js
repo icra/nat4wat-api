@@ -4,6 +4,7 @@ var router = express.Router();
 const {addSciStudy} = require("../lib/add-sci-study");
 const {deleteSciStudy} = require("../lib/delete-sci-study");
 const {dbToPolars} = require("../lib/database");
+const {trainRegressionModels} = require("../lib/train_regression_models");
 
 router.get('/sci-studies', async function(req, res){
     let recordsParam = false
@@ -45,6 +46,11 @@ router.post('/delete-sci-study', async function(req, res){
     catch (e){
         res.send(e)
     }
+});
+// TODO: remove async and await once working
+router.post('/train-models', async function(req, res){
+    let result = await trainRegressionModels(req.body)
+    res.send(result)
 });
 
 module.exports = router;
