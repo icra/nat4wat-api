@@ -19,8 +19,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// TODO: Add a middleware to count requests to the db
-
 const index = require('./routes/index');
 const technologies = require('./routes/technologies');
 const sciStudies = require('./routes/sci-studies')
