@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-const {addSciStudy} = require("../lib/add-sci-study");
+const {addTreatmentSciDetails} = require("../lib/add-treatment-sci-details");
 const {deleteSciStudy} = require("../lib/delete-sci-study");
 const {dbToPolars} = require("../lib/database");
 const {trainRegressionModels} = require("../lib/train_regression_models");
@@ -34,7 +34,7 @@ router.post('/add-sci-publication', async function(req, res){
 
 router.post('/add-sci-study', async function(req, res){
     try {
-        let result = await addSciStudy(req.body)
+        let result = await addTreatmentSciDetails(req.body)
         // console.log(result)
         if (result.error) {
             res.statusMessage = result.error

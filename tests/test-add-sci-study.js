@@ -1,5 +1,5 @@
 const {expect} = require("chai")
-const {addSciStudy} = require("../lib/add-sci-study");
+const {addTreatmentSciDetails} = require("../lib/add-treatment-sci-details");
 const {deleteSciStudyDB, closeDB, readSciStudies} = require("../lib/database");
 const {parseDoi} = require("../lib/utils");
 const dotenv = require('dotenv')
@@ -37,20 +37,20 @@ let body = {
 describe('Test /add-sci-study', ()=> {
     describe('Sanity checks', () => {
         it('Returns error when body is not an object', async () => {
-            let result = await addSciStudy([1, 'a'])
+            let result = await addTreatmentSciDetails([1, 'a'])
             expect(result).to.have.key('error')
         });
         it('Returns error when token or username is not correct', async () => {
-            let result = await addSciStudy({username: "Fake", token: token})
+            let result = await addTreatmentSciDetails({username: "Fake", token: token})
             expect(result).to.have.key('error')
-            result = await addSciStudy({username: username, token: 'Fake'})
+            result = await addTreatmentSciDetails({username: username, token: 'Fake'})
             expect(result).to.have.key('error')
         })
         it('Returns error when email is not provided or wrong', async () => {
             body.email = null
-            expect(await addSciStudy(body)).to.have.key('error')
+            expect(await addTreatmentSciDetails(body)).to.have.key('error')
             body.email = 'jpueyo[at]icra.cat'
-            expect(await addSciStudy(body)).to.have.key('error')
+            expect(await addTreatmentSciDetails(body)).to.have.key('error')
             body.email = 'jpueyo@icra.cat'
         });
         it('Validate DOI', async () => {
@@ -60,55 +60,55 @@ describe('Test /add-sci-study', ()=> {
         });
         it('Return error if techId is not any technology', async () => {
             body.technology.techId = "fake"
-            expect(await addSciStudy(body)).to.have.key('error')
+            expect(await addTreatmentSciDetails(body)).to.have.key('error')
             body.technology.techId = "WW"
         });
         it('Return error if surface, hrt or peopleServed is not a positive number', async () => {
             body.technology.surface = 0
-            expect(await addSciStudy(body)).to.have.key('error')
+            expect(await addTreatmentSciDetails(body)).to.have.key('error')
             body.technology.hrt = 'not a number'
-            expect(await addSciStudy(body)).to.have.key('error')
+            expect(await addTreatmentSciDetails(body)).to.have.key('error')
             body.technology.peopleServed = '-1'
-            expect(await addSciStudy(body)).to.have.key('error')
+            expect(await addTreatmentSciDetails(body)).to.have.key('error')
             body.technology.surface = 100
             body.technology.hrt = 1
             body.technology.peopleServed = 1000
         });
         it('Return error if yearOperation is not between 1950 and current year', async () => {
             body.technology.yearOperation = 1949
-            expect(await addSciStudy(body)).to.have.key('error')
+            expect(await addTreatmentSciDetails(body)).to.have.key('error')
             body.technology.yearOperation = new Date().getFullYear() + 1
-            expect(await addSciStudy(body)).to.have.key('error')
+            expect(await addTreatmentSciDetails(body)).to.have.key('error')
             body.technology.yearOperation = 2020
 
         });
         it('Return error if water.inflow is not a positive number', async () => {
             body.water.inflow = 0
-            expect(await addSciStudy(body)).to.have.key('error')
+            expect(await addTreatmentSciDetails(body)).to.have.key('error')
             body.water.inflow = 100
         });
         it('Return error if water.type is not any water type', async () => {
             body.water.type = "fake"
-            expect(await addSciStudy(body)).to.have.key('error')
+            expect(await addTreatmentSciDetails(body)).to.have.key('error')
             body.water.type = 'greywater'
         });
         it('Return error if out is provided but not in for pollutant concentration', async () => {
             let old_pollutants = body.pollutants
             body.pollutants = {bod_out: 1}
-            expect(await addSciStudy(body)).to.have.key('error')
+            expect(await addTreatmentSciDetails(body)).to.have.key('error')
             body.pollutants = old_pollutants
         });
         it('Return error if year is in the future', async () => {
             old_document = body.document
             body.document.year = new Date().getFullYear() + 1
-            expect(await addSciStudy(body)).to.have.key('error')
+            expect(await addTreatmentSciDetails(body)).to.have.key('error')
             body.document = old_document
             body.document.year = 2020
         });
     });
     describe('Insert case study', () => {
         it('Insert case study', async () => {
-            let result = await addSciStudy(body)
+            let result = await addTreatmentSciDetails(body)
             expect(result).eq('Case study inserted')
             let inserted = await readSciStudies(status = 'pending')
             inserted = inserted.filter(s => s.username === body.username)
