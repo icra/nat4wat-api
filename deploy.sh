@@ -5,13 +5,19 @@ then
   exit 1
 fi
 
-git status --porcelain
-# if output not equal to empty string
-if [ $? != '' ]
+# | grep -v "^??"
+## if output not equal to empty string
+#
+echo "----"
+echo $(git status --porcelain) | wc -l
+echo "----"
+if [ $(git status --porcelain | wc -l) -gt 0 ]
 then
   echo 'There are uncommited changes'
   exit 1
 fi
+
+exit 0
 
 npm run test
 if [ $? -eq 1 ]
