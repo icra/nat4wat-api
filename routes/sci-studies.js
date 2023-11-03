@@ -3,14 +3,22 @@ var router = express.Router();
 
 const {addTreatmentSciDetails} = require("../lib/add-treatment-sci-details");
 const {deleteSciStudy} = require("../lib/delete-sci-study");
-const {dbToPolars} = require("../lib/database");
+const {sciStudiesToPolars, readPublications} = require("../lib/database");
 const {trainRegressionModels} = require("../lib/train_regression_models");
 const {addSciPublication} = require("../lib/add-sci-publication");
+
+router.get('/sci-publications', async function(req, res){
+    let recordsParam = 'accepted'
+    if (req.query.status === 'pending') recordsParam = 'pending'
+    let db = await readPublications(status = recordsParam);
+
+    res.send(db)
+});
 
 router.get('/sci-studies', async function(req, res){
     let recordsParam = false
     if (req.query.records === 'true') recordsParam = true
-    let db = await dbToPolars(records = recordsParam);
+    let db = await sciStudiesToPolars(records = recordsParam);
 
     res.send(db)
 });
