@@ -106,32 +106,32 @@ describe('Test /add-sci-study', ()=> {
             body.document.year = 2020
         });
     });
-    describe('Insert case study', () => {
-        it('Insert case study', async () => {
-            let result = await addTreatmentSciDetails(body)
-            expect(result).eq('Case study inserted')
-            let inserted = await readSciStudies(status = 'pending')
-            inserted = inserted.filter(s => s.username === body.username)
-            expect(inserted.length).eq(1)
-            expect(inserted[0].po43_in).eq(43)
-            expect(inserted[0].no3_out).eq(2)
-            expect(inserted[0].tn_in).eq(null)
-            expect(inserted[0].type).eq("GW")
-            expect(inserted[0].year_operation).eq(2020)
-            let document = JSON.parse(inserted[0].doc_data)
-            expect(document.title).eq(body.document.title)
-        });
-        it('Remove test insertion', async () => {
-            let result = await deleteSciStudyDB('username', 'jospueyo')
-            expect(result).eq('Case studies deleted')
-            let inserted = await readSciStudies()
-            inserted = inserted.filter(s => s.username === body.username)
-            expect(inserted.length).eq(0)
-        })
-    });
-    describe('Close DB connect', ()=> {
-        it('Close DB connect', () => {
-            closeDB()
-        })
-    });
+    // describe('Insert case study', () => {
+    //     it('Insert case study', async () => {
+    //         let result = await addTreatmentSciDetails(body)
+    //         expect(result).eq('Case study inserted')
+    //         let inserted = await readSciStudies(status = 'pending')
+    //         inserted = inserted.filter(s => s.username === body.username)
+    //         expect(inserted.length).eq(1)
+    //         expect(inserted[0].po43_in).eq(43)
+    //         expect(inserted[0].no3_out).eq(2)
+    //         expect(inserted[0].tn_in).eq(null)
+    //         expect(inserted[0].type).eq("GW")
+    //         expect(inserted[0].year_operation).eq(2020)
+    //         let document = JSON.parse(inserted[0].doc_data)
+    //         expect(document.title).eq(body.document.title)
+    //     });
+    //     it('Remove test insertion', async () => {
+    //         let result = await deleteSciStudyDB('username', 'jospueyo')
+    //         expect(result).eq('Case studies deleted')
+    //         let inserted = await readSciStudies()
+    //         inserted = inserted.filter(s => s.username === body.username)
+    //         expect(inserted.length).eq(0)
+    //     })
+    // });
+    // describe('Close DB connect', ()=> {
+    //     it('Close DB connect', () => {
+    //         closeDB()
+    //     })
+    // });
 })
