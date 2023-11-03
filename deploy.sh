@@ -9,7 +9,7 @@ fi
 ## if output not equal to empty string
 #
 echo "----"
-echo $(git status --porcelain) | wc -l
+echo $(git status --porcelain | wc -l)
 echo "----"
 if [ $(git status --porcelain | wc -l) -gt 0 ]
 then
