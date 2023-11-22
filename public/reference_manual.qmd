@@ -99,30 +99,88 @@ If BOD concentration is not provided, it is estimated as $\frac{L_{BOD}}{Q}$
 
 ## Retention - infiltration surface
 
-The volume that the technology can manage is calculated as follows:
+**TODO: Add a scheme of a technology**
+
+The volume that the technology can manage can be calculated with the following equation:
+
+:::: {.columns}
+
+::: {.column width="50%"}
 
 $$
-Q = S(\frac{I· 24}{1000} + C · D)
+Q = A · \phi · (K_tt'_0 + K_st'_1) + Q_dt'_1
 $$
+:::
+
+::: {.column width="50%"}
+
+$$
+IF ~ K_tt <= H, ~ THEN ~ t'_0 = t ~ AND ~ t'_1 = 0. 
+$$
+
+$$
+IF ~ K_tt > H, ~ THEN ~ t'_0 = \frac{H}{K_t} ~ AND ~ t'_1 = t - t'_0
+$$
+
+:::
+
+::::
+
 where:
 
-- _Q_ = Daily flow that the technology can retain or infiltrate (m^3^3/day).
-- _S_ = surface of the technology (m^2^2)
-- _I_ = infiltration rate of the receiving environment (mm/hour)
-- _C_ = storage capacity of the technology (m^3^/m^3^)
-- _D_ = depth of the technology (in m)
+- _Q_ = Volume at the time _t_ that the technology can retain or infiltrate (m^3^).
+- _A_ = surface of the technology (m^2^)
+- _K~t~_ = infiltration rate of the technology layers (m/hour). When the technology stores water in a superficial layer, this is assumed as 10 m/s.
+- _K~s~_ = infiltration rate of the receiving environment (m/s).
+- _t_ = duration of the rain event (in s)
+- $\phi$ = storage capacity of the technology (m^3^/m^3^)
+- _H_ = height of the technology (in m), if the technology has a drainage system (outlet), then the height is not a limiting a factor and, therefore, is considered as infinite.
+- _Q~d~_ = The flow of the drainage pipe (in m^3^/s).
 
-Note that if the infiltration is not allowed in the receiving environment, _I_ can be set to zero and then only detention is considered. The equation assumes that the technology is empty when the rain starts and that the rain lasts for 24 hours.
+The method assumes that the critical time of the event (when the maximum retention volume is needed) is at the end of the event.
 
 From the previous equation, the surface can be estimated as follows:
 
+:::: {.columns}
+
+::: {.column width="50%"}
+
 $$
-S = \frac{Q}{0.024I + C · D}
+A = \frac{Q - Q_dt'_1}{\phi · (K_tt'_0 + K_st'_1)}
 $$
 
-The output contains the surface needed to retain or infiltrate the volume reported and the daily volume that can be retained or infiltrated by the technology with the high interval of the surface.
+:::
 
-When the user also provides the available area, the surface estimated is to manage all the volume reported, regardless of the available area. However, the `daily_flow` reports the maximum volume that can be retained or infiltrated by the technology using the available area. If the surface needed is lower than the available area, the daily flow always equal to the volume reported by the user. A flag named `enough_area` indicates when the available area is larger than the surface needed to manage the reported flow.
+::: {.column width="50%"}
+
+$$
+IF ~ K_tt <= H, ~ THEN ~ t'_0 = t ~ AND ~ t'_1 = 0. 
+$$
+
+$$
+IF ~ K_tt > H, ~ THEN ~ t'_0 = \frac{H}{K_t} ~ AND ~ t'_1 = t - t'_0
+$$
+
+:::
+
+::::
+
+_Q_ can be approximated as follows:
+
+$$
+
+Q = \frac{r_{cum}(t)A_c}{1000}
+
+$$
+
+where: 
+
+- _r~cum(t)~_ = Cummulated rain at time _t_ (in mm).
+- _A~c~_ = Area of the catchment area of the technology (in m^2^).
+
+The output of the method contains the surface needed to retain or infiltrate the volume reported and the daily volume that can be retained or infiltrated by the technology with the high interval of the surface.
+
+When the user also provides the available area, the surface estimated is to manage all the volume reported, regardless of the available area. However, the `max_volume` reports the maximum volume that can be retained or infiltrated by the technology using the available area. If the surface needed is lower than the available area, the daily flow always equal to the volume reported by the user. A flag named `enough_area` indicates when the available area is larger than the surface needed to manage the reported flow.
 
 # Multicriteria decision analysis
 

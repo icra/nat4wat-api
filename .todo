@@ -1,8 +1,8 @@
+- Actualitzar models de SWM
+- Afegir models data-driven a treatment surface
 - Agrupar casos d'estudi per article
 - Crear taula per usuaris
 - Crear endpoint per registrar empresa
 - Crear taula per implementations
 - Crear endpoint per pujar implementations
-- Afegir models data-driven a treatment surface
-- Buscar casos d'estudi per SWM
 - Revisar defaults per litresPerson in globals
