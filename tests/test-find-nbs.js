@@ -4,6 +4,7 @@ const chai = require("chai")
 const expect = require("chai").expect
 const jstat = require("jstat")
 const chaiAlmost = require('chai-almost');
+const {addTreatmentSciDetails} = require("../lib/add-treatment-sci-details");
 chai.use(chaiAlmost(0.0001));
 
 describe("Test /find-nbs", () => {
@@ -53,6 +54,15 @@ describe("Test /find-nbs", () => {
         it('pollutants must be an array and in the list', () => {
            expect(findNBS({pollutants: 'c_removel'})).to.have.key('error')
            expect(findNBS({pollutants: ['c_removal', 'phosphours']})).to.have.key('error')
+        });
+        it('pollutantsConcentrations must be an object', () => {
+            expect(findNBS({pollutantsConcentrations: ['bod_in',10, 'bod_out', 20]})).to.have.key('error')
+        });
+        it('pollutantsConcentrations must have the right keys', () => {
+           expect(findNBS({pollutantsConcentrations: {c_in: 10, c_out: 20}})).to.have.key('error')
+        });
+        it('Return error if out is provided but not in for pollutant concentration', async () => {
+            expect(findNBS({pollutantsConcentrations: {bod_in: 10, cod_out: 20}})).to.have.key('error')
         });
         it('avgTemperature and climate do not match', () => {
            expect(findNBS({inflow: 100, avgTemperature: -5, climate: 'tropical'})).to.have.key('error')

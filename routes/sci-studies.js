@@ -4,7 +4,7 @@ var router = express.Router();
 const {addTreatmentSciDetails} = require("../lib/add-treatment-sci-details");
 const {deleteSciStudy} = require("../lib/delete-sci-study");
 const {sciStudiesToPolars, readPublications} = require("../lib/database");
-const {trainRegressionModels} = require("../lib/train_regression_models");
+const {trainRegressionModels} = require("../lib/train-regression-models");
 const {addSciPublication} = require("../lib/add-sci-publication");
 
 router.get('/sci-publications', async function(req, res){
