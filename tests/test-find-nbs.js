@@ -64,6 +64,9 @@ describe("Test /find-nbs", () => {
         it('Return error if out is provided but not in for pollutant concentration', async () => {
             expect(findNBS({pollutantsConcentrations: {bod_in: 10, cod_out: 20}})).to.have.key('error')
         });
+        it('Return error if in is provided but not out for pollutant concentration', async () => {
+            expect(findNBS({pollutantsConcentrations: {bod_in: 10}})).to.have.key('error')
+        });
         it('avgTemperature and climate do not match', () => {
            expect(findNBS({inflow: 100, avgTemperature: -5, climate: 'tropical'})).to.have.key('error')
         });
