@@ -17,9 +17,9 @@ router.get('/technologies', function(req, res) {
   }
 });
 
-router.post('/find-nbs', function(req, res){
+router.post('/find-nbs', async function(req, res){
   try {
-    let result = findNBS.findNBS(req.body)
+    let result = await findNBS.findNBS(req.body)
 
     if (result.error) {
       res.statusMessage = result.error
