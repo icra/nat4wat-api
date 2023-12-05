@@ -65,7 +65,7 @@ describe("Test /find-nbs", () => {
             expect(await findNBS({pollutantsConcentrations: {bod_in: 10, cod_out: 20}})).to.have.key('error')
         });
         it('Return error if in is provided but not out for pollutant concentration', async () => {
-            expect(await findNBS({pollutantsConcentrations: {bod_in: 10}})).to.have.key('error')
+            expect(await findNBS({pollutantsConcentrations: {cod_in: 10}})).to.have.key('error')
         });
         it('avgTemperature and climate do not match', async () => {
            expect(await findNBS({inflow: 100, avgTemperature: -5, climate: 'tropical'})).to.have.key('error')
@@ -212,25 +212,48 @@ describe("Test /find-nbs", () => {
            }
        });
        it('linear model coincides with R results', async ()=> {
-           let result = await await findNBS({techIds: ["French_CW"], inflow: 50, pollutantsConcentrations: {tn_in: 80, tn_out: 30}})
+           let result = await findNBS({techIds: ["French_CW"], inflow: 50, pollutantsConcentrations: {tn_in: 80, tn_out: 30}})
+           expect(result[0].surface_method).to.eq("linear")
            expect(result[0].surface_mean).to.be.within(650, 655)
            expect(result[0].surface_low).to.be.within(575, 580)
            expect(result[0].surface_high).to.be.within(725, 730)
        });
         it('exponential model coincides with R results', async ()=> {
-            let result = await await findNBS({techIds: ["French_CW"], inflow: 250, pollutantsConcentrations: {bod_in: 80, bod_out: 20}})
+            let result = await findNBS({techIds: ["French_CW"], inflow: 250, pollutantsConcentrations: {bod_in: 80, bod_out: 20}})
+            expect(result[0].surface_method).to.eq("exponential")
             expect(result[0].surface_mean).to.be.within(357, 358)
             expect(result[0].surface_low).to.be.within(282, 283)
             expect(result[0].surface_high).to.be.within(433, 434)
         });
         it('power model coincides with R results', async ()=> {
-            expect(false).to.be.true
+            let result = await findNBS({techIds: ["WS"], inflow: 0.2, pollutantsConcentrations: {tn_in: 50, tn_out: 10}})
+            expect(result[0].surface_method).to.eq("power")
+            expect(result[0].surface_mean).to.be.within(215, 216)
+            expect(result[0].surface_low).to.be.within(145, 146)
+            expect(result[0].surface_high).to.be.within(320, 321)
         });
         it('uses hydraulic load ratio when only bod_in is provided', async () => {
-
+            let result = await findNBS({techIds: ["French_CW"], inflow: 50, pollutantsConcentrations: {bod_in: 80}});
+            expect(result[0].surface_method).to.eq("hydraulic_load_ratio")
+            console.log(result[0])
+            expect(result[0].surface_mean).to.be.within(133, 134)
+            expect(result[0].surface_low).to.be.within(100, 101)
+            expect(result[0].surface_high).to.be.within(166, 167)
+        });
+        it('uses hydraulic load ratio data is out of range', async () => {
+            let result = await findNBS({techIds: ["French_CW"], inflow: 5000, pollutantsConcentrations: {bod_in: 80, bod_out: 20}});
+            expect(result[0].surface_method).to.eq("hydraulic_load_ratio")
+            expect(result[0].surface_mean).to.be.within(13333, 13334)
+            expect(result[0].surface_low).to.be.within(10000, 10001)
+            expect(result[0].surface_high).to.be.within(16666, 16667)
         });
         it('uses m2_pe when only people equivalent is provided', async () => {
-
+            let result = await findNBS({techIds: ["French_CW"], inflow: 50});
+            expect(result[0].surface_method).to.eq("ratio_m2_pe")
+            console.log(result[0])
+            expect(result[0].surface_mean).to.be.within(0.8, 0.9)
+            expect(result[0].surface_low).to.be.within(0.6, 0.7)
+            expect(result[0].surface_high).to.be.within(1.04, 1.05)
         });
        it('no infiltration returns larger surface than with infiltration only in technologies that allow infiltration', async () => {
            let low = await findNBS({waterType: "rain_water", volume: 1000, infiltration: 10})
