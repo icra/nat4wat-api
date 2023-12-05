@@ -235,7 +235,6 @@ describe("Test /find-nbs", () => {
         it('uses hydraulic load ratio when only bod_in is provided', async () => {
             let result = await findNBS({techIds: ["French_CW"], inflow: 50, pollutantsConcentrations: {bod_in: 80}});
             expect(result[0].surface_method).to.eq("hydraulic_load_ratio")
-            console.log(result[0])
             expect(result[0].surface_mean).to.be.within(133, 134)
             expect(result[0].surface_low).to.be.within(100, 101)
             expect(result[0].surface_high).to.be.within(166, 167)
