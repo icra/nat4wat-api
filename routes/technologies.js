@@ -17,9 +17,9 @@ router.get('/technologies', function(req, res) {
   }
 });
 
-router.post('/find-nbs', function(req, res){
+router.post('/find-nbs', async function(req, res){
   try {
-    let result = findNBS.findNBS(req.body)
+    let result = await findNBS.findNBS(req.body)
 
     if (result.error) {
       res.statusMessage = result.error
@@ -34,10 +34,10 @@ router.post('/find-nbs', function(req, res){
   }
 });
 
-router.post('/find-nbs-multiple', function(req, res){
+router.post('/find-nbs-multiple', async function(req, res){
   try {
-    let result = findNBS.findNBSMultiple(req.body)
-
+    let result = await findNBS.findNBSMultiple(req.body)
+    console.log(result.length)
     if (result.error){
       res.statusMessage = result.error
       // res.status(400)
@@ -53,9 +53,9 @@ router.post('/find-nbs-multiple', function(req, res){
   }
 })
 
-router.post('/mcda', function (req, res) {
+router.post('/mcda', async function (req, res) {
   try {
-    let result = mcda.mcda(req.body)
+    let result = await mcda.mcda(req.body)
 
     if (result.error) {
       res.statusMessage = result.error

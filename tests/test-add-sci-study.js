@@ -129,9 +129,4 @@ describe('Test /add-sci-study', ()=> {
     //         expect(inserted.length).eq(0)
     //     })
     // });
-    describe('Close DB connect', ()=> {
-        it('Close DB connect', () => {
-            closeDB()
-        })
-    });
 })

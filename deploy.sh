@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # check are in branch main
 if [ $(git branch --show-current) != 'main' ]
 then
@@ -13,6 +15,7 @@ then
 fi
 
 npm run test
+
 if [ $? -eq 1 ]
 then
   echo 'Some unit test failed'
@@ -26,6 +29,8 @@ then
   echo 'Some endpoint test failed in local server'
   exit 1
 fi
+
+bash ./build_postman_server.sh
 
 #echo 'Copying .env file to server...'
 #scp ./.env root@icra.loading.net:/var/www/vhosts/icradev.cat/snappAPI-v2.icradev.cat/snappAPI-v2

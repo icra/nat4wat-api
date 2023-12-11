@@ -39,7 +39,7 @@ block content
                             a(href = url+'/technologies/technologies?id='+tech.id)= tech.id
                         td=tech.name
     // POST find-nbs
-    details(open)
+    details
         summary
             span.route POST technologies/find-nbs
             span Find all the NBS suitable for a scenario
@@ -67,6 +67,15 @@ block content
                         each pollutant in pollutants
                             li.indent
                                 code=pollutant
+                li pollutantsConcentrations (key:value object): The pollutants concentrations in the inflow and outflow. The name of the pollutants must be suffixed with <code>_in</code> or <code>_out</code> depending on the location of the pollutant. The value of the pollutant must be a positive number. For example: <code>{"bod_in": 50, "bod_out": 10}</code>. The pollutants admitted and the units are in the following table:
+                    table.indent.table.table-striped.table-sm
+                        tr
+                            th Pollutant
+                            th Units
+                        each pol in polUnits
+                            tr
+                                td=pol.name
+                                td=pol.units
             ul <b>Parameters for stormwater management technologies:</b>
                 li volume (positive number): The volume of water to be retained or infiltrated in m<sup>3</sup>/day. If not provided, it is calculated as <code>inflow * 0.001</code>.
                 li infiltration (positive number): The infiltration rate of the receiving soil in mm/hour. If not provided, it is assumed as 0, i.e., no infiltration is possible. Then, the technologies without retention or detention capacity are rejected.
@@ -179,7 +188,7 @@ block content
                     | &emsp; &nbsp;}
                     | }
     // POST add-sci-study
-    details(open)
+    details
         summary
             span.route POST sci-studies/add-sci-study
             span Add scientific study to the knowledge base.
