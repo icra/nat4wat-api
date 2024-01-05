@@ -42,8 +42,28 @@ describe("Test /find-nbs", () => {
         it("verticalArea is not a positive number", async ()  => {
             expect(await findNBS({verticalArea: -2})).to.have.key('error')
         });
-        it("volume is not a positive number", async ()  => {
-            expect(await findNBS({waterType: "rain_water", volume: -2})).to.have.key('error')
+        it("rain volume is not a positive number", async ()  => {
+            expect(await findNBS({waterType: "rain_water", cumRain: -2, duration: 1, catchmentArea: 30})).to.have.key('error')
+            expect(await findNBS({waterType: "rain_water", cumRain: 100, duration: -1, catchmentArea: 30})).to.have.key('error')
+            expect(await findNBS({waterType: "rain_water", cumRain: 100, duration: 1, catchmentArea: -30})).to.have.key('error')
+        });
+        it("drainagePipeDiameter is not a positive number", async ()  => {
+            expect(await findNBS({
+                waterType: "rain_water",
+                cumRain: 100,
+                duration: 1,
+                catchmentArea: 30,
+                drainagePipeDiameter: -1
+            })).to.have.key('error')
+        });
+        it("soil infiltration rate is not a positive number", async ()  => {
+            expect(await findNBS({
+                waterType: "rain_water",
+                cumRain: 100,
+                duration: 1,
+                catchmentArea: 30,
+                infiltration: -1
+            })).to.have.key('error')
         });
         it("climate is not in the list", async () => {
            expect(await findNBS({inflow: 1000, climate: "mediterranean"})).to.have.key('error')
@@ -199,6 +219,9 @@ describe("Test /find-nbs", () => {
                expect(tech).to.have.any.keys("surface_mean")
                expect(tech).to.have.any.keys("surface_low")
                expect(tech).to.have.any.keys("surface_high")
+               expect(tech).to.have.any.keys("vertical_surface_mean")
+               expect(tech).to.have.any.keys("vertical_surface_low")
+               expect(tech).to.have.any.keys("vertical_surface_high")
            });
        });
        it('larger inflow return larger surface', async () => {
@@ -249,31 +272,46 @@ describe("Test /find-nbs", () => {
         it('uses m2_pe when only people equivalent is provided', async () => {
             let result = await findNBS({techIds: ["French_CW"], inflow: 50});
             expect(result[0].surface_method).to.eq("ratio_m2_pe")
-            console.log(result[0])
             expect(result[0].surface_mean).to.be.within(0.8, 0.9)
             expect(result[0].surface_low).to.be.within(0.6, 0.7)
             expect(result[0].surface_high).to.be.within(1.04, 1.05)
         });
-       it('no infiltration returns larger surface than with infiltration only in technologies that allow infiltration', async () => {
-           let low = await findNBS({waterType: "rain_water", volume: 1000, infiltration: 10})
-           let high = await findNBS({waterType: "rain_water", volume: 1000, infiltration: 2})
-              for (let i = 0; i < low.length; i++) {
-                  if (low[i].infiltration === 1)
-                    expect(low[i].surface_mean).lt(high[i].surface_mean)
-                  else if (low[i].infiltration === 0)
-                      expect(low[i].surface_mean).eq(high[i].surface_mean)
-              }
+        it('when infiltration is not defined, all technologies with phi or hc == 0 are rejected', async () => {
+           let result = await findNBS({waterType: "rain_water", cumRain: 100, duration: 24, catchmentArea: 1000})
+              result.map(e => expect(e.storage_capacity_low).gt(0))
+              result.map(e => expect(e.hc_low).gt(0))
+        });
+       it('larger infiltration returns smaller surface', async () => {
+           let low = await findNBS({waterType: "rain_water", cumRain: 100, duration: 24, catchmentArea: 1000, infiltration: 10})
+           let high = await findNBS({waterType: "rain_water", cumRain: 100, duration: 24, catchmentArea: 1000, infiltration: 1})
+           for (let i = 0; i < low.length; i++) {
+               if (low[i].infiltration === 1)
+                   expect(low[i].surface_mean).lt(high[i].surface_mean)
+               else if (low[i].infiltration === 0)
+                   expect(low[i].surface_mean).eq(high[i].surface_mean)
+           }
        });
+        it('larger drainage pipe diameter returns smaller surface', async () => {
+            let low = await findNBS({waterType: "rain_water", cumRain: 100, duration: 24, catchmentArea: 1000, drainagePipeDiameter: 0.1})
+            let high = await findNBS({waterType: "rain_water", cumRain: 100, duration: 24, catchmentArea: 1000, drainagePipeDiameter: 0.01})
+            for (let i = 0; i < low.length; i++) {
+                expect(low[i].surface_mean).lt(high[i].surface_mean)
+            }
+        });
        it('daily volume is properly estimated', async () => {
-          let result = await findNBS({waterType: "runoff_water", volume: 500, infiltration: 10, area: 1000})
-          result.filter(e => e.enough_area === true).map(e => expect(e.daily_volume).eq(500))
+          let result = await findNBS({waterType: "runoff_water", cumRain: 200, duration: 24, catchmentArea: 1000, area: 1000})
+           // check that there are true and false values in result[i].enough_area
+           expect(result.filter(e => e.enough_area === true).length).to.gt(0)
+           expect(result.filter(e => e.enough_area === false).length).to.gt(0)
+
+          result.filter(e => e.enough_area === true).map(e => expect(e.max_volume).to.almost.equal(200))
           result.filter(e => e.enough_area === true).map(e => expect(e.surface_high).lte(1000))
-          result.filter(e => e.enough_area === false).map(e => expect(e.daily_volume).lt(500))
+          result.filter(e => e.enough_area === false).map(e => expect(e.max_volume).lt(200))
           result.filter(e => e.enough_area === false).map(e => expect(e.surface_mean).gt(1000))
        });
        it('when area is not provided, daily_volume always equal to volume', async () => {
-           let result = await findNBS({waterType: "runoff_water", volume: 500})
-           result.map(e => expect(e.daily_volume).to.almost.equal(500))
+           let result = await findNBS({waterType: "runoff_water", cumRain: 200, duration: 24, catchmentArea: 1000})
+           result.map(e => expect(e.max_volume).to.almost.equal(200))
        });
     });
 });
