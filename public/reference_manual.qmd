@@ -138,6 +138,8 @@ where:
 - _H_: height of the technology (m).
 - _Q~d~_: The flow of the drainage pipe (m^3^/s).
 
+![Schema for an infiltration trench](illustrations/schema_swm.png){#fig-schema_swm}
+
 The method assumes that the critical time of the event (when the maximum retention volume is needed) is at the end of the event.
 
 From the previous equation, the surface can be estimated as follows:
@@ -194,7 +196,7 @@ The user can provide the diameter of the pipe. If not provided, it is assumed th
 
 The output of the method contains the surface needed to retain or infiltrate the volume reported and the daily volume that can be retained or infiltrated by the technology with the high interval of the surface.
 
-When the user also provides the available area, the surface estimated is to manage all the volume reported, regardless of the available area. However, the `max_volume` reports the maximum volume that can be retained or infiltrated by the technology using the available area. If the surface needed is lower than the available area, the daily flow always equal to the volume reported by the user. A flag named `enough_area` indicates when the available area is larger than the surface needed to manage the reported flow.
+When the user also provides the available area, the surface estimated is to manage all the volume reported, regardless of the available area. However, the `max_volume` reports the maximum volume that can be retained or infiltrated by the technology using the available area. If the surface needed is lower than the available area, the `max_volume` always equal to the volume reported by the user (= `cumRain` x `catchmentArea` x 0.001). A flag named `enough_area` indicates when the available area is larger than the surface needed to manage the reported flow.
 
 # Multicriteria decision analysis
 
