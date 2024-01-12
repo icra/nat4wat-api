@@ -56,7 +56,7 @@ router.post('/find-nbs-multiple', async function(req, res){
 router.post('/mcda', async function (req, res) {
   try {
     let result = await mcda.mcda(req.body)
-
+    console.log("result", result)
     if (result.error) {
       res.statusMessage = result.error
       res.status(400)
@@ -66,6 +66,7 @@ router.post('/mcda', async function (req, res) {
     }
   }
   catch (e){
+    console.log(e)
     res.send(e)
   }
 })

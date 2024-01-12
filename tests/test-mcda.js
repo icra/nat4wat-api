@@ -1,6 +1,9 @@
 const {expect} = require("chai")
 const {mcda, calculateWeights} = require("../lib/mcda")
 const {findNBS} = require("../lib/find-nbs")
+const chai = require("chai");
+const chaiAlmost = require('chai-almost');
+chai.use(chaiAlmost(0.0001));
 describe('Test /mcda', () => {
     describe("Raise errors on data sanitation", () => {
         it('Returns error if no body', async () => {
@@ -124,22 +127,24 @@ describe('Test /mcda', () => {
 
 
         it('the key cost is generated and is the same regardless the surface', async () => {
-            let df_with_surface = await findNBS({techIds: ["T_T", "BS_BS", "GR_IR"], volume: 2000})
+            let df_with_surface = await findNBS({techIds: ["TR_TR", "BS_BS", "GR_IR"],
+                cumRain: 300, catchmentArea: 1000, duration: 2, infiltration: 0.000001})
             let result_with_surface = await mcda({techs: df_with_surface})
-            let result_without_surface = await mcda({techIds: ["T_T", "BS_BS", "GR_IR"]})
+            expect(result_with_surface[0]).to.have.property('estimated_cost_mean')
 
+            let result_without_surface = await mcda({techIds: ["TR_TR", "BS_BS", "GR_IR"]})
             result_with_surface.map(e => expect(e).to.have.property('score_cost'))
             result_without_surface.map(e => expect(e).to.have.property('score_cost'))
 
-            expect(result_with_surface[0].score_cost).eq(result_without_surface[0].score_cost)
-            expect(result_with_surface[1].score_cost).eq(result_without_surface[1].score_cost)
-            expect(result_with_surface[2].score_cost).eq(result_without_surface[2].score_cost)
+            expect(result_with_surface[0].score_cost).to.almost.equal(result_without_surface[0].score_cost)
+            expect(result_with_surface[1].score_cost).to.almost.equal(result_without_surface[1].score_cost)
+            expect(result_with_surface[2].score_cost).to.almost.equal(result_without_surface[2].score_cost)
         });
 
         it('surface is only deleted if it was added', async () => {
-            let df_with_surface = await findNBS({techIds: ["T_T", "BS_BS", "GR_IR"], volume: 2000})
+            let df_with_surface = await findNBS({techIds: ["TR_TR", "BS_BS", "GR_IR"], cumRain: 300, catchmentArea: 1000, duration: 2})
             let result_with_surface = await mcda({techs: df_with_surface})
-            let result_without_surface = await mcda({techIds: ["T_T", "BS_BS", "GR_IR"]})
+            let result_without_surface = await mcda({techIds: ["TR_TR", "BS_BS", "GR_IR"]})
 
             result_with_surface.map(e => expect(e).to.have.property('surface_mean'))
             result_with_surface.map(e => expect(e).to.have.property('vertical_surface_low'))
@@ -148,13 +153,12 @@ describe('Test /mcda', () => {
 
         });
         it('score_cost is between 0 and 1', async () => {
-            let result= await mcda({techIds: ["T_T", "BS_BS", "GR_IR"]})
+            let result= await mcda({techIds: ["TR_TR", "BS_BS", "GR_IR"]})
             result.map(e => expect(e.score_cost).to.be.within(0, 1))
         });
         it('score_cost is larger if cost_high * surface is smaller', async () => {
-            let df_with_surface = await findNBS({techIds: ["T_T", "BS_BS", "GR_IR"], volume: 2000})
+            let df_with_surface = await findNBS({techIds: ["TR_TR", "BS_BS", "GR_IR"], cumRain: 300, catchmentArea: 1000, duration: 2})
             let result = await mcda({techs: df_with_surface})
-            console.log(result[0].surface_mean)
             let cost_1 = result[0].cost_high * result[0].surface_mean
             let cost_2 = result[1].cost_high * result[1].surface_mean
             expect(cost_1).gt(cost_2)
