@@ -77,8 +77,13 @@ block content
                                 td=pol.name
                                 td=pol.units
             ul <b>Parameters for stormwater management technologies:</b>
-                li volume (positive number): The volume of water to be retained or infiltrated in m<sup>3</sup>/day. If not provided, it is calculated as <code>inflow * 0.001</code>.
-                li infiltration (positive number): The infiltration rate of the receiving soil in mm/hour. If not provided, it is assumed as 0, i.e., no infiltration is possible. Then, the technologies without retention or detention capacity are rejected.
+                li onlyInfiltration (bolean): If <code>true</code>, only technologies with infiltration are selected.
+                ul The following parameters are used to estimate the surface of the technologies:
+                    li rainCum (positive number): The cumulated rain in l/m<sup>2</sup> for the event of interest.
+                    li catchmentArea (positive number): The catchment area in m<sup>2</sup>.
+                    li duration (positive number): The duration of the rain in hours.
+                    li drainagePipeDiameter (positive number): The diameter of the drainage pipe in m. (default: 0). Only used if surface is estimated.
+                    li infiltration (positive number): The infiltration rate of the receiving soil in mm/s. If not provided, it is assumed as 0, i.e., no infiltration is possible. Then, technologies without storage capacity are rejected. Only used if surface is estimated.
             ul <b>Generic parameters:</b>
                 li area (positive number): The available surface to allocate the technology.
                 li vertical (boolean): If <code>false</code>, green wall technologies are rejected.

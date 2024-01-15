@@ -7,6 +7,7 @@ execute:
   echo: false
 editor_options: 
   chunk_output_type: console
+embed-resources: true
 ---
 
 ```{r setup}
@@ -108,7 +109,7 @@ The volume that the technology can manage can be calculated with the following e
 ::: {.column width="50%"}
 
 $$
-Q = A · \phi · (K_tt'_0 + K_st'_1) + Q_dt'_1
+Q = A · (\phi K_tt'_0 + K_st'_1) + Q_dt'_1
 $$
 :::
 
@@ -128,14 +129,16 @@ $$
 
 where:
 
-- _Q_ = Volume at the time _t_ that the technology can retain or infiltrate (m^3^).
-- _A_ = surface of the technology (m^2^)
-- _K~t~_ = Hydraulic conductivity of the technology's layers (m/s). When the technology stores water in a superficial layer, this is assumed as 10 m/s.
-- _K~s~_ = Hydraulic conductivity of the receiving soil (m/s).
-- _t_ = duration of the rain event (s)
-- $\phi$ = storage capacity of the technology (m^3^/m^3^)
-- _H_ = height of the technology (m).
-- _Q~d~_ = The flow of the drainage pipe (m^3^/s).
+- _Q_: Volume at the time _t_ that the technology can retain or infiltrate (m^3^).
+- _A_: surface of the technology (m^2^)
+- _K~t~_: Hydraulic conductivity of the technology's layers (m/s). When the technology stores water in a superficial layer, this is assumed as 10 m/s.
+- _K~s~_: Hydraulic conductivity of the receiving soil (m/s).
+- _t_: duration of the rain event (s)
+- $\phi$: storage capacity of the technology (m^3^/m^3^)
+- _H_: height of the technology (m).
+- _Q~d~_: The flow of the drainage pipe (m^3^/s).
+
+![Schema for an infiltration trench](illustrations/schema_swm.png){#fig-schema_swm}
 
 The method assumes that the critical time of the event (when the maximum retention volume is needed) is at the end of the event.
 
@@ -146,7 +149,7 @@ From the previous equation, the surface can be estimated as follows:
 ::: {.column width="50%"}
 
 $$
-A = \frac{Q - Q_dt'_1}{\phi · (K_tt'_0 + K_st'_1)}
+A = \frac{Q - Q_dt'_1}{\phi K_tt'_0 + K_st'_1}
 $$
 
 :::
@@ -168,17 +171,32 @@ $$
 _Q_ can be approximated as follows:
 
 $$
-Q = \frac{r_{cum}(t)A_c}{1000}
+Q = \frac{r_{cum(t)}A_c}{1000}
 $$
 
 where: 
 
-- _r~cum(t)~_ = Cummulated rain at time _t_ (mm).
-- _A~c~_ = Area of the catchment area of the technology (in m^2^).
+- _r~cum(t)~_: Cummulated rain at time _t_ (mm).
+- _A~c~_: Area of the catchment area of the technology (in m^2^).
+
+*Q~d~* can be calculated as *Q~d~ = AV*, where _V_ can be replaced by the Manning equation as follows:
+
+$$
+Q_d = A\frac{1}{n}(\frac{A}{P})^{\frac{2}{3}}S^{\frac{1}{2}}
+$$
+
+where:
+
+- *A*: Section of the pipe (m^2^)
+- *n*: Roughness coefficient for the pipe's material(default: 0.0011)
+- *P*: Perimeter of the pipe (m).
+- *S*: slope of the pipe (default: 3%).
+
+The user can provide the diameter of the pipe. If not provided, it is assumed that there is not drainage pipe.
 
 The output of the method contains the surface needed to retain or infiltrate the volume reported and the daily volume that can be retained or infiltrated by the technology with the high interval of the surface.
 
-When the user also provides the available area, the surface estimated is to manage all the volume reported, regardless of the available area. However, the `max_volume` reports the maximum volume that can be retained or infiltrated by the technology using the available area. If the surface needed is lower than the available area, the daily flow always equal to the volume reported by the user. A flag named `enough_area` indicates when the available area is larger than the surface needed to manage the reported flow.
+When the user also provides the available area, the surface estimated is to manage all the volume reported, regardless of the available area. However, the `max_volume` reports the maximum volume that can be retained or infiltrated by the technology using the available area. If the surface needed is lower than the available area, the `max_volume` always equal to the volume reported by the user (= `cumRain` x `catchmentArea` x 0.001). A flag named `enough_area` indicates when the available area is larger than the surface needed to manage the reported flow.
 
 # Multicriteria decision analysis
 
