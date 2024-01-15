@@ -210,13 +210,15 @@ describe("Test /find-nbs", () => {
         it('onlyInfiltration filters properly', async () => {
             let result = await findNBS({onlyInfiltration: true, waterType: 'rain_water'})
             result.map(e => expect(e.infiltration).to.eq(1))
-            let result2 = await findNBS({onlyInfiltration: true, waterType: 'rain_water', cumRain: 100, duration: 24, catchmentArea: 1000})
+            let result2 = await findNBS({onlyInfiltration: true, waterType: 'runoff_water', cumRain: 100, duration: 24, catchmentArea: 1000})
             result2.map(e => expect(e.infiltration).to.eq(1))
             result2.map(e => expect(e).to.have.any.key('surface_mean'))
         })
-        it('when infiltration is not provided, technologies with sc == 0 are rejected', async () => {
+        it('when infiltration is not provided, and surface is calculated, technologies with sc == 0 are rejected', async () => {
             let result = await findNBS({waterType: "rain_water"})
-            result.map(e => expect(e.storage_capacity_low).gt(0))
+            expect(result.some(e => e.storage_capacity_low === 0)).to.be.true
+            let result2 = await findNBS({waterType: "rain_water", cumRain: 100, duration: 24, catchmentArea: 1000})
+            expect(result2.some(e => e.storage_capacity_low === 0)).to.be.false
         })
     });
     describe("Estimation of surface", async () => {
