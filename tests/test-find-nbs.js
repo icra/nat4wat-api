@@ -214,11 +214,17 @@ describe("Test /find-nbs", () => {
             result2.map(e => expect(e.infiltration).to.eq(1))
             result2.map(e => expect(e).to.have.any.key('surface_mean'))
         })
-        it('when infiltration is not provided, and surface is calculated, technologies with sc == 0 are rejected', async () => {
+        it('when infiltration and drainage Pipe are not provided, and surface is calculated, technologies with sc == 0 are rejected', async () => {
             let result = await findNBS({waterType: "rain_water"})
             expect(result.some(e => e.storage_capacity_low === 0)).to.be.true
             let result2 = await findNBS({waterType: "rain_water", cumRain: 100, duration: 24, catchmentArea: 1000})
             expect(result2.some(e => e.storage_capacity_low === 0)).to.be.false
+            let result3 = await findNBS({waterType: "rain_water", cumRain: 100, duration: 24, catchmentArea: 1000, drainagePipeDiameter: 0.1})
+            expect(result3.some(e => e.storage_capacity_low === 0)).to.be.true
+        });
+        it('when infiltrationSoils is provided, infiltration is calculated', async () => {
+            let result = await findNBS({waterType: "rain_water", cumRain: 100, duration: 24, catchmentArea: 1000, infiltrationSoils: "sand"})
+            expect(result.some(e => e.storage_capacity_low === 0)).to.be.true
         })
     });
     describe("Estimation of surface", async () => {
@@ -294,10 +300,12 @@ describe("Test /find-nbs", () => {
            let low = await findNBS({waterType: "rain_water", cumRain: 100, duration: 24, catchmentArea: 1000, infiltration: 10})
            let high = await findNBS({waterType: "rain_water", cumRain: 100, duration: 24, catchmentArea: 1000, infiltration: 1})
            for (let i = 0; i < low.length; i++) {
-               if (low[i].infiltration === 1)
+               if (low[i].infiltration === 1) {
                    expect(low[i].surface_mean).lt(high[i].surface_mean)
-               else if (low[i].infiltration === 0)
+               }
+               else if (low[i].infiltration === 0) {
                    expect(low[i].surface_mean).eq(high[i].surface_mean)
+               }
            }
        });
         it('larger drainage pipe diameter returns smaller surface', async () => {
