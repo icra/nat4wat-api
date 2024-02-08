@@ -39,6 +39,7 @@ app.use('/users', users)
 app.use('/treatment', treatmentDeprecated)
 
 app.use(express.static('public'))
+app.use('/images', express.static('images'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
