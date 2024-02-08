@@ -18,7 +18,8 @@ router.get(['/', '/docs'], async function(req, res){
         weights: gl.wAccepted,
         pollutants: gl.pollutants,
         uws: await getUws(),
-        polUnits: gl.concentrationsUnits
+        polUnits: gl.concentrationsUnits,
+        soils: Object.keys(gl.infiltrationSoils),
     });
 });
 

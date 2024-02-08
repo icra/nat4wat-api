@@ -1,4 +1,3 @@
-
 - Agrupar casos d'estudi per article
 
 - Crear taula per usuaris
@@ -7,3 +6,4 @@
 - Crear endpoint per pujar implementations
 
 - Revisar defaults per litresPerson in globals
+- Afegir % performance a filtres
