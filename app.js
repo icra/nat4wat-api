@@ -26,16 +26,20 @@ const technologies = require('./routes/technologies');
 const sciStudies = require('./routes/sci-studies')
 const utils = require('./routes/utils')
 const treatmentDeprecated = require('./routes/treatment-deprecated')
+const users = require('./routes/users')
 
 
 app.use('/', index);
 app.use('/technologies', technologies)
 app.use('/sci-studies', sciStudies)
 app.use('/utils', utils)
+app.use('/users', users)
+
 // Deprecation warning
 app.use('/treatment', treatmentDeprecated)
 
 app.use(express.static('public'))
+app.use('/images', express.static('images'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
