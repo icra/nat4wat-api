@@ -21,6 +21,10 @@ describe("Test /find-nbs", () => {
        })
     });
     describe("Raise error if some value is not correct", async () => {
+        it('not accepted fields in body raise an error', async () => {
+            let result = await findNBS({incorrect: 123})
+            expect(result).to.have.key("error")
+        });
         it('waterType is not a string', async () => {
             let result = await findNBS({waterType: 123})
             expect(result).to.have.key("error")
@@ -107,6 +111,7 @@ describe("Test /find-nbs", () => {
     describe("Value conversions works properly", async () => {
         it('climate is calculated if not provided', async () => {
             let result = await findNBS({inflow: 100, avgTemperature: -4})
+            console.log(result)
             result.forEach(tech => {
                 expect(tech.m2_pe_continental).lt(1000000)
             });
@@ -307,6 +312,13 @@ describe("Test /find-nbs", () => {
                    expect(low[i].surface_mean).eq(high[i].surface_mean)
                }
            }
+       });
+       it('spilledVolume and rainCum * catchmentArea give the same result', async () => {
+           let result1 = await findNBS({waterType: "rain_water", cumRain: 100, duration: 24, catchmentArea: 2000})
+           let result2 = await findNBS({waterType: "rain_water", spilledVolume: 200, duration: 24})
+           for (let i = 0; i < result1.length; i++) {
+              expect(result1[i].surface_mean).eq(result2[i].surface_mean)
+          }
        });
         it('larger drainage pipe diameter returns smaller surface', async () => {
             let low = await findNBS({waterType: "rain_water", cumRain: 100, duration: 24, catchmentArea: 1000, drainagePipeDiameter: 0.1})
