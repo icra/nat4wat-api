@@ -77,7 +77,7 @@ describe('Test /mcda', () => {
             let result2 = await mcda({techIds: [
                     'IA_CW',        'AP+FP_PL',      'AP+FP+MP_PL',
                     'AP_PL',        'A_HA',          'FP+MP_PL',
-                    'FP_PL',        'FP_P/L+FWS_CW', 'FWS_CW',
+                    'FP_PL',        'FP_PL+FWS_CW', 'FWS_CW',
                     'French_CW',    'GR',            'HF_GW',
                     'HSSF_CW',      'HSSF_CW+MP_PL', 'H_HA',
                     'MP_PL',         'NW',
@@ -90,7 +90,6 @@ describe('Test /mcda', () => {
                 ]
             })
             expect(result[1]).to.have.property('score_space_requirements')
-            console.log(result2)
             expect(result2[14]).to.have.property('score_space_requirements')
             result.forEach(tech => {
                 expect(tech.score_space_requirements).to.be.within(0 ,1)

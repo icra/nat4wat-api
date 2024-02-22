@@ -1,7 +1,4 @@
-- Agrupar casos d'estudi per article
-- Crear taula per usuaris
-- Crear endpoint per registrar empresa
-- Crear taula per implementations
-- Crear endpoint per pujar implementations
 - Revisar defaults per litresPerson in globals
 - Afegir % performance a filtres
+- Afegir outflow als models.
+
