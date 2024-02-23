@@ -21,6 +21,10 @@ describe("Test /find-nbs", () => {
        })
     });
     describe("Raise error if some value is not correct", async () => {
+        it('not accepted fields in body raise an error', async () => {
+            let result = await findNBS({incorrect: 123})
+            expect(result).to.have.key("error")
+        });
         it('waterType is not a string', async () => {
             let result = await findNBS({waterType: 123})
             expect(result).to.have.key("error")
@@ -270,19 +274,25 @@ describe("Test /find-nbs", () => {
             expect(result[0].surface_low).to.be.within(145, 146)
             expect(result[0].surface_high).to.be.within(320, 321)
         });
-        it('uses hydraulic load ratio when only bod_in is provided', async () => {
-            let result = await findNBS({techIds: ["French_CW"], inflow: 50, pollutantsConcentrations: {bod_in: 80}});
-            expect(result[0].surface_method).to.eq("hydraulic_load_ratio")
-            expect(result[0].surface_mean).to.be.within(133, 134)
-            expect(result[0].surface_low).to.be.within(100, 101)
-            expect(result[0].surface_high).to.be.within(166, 167)
+        it('tis model is used when horizontal flow wetlands or green walls are used', async() => {
+            let result = await findNBS({techIds: [ "HF_GW", "HSSF_CW"], inflow: 500, pollutantsConcentrations: {tn_in: 20, tn_out: 5}})
+            expect(result.every(e => e.surface_method === "tis_model")).to.be.true
+            expect(result[0].vertical_surface_mean).gt(0)
+            expect(result[1].surface_mean).gt(0)
+        })
+        it('uses organic load ratio when only bod_in is provided', async () => {
+            let result = await findNBS({techIds: ["French_CW"], inflow: 500, pollutantsConcentrations: {bod_in: 80}});
+            expect(result[0].surface_method).to.eq("organic_load_ratio")
+            expect(result[0].surface_mean).to.be.within(1.33, 1.34)
+            expect(result[0].surface_low).to.be.within(1.00, 1.01)
+            expect(result[0].surface_high).to.be.within(1.66, 1.67)
         });
-        it('uses hydraulic load ratio data is out of range', async () => {
+        it('uses organic load ratio data is out of range', async () => {
             let result = await findNBS({techIds: ["French_CW"], inflow: 5000, pollutantsConcentrations: {bod_in: 80, bod_out: 20}});
-            expect(result[0].surface_method).to.eq("hydraulic_load_ratio")
-            expect(result[0].surface_mean).to.be.within(13333, 13334)
-            expect(result[0].surface_low).to.be.within(10000, 10001)
-            expect(result[0].surface_high).to.be.within(16666, 16667)
+            expect(result[0].surface_method).to.eq("organic_load_ratio")
+            expect(result[0].surface_mean).to.be.within(13.333, 13.334)
+            expect(result[0].surface_low).to.be.within(10.000, 10.001)
+            expect(result[0].surface_high).to.be.within(16.666, 16.667)
         });
         it('uses m2_pe when only people equivalent is provided', async () => {
             let result = await findNBS({techIds: ["French_CW"], inflow: 50});
@@ -307,6 +317,13 @@ describe("Test /find-nbs", () => {
                    expect(low[i].surface_mean).eq(high[i].surface_mean)
                }
            }
+       });
+       it('spilledVolume and rainCum * catchmentArea give the same result', async () => {
+           let result1 = await findNBS({waterType: "rain_water", cumRain: 100, duration: 24, catchmentArea: 2000})
+           let result2 = await findNBS({waterType: "rain_water", spilledVolume: 200, duration: 24})
+           for (let i = 0; i < result1.length; i++) {
+              expect(result1[i].surface_mean).eq(result2[i].surface_mean)
+          }
        });
         it('larger drainage pipe diameter returns smaller surface', async () => {
             let low = await findNBS({waterType: "rain_water", cumRain: 100, duration: 24, catchmentArea: 1000, drainagePipeDiameter: 0.1})

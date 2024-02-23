@@ -77,7 +77,7 @@ describe('Test /mcda', () => {
             let result2 = await mcda({techIds: [
                     'IA_CW',        'AP+FP_PL',      'AP+FP+MP_PL',
                     'AP_PL',        'A_HA',          'FP+MP_PL',
-                    'FP_PL',        'FP_P/L+FWS_CW', 'FWS_CW',
+                    'FP_PL',        'FP_PL+FWS_CW', 'FWS_CW',
                     'French_CW',    'GR',            'HF_GW',
                     'HSSF_CW',      'HSSF_CW+MP_PL', 'H_HA',
                     'MP_PL',         'NW',
@@ -90,7 +90,6 @@ describe('Test /mcda', () => {
                 ]
             })
             expect(result[1]).to.have.property('score_space_requirements')
-            console.log(result2)
             expect(result2[14]).to.have.property('score_space_requirements')
             result.forEach(tech => {
                 expect(tech.score_space_requirements).to.be.within(0 ,1)
@@ -130,9 +129,11 @@ describe('Test /mcda', () => {
             let df_with_surface = await findNBS({techIds: ["TR_TR", "BS_BS", "GR_IR"],
                 cumRain: 300, catchmentArea: 1000, duration: 2, infiltration: 0.000001})
             let result_with_surface = await mcda({techs: df_with_surface})
+            // console.log("result_with_surface", result_with_surface)
             expect(result_with_surface[0]).to.have.property('estimated_cost_mean')
 
             let result_without_surface = await mcda({techIds: ["TR_TR", "BS_BS", "GR_IR"]})
+            console.log("result_without_surface", result_without_surface)
             result_with_surface.map(e => expect(e).to.have.property('score_cost'))
             result_without_surface.map(e => expect(e).to.have.property('score_cost'))
 
