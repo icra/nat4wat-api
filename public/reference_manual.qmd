@@ -164,11 +164,11 @@ water_types |>
 
 ```
 
-### Conversions
+<!-- ### Conversions -->
 
-As mentioned above, in treatment scenarios, when input data is not provided, the required data to estimate the surface is estimated as follows. To estimate the surface, user must provide, at least, the people served by the technology or the inflow.
+<!-- As mentioned above, in treatment scenarios, when input data is not provided, the required data to estimate the surface is estimated as follows. To estimate the surface, user must provide, at least, the people served by the technology or the inflow. -->
 
-If people served is provided, daily inflow is estimated as $people · litresPerson$.
+<!-- If people served is provided, daily inflow is estimated as $people · litresPerson$. -->
 
 # Selection of technologies
 
@@ -199,6 +199,27 @@ The method to estimate the surface of a technology for water treatment depends o
 ![Cascade model diagram](assets/cascadE_model.png){#fig-cascade_model}
 
 If input and output concentrations are provided for more than one pollutant, the surface returned is the minimal surface to fulfil all removal requirements (i.e. the maximum surface among pollutants used in the estimation).
+
+### Data-driven models
+
+Three different regression models were fitted for each combination of technology and pollutant provided that there were more than five observations for that combination. The three regression models were linear, exponential and power, from the original models, we isolated surface to facilitate future operations with the models:
+
+- Linear model: $L_o = L_i - \beta{S}$ &#9658; $S = \beta (L_i-L_o)$
+- Exponential model: $L_o = L_i e^{-\beta S}$ &#9658; $S = \beta ln(\frac{L_i}{L_o})$
+- Power model: $L_o = L_i - aS^\beta$ &#9658; $log_{10}(S) = \alpha + \beta log_{10}(L_i - L_o)$
+
+Note that linear and exponential models are without intercept (zero removal = zero surface), while power model has an intercept. Because of this, $\beta$ in the power model can adopt negative values, which are not mechanistically feasible. Therefore, power models with negative values of $\beta$ were discarded.
+
+Once, the three models were fitted, we calculated the RMAE (Relative Median Absolute Error) is calculated for each model, we used the meadian instead of the mean to make the errors more robust to outliers, since the distribution of the values is not normally distributed. Likewise, we used relative errors instead of absolute to use more sensible errors. We considered that from the point of view of the end users, a percentual error is more meaningful. For instance, an absolute error of 2m^2^ is an error of 50% in a NBS of 4m^2^ but an error of 5% in a NBS of 40m^2^.
+
+Then, we chose the model with the lowest RMAE. If the RMAE was lower than 25%, the model was marked as suitable for predicting the surface of new technologies. However, this model is only used when the input from the user is within the range that was used to fit the model, with a tolerance of 25%. For instance, if the BOD loads found in the for a horizontal flow green wall were between 10 and 30 gr of BOD per day, if the loads entered by the user were lower than 7.5 or greater than 37.5, the model is not used and the surface is estimated using the next step in the cascade, if available.
+
+### Mechanistic models
+
+#### Tank-in-Series model
+
+lore ipsum
+
 
 ### Target concentrations in the receiving environment
 

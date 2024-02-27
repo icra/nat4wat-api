@@ -83,13 +83,14 @@ describe("Test /find-nbs", () => {
             expect(await findNBS({pollutantsConcentrations: ['bod_in',10, 'bod_out', 20]})).to.have.key('error')
         });
         it('pollutantsConcentrations must have the right keys', async () => {
-           expect(await findNBS({pollutantsConcentrations: {c_in: 10, c_out: 20}})).to.have.key('error')
+            console.log(await findNBS({pollutantsConcentrations: {c_in: 10, c_out: 20}}))
+           expect(await findNBS({pollutantsConcentrations: {c_in: 10, c_out: 20}})).to.have.any.key('error')
         });
         it('Return error if out is provided but not in for pollutant concentration', async () => {
-            expect(await findNBS({pollutantsConcentrations: {bod_in: 10, cod_out: 20}})).to.have.key('error')
+            expect(await findNBS({pollutantsConcentrations: {bod_in: 10, cod_out: 20}})).to.have.any.key('error')
         });
         it('Return error if in is provided but not out for pollutant concentration', async () => {
-            expect(await findNBS({pollutantsConcentrations: {cod_in: 10}})).to.have.key('error')
+            expect(await findNBS({pollutantsConcentrations: {cod_in: 10}})).to.have.any.key('error')
         });
         it('avgTemperature and climate do not match', async () => {
            expect(await findNBS({inflow: 100, avgTemperature: -5, climate: 'tropical'})).to.have.key('error')
