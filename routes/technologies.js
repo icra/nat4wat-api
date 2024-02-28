@@ -20,14 +20,14 @@ router.get('/technologies', function(req, res) {
 router.post('/find-nbs', async function(req, res){
   try {
     let result = await findNBS.findNBS(req.body)
-
-    if (result.errors) {
-      res.statusMessage = result.error
-      res.status(400)
-      res.send(result.error)
-    } else {
-      res.send(result)
-    }
+    res.send(result)
+  //   if (result.error) {
+  //     res.statusMessage = result.error
+  //     res.status(400)
+  //     res.send(result.error)
+  //   } else {
+  //     res.send(result)
+  //   }
   }
   catch (e){
     res.send(e)
