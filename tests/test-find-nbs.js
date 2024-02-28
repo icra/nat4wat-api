@@ -83,7 +83,6 @@ describe("Test /find-nbs", () => {
             expect(await findNBS({pollutantsConcentrations: ['bod_in',10, 'bod_out', 20]})).to.have.key('error')
         });
         it('pollutantsConcentrations must have the right keys', async () => {
-            console.log(await findNBS({pollutantsConcentrations: {c_in: 10, c_out: 20}}))
            expect(await findNBS({pollutantsConcentrations: {c_in: 10, c_out: 20}})).to.have.any.key('error')
         });
         it('Return error if out is provided but not in for pollutant concentration', async () => {
@@ -108,6 +107,10 @@ describe("Test /find-nbs", () => {
             expect(await findNBS({energy: 1})).to.have.key('error')
             expect(await findNBS({energy: ['yes', 'no']})).to.have.key('error')
         })
+        it('all technologies are rejected when filtering', async () => {
+            let result = await findNBS({waterType: "cso_discharge_water", ecosystemServices: {es_carbon_sequestration: 3}})
+            expect(result).to.have.key('error')
+        });
     });
     describe("Value conversions works properly", async () => {
         it('climate is calculated if not provided', async () => {
@@ -157,10 +160,17 @@ describe("Test /find-nbs", () => {
           expect(result.length).gt(0)
        });
        it('pollutants filter properly', async () => {
-          let result = await findNBS({pollutants: ['c_removal', 'pathogens_reduction']})
-          expect(avgKey(result, 'c_removal')).to.eql(1)
+          let result = await findNBS({pollutants: ['bod_removal', 'pathogens_reduction']})
+          result.map(e => expect(e.bod_removal).gte(80))
+          expect(avgKey(result, 'tn_removal')).to.lt(80)
           expect(avgKey(result, 'pathogens_reduction')).to.eql(1)
           expect(avgKey(result, 'p_removal')).lt(1)
+       });
+       it('pollutants filter based on performance', async () => {
+          let result = await findNBS({pollutants: ['cod_removal', 'tn_removal'], pollutantsConcentrations: {cod_in: 100, cod_out: 10}})
+          result.map(e => expect(e.cod_removal).gte(90))
+          result.map(e => expect(e.tn_removal).gte(80))
+          expect(result.filter(e => e.nh4_removal < 80).length).gt(0)
        });
        it('both surfaces filter properly', async () => {
            let inflow = 1000

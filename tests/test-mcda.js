@@ -129,11 +129,9 @@ describe('Test /mcda', () => {
             let df_with_surface = await findNBS({techIds: ["TR_TR", "BS_BS", "GR_IR"],
                 cumRain: 300, catchmentArea: 1000, duration: 2, infiltration: 0.000001})
             let result_with_surface = await mcda({techs: df_with_surface})
-            // console.log("result_with_surface", result_with_surface)
             expect(result_with_surface[0]).to.have.property('estimated_cost_mean')
 
             let result_without_surface = await mcda({techIds: ["TR_TR", "BS_BS", "GR_IR"]})
-            console.log("result_without_surface", result_without_surface)
             result_with_surface.map(e => expect(e).to.have.property('score_cost'))
             result_without_surface.map(e => expect(e).to.have.property('score_cost'))
 
