@@ -1,5 +1,5 @@
 ---
-title: "ENTSAPP Reference manual"
+title: "Nat4Wat Reference manual"
 author: "Josep Pueyo-Ros"
 format: html
 toc: true
@@ -7,9 +7,11 @@ execute:
   echo: false
   message: false
   warning: false
+number-sections: true
 editor_options: 
   chunk_output_type: console
 embed-resources: true
+bibliography: bib.bib
 ---
 
 ```{r setup}
@@ -111,15 +113,13 @@ The illustrations of the technologies showed in Nat4Wat were made by Lide Jaurri
 
 ## Scientific case-studies
 
-Scientific case studies are the result of several systematic scientific reviews, as explained [here](https://iwaponline.com/bgs/article/5/2/235/99349/Development-of-a-decision-support-system-to-select?searchresult=1) and [here](https://zenodo.org/records/10688075). User can upload new scientific case studies that are published after a peer-review process. The case studies, especially for water treatment, are used by machine learning models to estimate the surface based on inflow and concentration in the inlet and outlet.
+Scientific case studies are the result of several systematic scientific reviews, as explained in @Acuna2024 and in [Deliverable 4.2](https://zenodo.org/records/10688075) of the MULTISOURCE project. User can upload new scientific case studies that are published after a peer-review process. The case studies, especially for water treatment, are used by machine learning models to estimate the surface based on inflow and concentration in the inlet and outlet.
 
 ## Commercial case-studies
 
 Commerical case studies are provided by companies with expertise in building the technologies avaiable in the tool. To upload a commercial case, a company needs to register as a company and upload the required information. The commercial cases are published after a peer-review process.
 
 ## Water inputs and transformations
-
-### Water types
 
 The water types is the primary selector of technologies. In the knowledge base, each technology is assigned to one or several types of water. In treatment scenarios, if any more data is provided, the BOD concentration and the inflow as estimated from the type of water according to the values in @tbl-water-types.
 
@@ -186,6 +186,12 @@ The selection of technologies is based on the information provided by experts ([
 
 - If energy requirements are selected as yes, all technologies that need electrical energy to work are selected. On the other hand, if energy requirements are selected as no, all technologies that need electrical energy to work are rejected.
 
+- In case of NBS for water treatment, the technologies can be filtered according the pollutants they can remove. In that case, BOD, COD, TN and NH~4~ have information about removal percentages while NO~3~, P and pathogens are presented as binary variables (active - inactive).
+
+  - BOD, COD, TN, NH~4~: If these pollutants are selected, all technologies with a removal percentage lower than 80% are rejected. However, if the user enter input and output (or target) concentrations, then the required removal percentage is calculated and the technologies are filtered accordingly. For instance, an aerated treatment wetlands has a removal of TN of 60%. Therefore, if the user only selects TN in the list of pollutants of interest, aerated treatment wetlands are rejected. However, if the user, apart from selecting TN, also enters an input concentration of 20 mg/L and a required concentration in the output of 10 mg/L, aerated treatment wetlands are selected because the required removal percentage is 50% ($(20 - 10)/20$) and aerated treatment wetlands can satisfy this requirement.
+  
+  - NO~3~, P and pathogens: If these pollutants are selected, the technologies that are inactive for the selected pollutants are rejected.
+
 
 # Surface estimation {#sec-surface-estimation}
 
@@ -216,14 +222,85 @@ Then, we chose the model with the lowest RMAE. If the RMAE was lower than 25%, t
 
 ### Mechanistic models
 
+If there are no model available, the algorithm searchers for an available mechanistic model for each technology. Available mechanistic models are described below:
+
 #### Tank-in-Series model
 
-lore ipsum
+A Tank-in-Series model is used for horizontal flow subsurface wetlands and green walls [@Kadlec2009]. The model calculates the outflow concentrations as a function of several parameters:
+
+$$
+C_o = C_* + (C_i - C_*)(1 + \frac{kS}{QN})^{-N}
+$$
+Where:
+
+- _C~o~_: Outflow concentration.
+- _C~*~_: Background concentration.
+- _C~i~_: Inflow concentration.
+- _k_: Kinetics ratio.
+- _S_: Treatment surface.
+- _Q_: Inflow.
+- _N_: Number of beds.
+
+From that, we isolated the surface, which is our unknown parameter:
+
+$$
+S = [(\frac{C_o - C_*}{C_i - C_*})^{-\frac{1}{N}}-1]Q\frac{N}{k}
+$$
+
+Kinetics (_k_) and background concentrations (_C~*~_) are defined based on literature values as follows:
+
+- BOD: 
+  - $C_* = 0.6 + 0.4C_i^{0.55}$
+  - For _C~i~_ > 200: $k = 66$
+  - For _C~i~_ > 100: $k = 25$
+  - For _C~i~_ > 30: $k = 37$
+  - For _C~i~_ > 3: $k = 86$
+- COD:
+  - $C_* = 0$
+  - $k = 37.6$
+- TN:
+  - $C_* = 1$
+  - $k = 8.4$
+- NH~4~:
+  - $C_* = 0$
+  - $k = 11.4$
+  
+The other parameter to define is the number of beds (_N_). _N_ is calculated as follows:
+
+$$
+N = 0.686(\frac{L}{h})^{0.0671}
+$$
+Where _L_ is the length of the bed and _h_ is the depth. We use predefined values for _h_ of 0.7 for wetlands and 0.2 for green walls. To calculate _L_ we use the ratio length:width (_r_) to calculate _L_ from the surface:
+
+$$
+L = \sqrt{Sr}
+$$
+We use a ratio of 2:1 for wetlands and 10:1 for green walls. Yet, _S_ remains unknown, it is indeed our parameter of interest. Therefore, to calculate _N_ we estimate a prior surface using the rule of thumb method, based on the people equivalent served by the technology (@sec-ruleofthumb).
+
+### Organic loading rate {#sec-olr}
+
+If any of the above steps is available, or if the user only entered inflow concentrations for BOD but not required outflow or target concentrations, the organic loading rate is used.
+
+The organic loading rate defines the load of organic matter (in grams of BOD/day) that a technology can handle. Based on the expert assessment, we defined a value for each technology and for four different climates based on [Köppen classification](https://www.britannica.com/science/Koppen-climate-classification) (tropical, dry, temperate and continental). The user can also provide the average temperature of the coolest month in their are. In that case the climate is classified as follows:
+
+- average temperature < -3: continental
+- average temperature < 18: temperate
+- average temperature >= 18: tropical
+
+In terms of the temperature, there are no differences between tropical and dry, as there aren't in terms of the organic loading rate.
+
+### Rule of thumb {#sec-ruleofthumb}
+
+If the user only entered inflow or people served, or any of the above steps is available, the surface is estimated using the rule of thumb. The rule of thumb is also based in expert assessment as the organic loading rate. It defines the squared meters needed for each person equivalent (p.e.). The person equivalent is calculated based on the people served and the water type. In @tbl-water-types there is a column of equivalencies between people served and people equivalent for each type of water. For instance, 10 people served by a technology receiving greywater is equivalent to 3 p.e.
+
+In case the user enters the inflow instead of the people served, the latter is calculated using the litres/person/day of each type of water, also defined in @tbl-water-types.
+
+As with the organic loading rate (@sec-olr), the rule of thumb is defined for the same four climates, that are classified using the same criteria as above.
 
 
 ### Target concentrations in the receiving environment
 
-In case that the user provides target concentrations in the receiving environment (instead of outlet concentrations), a mass balance is used to calculate the required concentrations in the outlet tio fulfil the condition. For that, the user must provide river inflow and river's upstream concentrations for each pollutant of interest. The required oulet concentration is calculated as follows:
+In case that the user provides target concentrations in the receiving environment (instead of outlet concentrations), a mass balance is used to calculate the required concentrations in the outlet to fulfill the condition. For that, the user must provide river inflow and river's upstream concentrations for each pollutant of interest. The required oulet concentration is calculated as follows:
 
 $$
 C_o = \frac{Q_r~(C_u - C_t)}{Q_i}
