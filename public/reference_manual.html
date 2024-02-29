@@ -8,7 +8,7 @@
 
 <meta name="author" content="Josep Pueyo-Ros">
 
-<title>ENTSAPP Reference manual</title>
+<title>Nat4Wat Reference manual</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
 width: 0.8em;
 margin: 0 0.8em 0.2em -1em;  vertical-align: middle;
 }
-</style>
+
+div.csl-bib-body { }
+div.csl-entry {
+clear: both;
+margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+margin-left:2em;
+text-indent:-2em;
+}
+div.csl-left-margin {
+min-width:2em;
+float:left;
+}
+div.csl-right-inline {
+margin-left:2em;
+padding-left:1em;
+}
+div.csl-indent {
+margin-left: 2em;
+}</style>
 
 
 <script>/*!
@@ -4825,35 +4845,37 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#knowledge-base" id="toc-knowledge-base" class="nav-link active" data-scroll-target="#knowledge-base">Knowledge base</a>
+  <li><a href="#knowledge-base" id="toc-knowledge-base" class="nav-link active" data-scroll-target="#knowledge-base"><span class="header-section-number">1</span> Knowledge base</a>
   <ul class="collapse">
-  <li><a href="#technologies" id="toc-technologies" class="nav-link" data-scroll-target="#technologies">Technologies</a></li>
-  <li><a href="#scientific-case-studies" id="toc-scientific-case-studies" class="nav-link" data-scroll-target="#scientific-case-studies">Scientific case-studies</a></li>
-  <li><a href="#commercial-case-studies" id="toc-commercial-case-studies" class="nav-link" data-scroll-target="#commercial-case-studies">Commercial case-studies</a></li>
-  <li><a href="#water-inputs-and-transformations" id="toc-water-inputs-and-transformations" class="nav-link" data-scroll-target="#water-inputs-and-transformations">Water inputs and transformations</a></li>
+  <li><a href="#technologies" id="toc-technologies" class="nav-link" data-scroll-target="#technologies"><span class="header-section-number">1.1</span> Technologies</a></li>
+  <li><a href="#scientific-case-studies" id="toc-scientific-case-studies" class="nav-link" data-scroll-target="#scientific-case-studies"><span class="header-section-number">1.2</span> Scientific case-studies</a></li>
+  <li><a href="#commercial-case-studies" id="toc-commercial-case-studies" class="nav-link" data-scroll-target="#commercial-case-studies"><span class="header-section-number">1.3</span> Commercial case-studies</a></li>
+  <li><a href="#water-inputs-and-transformations" id="toc-water-inputs-and-transformations" class="nav-link" data-scroll-target="#water-inputs-and-transformations"><span class="header-section-number">1.4</span> Water inputs and transformations</a></li>
   </ul></li>
-  <li><a href="#selection-of-technologies" id="toc-selection-of-technologies" class="nav-link" data-scroll-target="#selection-of-technologies">Selection of technologies</a></li>
-  <li><a href="#sec-surface-estimation" id="toc-sec-surface-estimation" class="nav-link" data-scroll-target="#sec-surface-estimation">Surface estimation</a>
+  <li><a href="#selection-of-technologies" id="toc-selection-of-technologies" class="nav-link" data-scroll-target="#selection-of-technologies"><span class="header-section-number">2</span> Selection of technologies</a></li>
+  <li><a href="#sec-surface-estimation" id="toc-sec-surface-estimation" class="nav-link" data-scroll-target="#sec-surface-estimation"><span class="header-section-number">3</span> Surface estimation</a>
   <ul class="collapse">
-  <li><a href="#treatment-surface" id="toc-treatment-surface" class="nav-link" data-scroll-target="#treatment-surface">Treatment surface</a>
+  <li><a href="#treatment-surface" id="toc-treatment-surface" class="nav-link" data-scroll-target="#treatment-surface"><span class="header-section-number">3.1</span> Treatment surface</a>
   <ul class="collapse">
-  <li><a href="#data-driven-models" id="toc-data-driven-models" class="nav-link" data-scroll-target="#data-driven-models">Data-driven models</a></li>
-  <li><a href="#mechanistic-models" id="toc-mechanistic-models" class="nav-link" data-scroll-target="#mechanistic-models">Mechanistic models</a></li>
-  <li><a href="#target-concentrations-in-the-receiving-environment" id="toc-target-concentrations-in-the-receiving-environment" class="nav-link" data-scroll-target="#target-concentrations-in-the-receiving-environment">Target concentrations in the receiving environment</a></li>
+  <li><a href="#data-driven-models" id="toc-data-driven-models" class="nav-link" data-scroll-target="#data-driven-models"><span class="header-section-number">3.1.1</span> Data-driven models</a></li>
+  <li><a href="#mechanistic-models" id="toc-mechanistic-models" class="nav-link" data-scroll-target="#mechanistic-models"><span class="header-section-number">3.1.2</span> Mechanistic models</a></li>
+  <li><a href="#sec-olr" id="toc-sec-olr" class="nav-link" data-scroll-target="#sec-olr"><span class="header-section-number">3.1.3</span> Organic loading rate</a></li>
+  <li><a href="#sec-ruleofthumb" id="toc-sec-ruleofthumb" class="nav-link" data-scroll-target="#sec-ruleofthumb"><span class="header-section-number">3.1.4</span> Rule of thumb</a></li>
+  <li><a href="#target-concentrations-in-the-receiving-environment" id="toc-target-concentrations-in-the-receiving-environment" class="nav-link" data-scroll-target="#target-concentrations-in-the-receiving-environment"><span class="header-section-number">3.1.5</span> Target concentrations in the receiving environment</a></li>
   </ul></li>
-  <li><a href="#retention---infiltration-surface" id="toc-retention---infiltration-surface" class="nav-link" data-scroll-target="#retention---infiltration-surface">Retention - infiltration surface</a></li>
+  <li><a href="#retention---infiltration-surface" id="toc-retention---infiltration-surface" class="nav-link" data-scroll-target="#retention---infiltration-surface"><span class="header-section-number">3.2</span> Retention - infiltration surface</a></li>
   </ul></li>
-  <li><a href="#multicriteria-decision-analysis" id="toc-multicriteria-decision-analysis" class="nav-link" data-scroll-target="#multicriteria-decision-analysis">Multicriteria decision analysis</a>
+  <li><a href="#multicriteria-decision-analysis" id="toc-multicriteria-decision-analysis" class="nav-link" data-scroll-target="#multicriteria-decision-analysis"><span class="header-section-number">4</span> Multicriteria decision analysis</a>
   <ul class="collapse">
-  <li><a href="#criteria" id="toc-criteria" class="nav-link" data-scroll-target="#criteria">Criteria</a>
+  <li><a href="#criteria" id="toc-criteria" class="nav-link" data-scroll-target="#criteria"><span class="header-section-number">4.1</span> Criteria</a>
   <ul class="collapse">
-  <li><a href="#environmental-impact" id="toc-environmental-impact" class="nav-link" data-scroll-target="#environmental-impact">Environmental impact</a></li>
-  <li><a href="#multifunctionality" id="toc-multifunctionality" class="nav-link" data-scroll-target="#multifunctionality">Multifunctionality</a></li>
-  <li><a href="#space-requirements" id="toc-space-requirements" class="nav-link" data-scroll-target="#space-requirements">Space requirements</a></li>
-  <li><a href="#operation-and-manteinance" id="toc-operation-and-manteinance" class="nav-link" data-scroll-target="#operation-and-manteinance">Operation and manteinance</a></li>
-  <li><a href="#cost" id="toc-cost" class="nav-link" data-scroll-target="#cost">Cost</a></li>
+  <li><a href="#environmental-impact" id="toc-environmental-impact" class="nav-link" data-scroll-target="#environmental-impact"><span class="header-section-number">4.1.1</span> Environmental impact</a></li>
+  <li><a href="#multifunctionality" id="toc-multifunctionality" class="nav-link" data-scroll-target="#multifunctionality"><span class="header-section-number">4.1.2</span> Multifunctionality</a></li>
+  <li><a href="#space-requirements" id="toc-space-requirements" class="nav-link" data-scroll-target="#space-requirements"><span class="header-section-number">4.1.3</span> Space requirements</a></li>
+  <li><a href="#operation-and-manteinance" id="toc-operation-and-manteinance" class="nav-link" data-scroll-target="#operation-and-manteinance"><span class="header-section-number">4.1.4</span> Operation and manteinance</a></li>
+  <li><a href="#cost" id="toc-cost" class="nav-link" data-scroll-target="#cost"><span class="header-section-number">4.1.5</span> Cost</a></li>
   </ul></li>
-  <li><a href="#weights" id="toc-weights" class="nav-link" data-scroll-target="#weights">Weights</a></li>
+  <li><a href="#weights" id="toc-weights" class="nav-link" data-scroll-target="#weights"><span class="header-section-number">4.2</span> Weights</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -4862,7 +4884,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">ENTSAPP Reference manual</h1>
+<h1 class="title">Nat4Wat Reference manual</h1>
 </div>
 
 
@@ -4898,10 +4920,10 @@ Note
 <p>This document is work in progress. Content will evolve as the tool evolves.</p>
 </div>
 </div>
-<section id="knowledge-base" class="level1">
-<h1>Knowledge base</h1>
-<section id="technologies" class="level2">
-<h2 class="anchored" data-anchor-id="technologies">Technologies</h2>
+<section id="knowledge-base" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Knowledge base</h1>
+<section id="technologies" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="technologies"><span class="header-section-number">1.1</span> Technologies</h2>
 <p><a href="#tbl-techs" class="quarto-xref">Table 1</a> shows all available technologies and <a href="#tbl-vars-description" class="quarto-xref">Table 2</a> all the information included in the table. Technologies were collected using expert-based knowledge as explained <a href="https://iwaponline.com/bgs/article/5/2/235/99349/Development-of-a-decision-support-system-to-select?searchresult=1">here</a> and <a href="https://zenodo.org/records/10688075">here</a>.</p>
 <p>The available technologies can be consulted in the tool or can be downloaded as <a href="http://snappapi-v2.icradev.cat/technologies.csv">csv</a> or <a href="https://snappapi-v2.icradev.cat/technologies/technologies">json</a>.</p>
 <div class="cell">
@@ -4912,20 +4934,20 @@ Table 1: Technologies included in Nat4Wat
 </figcaption>
 <div aria-describedby="tbl-techs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="fqkduxrtwn" class=".gt_table" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#fqkduxrtwn table {
+<div id="hvkdxwicad" class=".gt_table" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#hvkdxwicad table {
 font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 -webkit-font-smoothing: antialiased;
 -moz-osx-font-smoothing: grayscale;
 }
-#fqkduxrtwn thead, #fqkduxrtwn tbody, #fqkduxrtwn tfoot, #fqkduxrtwn tr, #fqkduxrtwn td, #fqkduxrtwn th {
+#hvkdxwicad thead, #hvkdxwicad tbody, #hvkdxwicad tfoot, #hvkdxwicad tr, #hvkdxwicad td, #hvkdxwicad th {
 border-style: none;
 }
-#fqkduxrtwn p {
+#hvkdxwicad p {
 margin: 0;
 padding: 0;
 }
-#fqkduxrtwn .gt_table {
+#hvkdxwicad .gt_table {
 display: table;
 border-collapse: collapse;
 line-height: normal;
@@ -4950,11 +4972,11 @@ border-left-style: none;
 border-left-width: 2px;
 border-left-color: #D3D3D3;
 }
-#fqkduxrtwn .gt_caption {
+#hvkdxwicad .gt_caption {
 padding-top: 4px;
 padding-bottom: 4px;
 }
-#fqkduxrtwn .gt_title {
+#hvkdxwicad .gt_title {
 color: #333333;
 font-size: 125%;
 font-weight: initial;
@@ -4965,7 +4987,7 @@ padding-right: 5px;
 border-bottom-color: #FFFFFF;
 border-bottom-width: 0;
 }
-#fqkduxrtwn .gt_subtitle {
+#hvkdxwicad .gt_subtitle {
 color: #333333;
 font-size: 85%;
 font-weight: initial;
@@ -4976,7 +4998,7 @@ padding-right: 5px;
 border-top-color: #FFFFFF;
 border-top-width: 0;
 }
-#fqkduxrtwn .gt_heading {
+#hvkdxwicad .gt_heading {
 background-color: #FFFFFF;
 text-align: center;
 border-bottom-color: #FFFFFF;
@@ -4987,12 +5009,12 @@ border-right-style: none;
 border-right-width: 1px;
 border-right-color: #D3D3D3;
 }
-#fqkduxrtwn .gt_bottom_border {
+#hvkdxwicad .gt_bottom_border {
 border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#fqkduxrtwn .gt_col_headings {
+#hvkdxwicad .gt_col_headings {
 border-top-style: solid;
 border-top-width: 2px;
 border-top-color: #D3D3D3;
@@ -5006,7 +5028,7 @@ border-right-style: none;
 border-right-width: 1px;
 border-right-color: #D3D3D3;
 }
-#fqkduxrtwn .gt_col_heading {
+#hvkdxwicad .gt_col_heading {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -5025,7 +5047,7 @@ padding-left: 5px;
 padding-right: 5px;
 overflow-x: hidden;
 }
-#fqkduxrtwn .gt_column_spanner_outer {
+#hvkdxwicad .gt_column_spanner_outer {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -5036,13 +5058,13 @@ padding-bottom: 0;
 padding-left: 4px;
 padding-right: 4px;
 }
-#fqkduxrtwn .gt_column_spanner_outer:first-child {
+#hvkdxwicad .gt_column_spanner_outer:first-child {
 padding-left: 0;
 }
-#fqkduxrtwn .gt_column_spanner_outer:last-child {
+#hvkdxwicad .gt_column_spanner_outer:last-child {
 padding-right: 0;
 }
-#fqkduxrtwn .gt_column_spanner {
+#hvkdxwicad .gt_column_spanner {
 border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
@@ -5053,10 +5075,10 @@ overflow-x: hidden;
 display: inline-block;
 width: 100%;
 }
-#fqkduxrtwn .gt_spanner_row {
+#hvkdxwicad .gt_spanner_row {
 border-bottom-style: hidden;
 }
-#fqkduxrtwn .gt_group_heading {
+#hvkdxwicad .gt_group_heading {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -5081,7 +5103,7 @@ border-right-color: #D3D3D3;
 vertical-align: middle;
 text-align: left;
 }
-#fqkduxrtwn .gt_empty_group_heading {
+#hvkdxwicad .gt_empty_group_heading {
 padding: 0.5px;
 color: #333333;
 background-color: #FFFFFF;
@@ -5095,13 +5117,13 @@ border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 vertical-align: middle;
 }
-#fqkduxrtwn .gt_from_md > :first-child {
+#hvkdxwicad .gt_from_md > :first-child {
 margin-top: 0;
 }
-#fqkduxrtwn .gt_from_md > :last-child {
+#hvkdxwicad .gt_from_md > :last-child {
 margin-bottom: 0;
 }
-#fqkduxrtwn .gt_row {
+#hvkdxwicad .gt_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -5119,7 +5141,7 @@ border-right-color: #D3D3D3;
 vertical-align: middle;
 overflow-x: hidden;
 }
-#fqkduxrtwn .gt_stub {
+#hvkdxwicad .gt_stub {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -5131,7 +5153,7 @@ border-right-color: #D3D3D3;
 padding-left: 5px;
 padding-right: 5px;
 }
-#fqkduxrtwn .gt_stub_row_group {
+#hvkdxwicad .gt_stub_row_group {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -5144,13 +5166,13 @@ padding-left: 5px;
 padding-right: 5px;
 vertical-align: top;
 }
-#fqkduxrtwn .gt_row_group_first td {
+#hvkdxwicad .gt_row_group_first td {
 border-top-width: 2px;
 }
-#fqkduxrtwn .gt_row_group_first th {
+#hvkdxwicad .gt_row_group_first th {
 border-top-width: 2px;
 }
-#fqkduxrtwn .gt_summary_row {
+#hvkdxwicad .gt_summary_row {
 color: #333333;
 background-color: #FFFFFF;
 text-transform: inherit;
@@ -5159,14 +5181,14 @@ padding-bottom: 8px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#fqkduxrtwn .gt_first_summary_row {
+#hvkdxwicad .gt_first_summary_row {
 border-top-style: solid;
 border-top-color: #D3D3D3;
 }
-#fqkduxrtwn .gt_first_summary_row.thick {
+#hvkdxwicad .gt_first_summary_row.thick {
 border-top-width: 2px;
 }
-#fqkduxrtwn .gt_last_summary_row {
+#hvkdxwicad .gt_last_summary_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -5175,7 +5197,7 @@ border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#fqkduxrtwn .gt_grand_summary_row {
+#hvkdxwicad .gt_grand_summary_row {
 color: #333333;
 background-color: #FFFFFF;
 text-transform: inherit;
@@ -5184,7 +5206,7 @@ padding-bottom: 8px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#fqkduxrtwn .gt_first_grand_summary_row {
+#hvkdxwicad .gt_first_grand_summary_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -5193,7 +5215,7 @@ border-top-style: double;
 border-top-width: 6px;
 border-top-color: #D3D3D3;
 }
-#fqkduxrtwn .gt_last_grand_summary_row_top {
+#hvkdxwicad .gt_last_grand_summary_row_top {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -5202,10 +5224,10 @@ border-bottom-style: double;
 border-bottom-width: 6px;
 border-bottom-color: #D3D3D3;
 }
-#fqkduxrtwn .gt_striped {
+#hvkdxwicad .gt_striped {
 background-color: rgba(128, 128, 128, 0.05);
 }
-#fqkduxrtwn .gt_table_body {
+#hvkdxwicad .gt_table_body {
 border-top-style: solid;
 border-top-width: 2px;
 border-top-color: #D3D3D3;
@@ -5213,7 +5235,7 @@ border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#fqkduxrtwn .gt_footnotes {
+#hvkdxwicad .gt_footnotes {
 color: #333333;
 background-color: #FFFFFF;
 border-bottom-style: none;
@@ -5226,7 +5248,7 @@ border-right-style: none;
 border-right-width: 2px;
 border-right-color: #D3D3D3;
 }
-#fqkduxrtwn .gt_footnote {
+#hvkdxwicad .gt_footnote {
 margin: 0px;
 font-size: 90%;
 padding-top: 4px;
@@ -5234,7 +5256,7 @@ padding-bottom: 4px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#fqkduxrtwn .gt_sourcenotes {
+#hvkdxwicad .gt_sourcenotes {
 color: #333333;
 background-color: #FFFFFF;
 border-bottom-style: none;
@@ -5247,62 +5269,62 @@ border-right-style: none;
 border-right-width: 2px;
 border-right-color: #D3D3D3;
 }
-#fqkduxrtwn .gt_sourcenote {
+#hvkdxwicad .gt_sourcenote {
 font-size: 90%;
 padding-top: 4px;
 padding-bottom: 4px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#fqkduxrtwn .gt_left {
+#hvkdxwicad .gt_left {
 text-align: left;
 }
-#fqkduxrtwn .gt_center {
+#hvkdxwicad .gt_center {
 text-align: center;
 }
-#fqkduxrtwn .gt_right {
+#hvkdxwicad .gt_right {
 text-align: right;
 font-variant-numeric: tabular-nums;
 }
-#fqkduxrtwn .gt_font_normal {
+#hvkdxwicad .gt_font_normal {
 font-weight: normal;
 }
-#fqkduxrtwn .gt_font_bold {
+#hvkdxwicad .gt_font_bold {
 font-weight: bold;
 }
-#fqkduxrtwn .gt_font_italic {
+#hvkdxwicad .gt_font_italic {
 font-style: italic;
 }
-#fqkduxrtwn .gt_super {
+#hvkdxwicad .gt_super {
 font-size: 65%;
 }
-#fqkduxrtwn .gt_footnote_marks {
+#hvkdxwicad .gt_footnote_marks {
 font-size: 75%;
 vertical-align: 0.4em;
 position: initial;
 }
-#fqkduxrtwn .gt_asterisk {
+#hvkdxwicad .gt_asterisk {
 font-size: 100%;
 vertical-align: 0;
 }
-#fqkduxrtwn .gt_indent_1 {
+#hvkdxwicad .gt_indent_1 {
 text-indent: 5px;
 }
-#fqkduxrtwn .gt_indent_2 {
+#hvkdxwicad .gt_indent_2 {
 text-indent: 10px;
 }
-#fqkduxrtwn .gt_indent_3 {
+#hvkdxwicad .gt_indent_3 {
 text-indent: 15px;
 }
-#fqkduxrtwn .gt_indent_4 {
+#hvkdxwicad .gt_indent_4 {
 text-indent: 20px;
 }
-#fqkduxrtwn .gt_indent_5 {
+#hvkdxwicad .gt_indent_5 {
 text-indent: 25px;
 }
 </style>
-<div id="fqkduxrtwn" class="reactable html-widget " style="width:auto;height:auto;"></div>
-<script type="application/json" data-for="fqkduxrtwn">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Technology":["Aerated treatment wetland","Free water surface treatment wetland","French vertical flow treatment wetland","Horizontal flow treatment wetland","Phytoparking","Rain garden with treatment","Reactive media in treatment wetland","Reciprocating treatment wetland","Rhizosph'air aerated french wetland","Vertical flow treatment wetland","Vertical flow wetland with recycle and partial saturation","Rooftop treatment wetland","Horizontal flow green wall","Hybrid living wall","Vertical flow green wall","Aquaponic system","Hydroponic system","Anaerobic + facultative pond","Anaerobic + maturation pond","Facultative + maturation pond","Facultative pond + Free water surface flow constructed wetland","Horizontal flow treatment wetland + maturation pond","Vertical flow + Horizontal flow treatment wetland","Natural wetland","Anaerobic pond","Facultative pond","Maturation pond","Surface aerated pond","Rapid-rate soil  infiltration system","Slow-rate soil infiltration system","Willow system","Anaerobic bioretention system","Bioretention swale (or trench)","Bioretention tree pit","Rain garden","Raised planter","Treatment wetland for CSO","Detention basin","Filter strips","Extensive green roof","Intensive green roof","Intensive green roof with retention layer","In-stream restoration","Infiltration basin","Infiltration trench","Aerated + free water surface wetland","Pond","Pond retrofits","Grass reinforcement","Modular permeable paving","Conveyance and attenuation swale","Wet swale","Trees"],"Type":["CW","CW","CW","CW","CW","CW","CW","CW","CW","CW","CW","GR","GW","GW","GW","HA","HA","MS","MS","MS","MS","MS","MS","NW","PL","PL","PL","PL","SIS","SIS","WS","BS","BS","BS","BS","BS","CW","DB","FS","GR","GR","GR","I-SRS","IS","IS","MS","PO","PO","PP","PP","SW","SW","TR"],"Function":["Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management"]},"columns":[{"id":"Technology","name":"Technology","type":"character","style":"function(rowInfo, colInfo) {\nconst rowIndex = rowInfo.index + 1\n}","cell":["Aerated treatment wetland","Free water surface treatment wetland","French vertical flow treatment wetland","Horizontal flow treatment wetland","Phytoparking","Rain garden with treatment","Reactive media in treatment wetland","Reciprocating treatment wetland","Rhizosph'air aerated french wetland","Vertical flow treatment wetland","Vertical flow wetland with recycle and partial saturation","Rooftop treatment wetland","Horizontal flow green wall","Hybrid living wall","Vertical flow green wall","Aquaponic system","Hydroponic system","Anaerobic + facultative pond","Anaerobic + maturation pond","Facultative + maturation pond","Facultative pond + Free water surface flow constructed wetland","Horizontal flow treatment wetland + maturation pond","Vertical flow + Horizontal flow treatment wetland","Natural wetland","Anaerobic pond","Facultative pond","Maturation pond","Surface aerated pond","Rapid-rate soil  infiltration system","Slow-rate soil infiltration system","Willow system","Anaerobic bioretention system","Bioretention swale (or trench)","Bioretention tree pit","Rain garden","Raised planter","Treatment wetland for CSO","Detention basin","Filter strips","Extensive green roof","Intensive green roof","Intensive green roof with retention layer","In-stream restoration","Infiltration basin","Infiltration trench","Aerated + free water surface wetland","Pond","Pond retrofits","Grass reinforcement","Modular permeable paving","Conveyance and attenuation swale","Wet swale","Trees"],"html":true,"align":"left","headerStyle":{"font-weight":"normal"}},{"id":"Type","name":"Type","type":"character","style":"function(rowInfo, colInfo) {\nconst rowIndex = rowInfo.index + 1\n}","cell":["CW","CW","CW","CW","CW","CW","CW","CW","CW","CW","CW","GR","GW","GW","GW","HA","HA","MS","MS","MS","MS","MS","MS","NW","PL","PL","PL","PL","SIS","SIS","WS","BS","BS","BS","BS","BS","CW","DB","FS","GR","GR","GR","I-SRS","IS","IS","MS","PO","PO","PP","PP","SW","SW","TR"],"html":true,"align":"left","headerStyle":{"font-weight":"normal"}},{"id":"Function","name":"Function","type":"character","style":"function(rowInfo, colInfo) {\nconst rowIndex = rowInfo.index + 1\n}","cell":["Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management"],"html":true,"align":"left","headerStyle":{"font-weight":"normal"}}],"filterable":true,"defaultPageSize":10,"showPageSizeOptions":true,"pageSizeOptions":[10,25,50,100],"paginationType":"numbers","showPagination":true,"showPageInfo":true,"minRows":1,"showSortable":true,"height":"auto","theme":{"color":"#333333","backgroundColor":"#FFFFFF","stripedColor":"rgba(128,128,128,0.05)","style":{"fontFamily":"system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"},"headerStyle":{"borderTopStyle":"solid","borderTopWidth":"2px","borderTopColor":"#D3D3D3","borderBottomStyle":"solid","borderBottomWidth":"2px","borderBottomColor":"#D3D3D3"}},"elementId":"fqkduxrtwn","dataKey":"bbfbf52b0afcd2eb5125dc722afeddda"},"children":[]},"class":"reactR_markup"},"evals":["tag.attribs.columns.0.style","tag.attribs.columns.1.style","tag.attribs.columns.2.style"],"jsHooks":[]}</script>
+<div id="hvkdxwicad" class="reactable html-widget " style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="hvkdxwicad">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Technology":["Aerated treatment wetland","Free water surface treatment wetland","French vertical flow treatment wetland","Horizontal flow treatment wetland","Phytoparking","Rain garden with treatment","Reactive media in treatment wetland","Reciprocating treatment wetland","Rhizosph'air aerated french wetland","Vertical flow treatment wetland","Vertical flow wetland with recycle and partial saturation","Rooftop treatment wetland","Horizontal flow green wall","Hybrid living wall","Vertical flow green wall","Aquaponic system","Hydroponic system","Anaerobic + facultative pond","Anaerobic + maturation pond","Facultative + maturation pond","Facultative pond + Free water surface flow constructed wetland","Horizontal flow treatment wetland + maturation pond","Vertical flow + Horizontal flow treatment wetland","Natural wetland","Anaerobic pond","Facultative pond","Maturation pond","Surface aerated pond","Rapid-rate soil  infiltration system","Slow-rate soil infiltration system","Willow system","Anaerobic bioretention system","Bioretention swale (or trench)","Bioretention tree pit","Rain garden","Raised planter","Treatment wetland for CSO","Detention basin","Filter strips","Extensive green roof","Intensive green roof","Intensive green roof with retention layer","In-stream restoration","Infiltration basin","Infiltration trench","Aerated + free water surface wetland","Pond","Pond retrofits","Grass reinforcement","Modular permeable paving","Conveyance and attenuation swale","Wet swale","Trees"],"Type":["CW","CW","CW","CW","CW","CW","CW","CW","CW","CW","CW","GR","GW","GW","GW","HA","HA","MS","MS","MS","MS","MS","MS","NW","PL","PL","PL","PL","SIS","SIS","WS","BS","BS","BS","BS","BS","CW","DB","FS","GR","GR","GR","I-SRS","IS","IS","MS","PO","PO","PP","PP","SW","SW","TR"],"Function":["Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management"]},"columns":[{"id":"Technology","name":"Technology","type":"character","style":"function(rowInfo, colInfo) {\nconst rowIndex = rowInfo.index + 1\n}","cell":["Aerated treatment wetland","Free water surface treatment wetland","French vertical flow treatment wetland","Horizontal flow treatment wetland","Phytoparking","Rain garden with treatment","Reactive media in treatment wetland","Reciprocating treatment wetland","Rhizosph'air aerated french wetland","Vertical flow treatment wetland","Vertical flow wetland with recycle and partial saturation","Rooftop treatment wetland","Horizontal flow green wall","Hybrid living wall","Vertical flow green wall","Aquaponic system","Hydroponic system","Anaerobic + facultative pond","Anaerobic + maturation pond","Facultative + maturation pond","Facultative pond + Free water surface flow constructed wetland","Horizontal flow treatment wetland + maturation pond","Vertical flow + Horizontal flow treatment wetland","Natural wetland","Anaerobic pond","Facultative pond","Maturation pond","Surface aerated pond","Rapid-rate soil  infiltration system","Slow-rate soil infiltration system","Willow system","Anaerobic bioretention system","Bioretention swale (or trench)","Bioretention tree pit","Rain garden","Raised planter","Treatment wetland for CSO","Detention basin","Filter strips","Extensive green roof","Intensive green roof","Intensive green roof with retention layer","In-stream restoration","Infiltration basin","Infiltration trench","Aerated + free water surface wetland","Pond","Pond retrofits","Grass reinforcement","Modular permeable paving","Conveyance and attenuation swale","Wet swale","Trees"],"html":true,"align":"left","headerStyle":{"font-weight":"normal"}},{"id":"Type","name":"Type","type":"character","style":"function(rowInfo, colInfo) {\nconst rowIndex = rowInfo.index + 1\n}","cell":["CW","CW","CW","CW","CW","CW","CW","CW","CW","CW","CW","GR","GW","GW","GW","HA","HA","MS","MS","MS","MS","MS","MS","NW","PL","PL","PL","PL","SIS","SIS","WS","BS","BS","BS","BS","BS","CW","DB","FS","GR","GR","GR","I-SRS","IS","IS","MS","PO","PO","PP","PP","SW","SW","TR"],"html":true,"align":"left","headerStyle":{"font-weight":"normal"}},{"id":"Function","name":"Function","type":"character","style":"function(rowInfo, colInfo) {\nconst rowIndex = rowInfo.index + 1\n}","cell":["Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Water treatment","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management","Stormwater management"],"html":true,"align":"left","headerStyle":{"font-weight":"normal"}}],"filterable":true,"defaultPageSize":10,"showPageSizeOptions":true,"pageSizeOptions":[10,25,50,100],"paginationType":"numbers","showPagination":true,"showPageInfo":true,"minRows":1,"showSortable":true,"height":"auto","theme":{"color":"#333333","backgroundColor":"#FFFFFF","stripedColor":"rgba(128,128,128,0.05)","style":{"fontFamily":"system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"},"headerStyle":{"borderTopStyle":"solid","borderTopWidth":"2px","borderTopColor":"#D3D3D3","borderBottomStyle":"solid","borderBottomWidth":"2px","borderBottomColor":"#D3D3D3"}},"elementId":"hvkdxwicad","dataKey":"bbfbf52b0afcd2eb5125dc722afeddda"},"children":[]},"class":"reactR_markup"},"evals":["tag.attribs.columns.0.style","tag.attribs.columns.1.style","tag.attribs.columns.2.style"],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -5317,20 +5339,20 @@ Table 2: Information provided by experts for each technology
 </figcaption>
 <div aria-describedby="tbl-vars-description-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="jqwnngwnko" class=".gt_table" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#jqwnngwnko table {
+<div id="paoyzjvdqn" class=".gt_table" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#paoyzjvdqn table {
 font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 -webkit-font-smoothing: antialiased;
 -moz-osx-font-smoothing: grayscale;
 }
-#jqwnngwnko thead, #jqwnngwnko tbody, #jqwnngwnko tfoot, #jqwnngwnko tr, #jqwnngwnko td, #jqwnngwnko th {
+#paoyzjvdqn thead, #paoyzjvdqn tbody, #paoyzjvdqn tfoot, #paoyzjvdqn tr, #paoyzjvdqn td, #paoyzjvdqn th {
 border-style: none;
 }
-#jqwnngwnko p {
+#paoyzjvdqn p {
 margin: 0;
 padding: 0;
 }
-#jqwnngwnko .gt_table {
+#paoyzjvdqn .gt_table {
 display: table;
 border-collapse: collapse;
 line-height: normal;
@@ -5355,11 +5377,11 @@ border-left-style: none;
 border-left-width: 2px;
 border-left-color: #D3D3D3;
 }
-#jqwnngwnko .gt_caption {
+#paoyzjvdqn .gt_caption {
 padding-top: 4px;
 padding-bottom: 4px;
 }
-#jqwnngwnko .gt_title {
+#paoyzjvdqn .gt_title {
 color: #333333;
 font-size: 125%;
 font-weight: initial;
@@ -5370,7 +5392,7 @@ padding-right: 5px;
 border-bottom-color: #FFFFFF;
 border-bottom-width: 0;
 }
-#jqwnngwnko .gt_subtitle {
+#paoyzjvdqn .gt_subtitle {
 color: #333333;
 font-size: 85%;
 font-weight: initial;
@@ -5381,7 +5403,7 @@ padding-right: 5px;
 border-top-color: #FFFFFF;
 border-top-width: 0;
 }
-#jqwnngwnko .gt_heading {
+#paoyzjvdqn .gt_heading {
 background-color: #FFFFFF;
 text-align: center;
 border-bottom-color: #FFFFFF;
@@ -5392,12 +5414,12 @@ border-right-style: none;
 border-right-width: 1px;
 border-right-color: #D3D3D3;
 }
-#jqwnngwnko .gt_bottom_border {
+#paoyzjvdqn .gt_bottom_border {
 border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#jqwnngwnko .gt_col_headings {
+#paoyzjvdqn .gt_col_headings {
 border-top-style: solid;
 border-top-width: 2px;
 border-top-color: #D3D3D3;
@@ -5411,7 +5433,7 @@ border-right-style: none;
 border-right-width: 1px;
 border-right-color: #D3D3D3;
 }
-#jqwnngwnko .gt_col_heading {
+#paoyzjvdqn .gt_col_heading {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -5430,7 +5452,7 @@ padding-left: 5px;
 padding-right: 5px;
 overflow-x: hidden;
 }
-#jqwnngwnko .gt_column_spanner_outer {
+#paoyzjvdqn .gt_column_spanner_outer {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -5441,13 +5463,13 @@ padding-bottom: 0;
 padding-left: 4px;
 padding-right: 4px;
 }
-#jqwnngwnko .gt_column_spanner_outer:first-child {
+#paoyzjvdqn .gt_column_spanner_outer:first-child {
 padding-left: 0;
 }
-#jqwnngwnko .gt_column_spanner_outer:last-child {
+#paoyzjvdqn .gt_column_spanner_outer:last-child {
 padding-right: 0;
 }
-#jqwnngwnko .gt_column_spanner {
+#paoyzjvdqn .gt_column_spanner {
 border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
@@ -5458,10 +5480,10 @@ overflow-x: hidden;
 display: inline-block;
 width: 100%;
 }
-#jqwnngwnko .gt_spanner_row {
+#paoyzjvdqn .gt_spanner_row {
 border-bottom-style: hidden;
 }
-#jqwnngwnko .gt_group_heading {
+#paoyzjvdqn .gt_group_heading {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -5486,7 +5508,7 @@ border-right-color: #D3D3D3;
 vertical-align: middle;
 text-align: left;
 }
-#jqwnngwnko .gt_empty_group_heading {
+#paoyzjvdqn .gt_empty_group_heading {
 padding: 0.5px;
 color: #333333;
 background-color: #FFFFFF;
@@ -5500,13 +5522,13 @@ border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 vertical-align: middle;
 }
-#jqwnngwnko .gt_from_md > :first-child {
+#paoyzjvdqn .gt_from_md > :first-child {
 margin-top: 0;
 }
-#jqwnngwnko .gt_from_md > :last-child {
+#paoyzjvdqn .gt_from_md > :last-child {
 margin-bottom: 0;
 }
-#jqwnngwnko .gt_row {
+#paoyzjvdqn .gt_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -5524,7 +5546,7 @@ border-right-color: #D3D3D3;
 vertical-align: middle;
 overflow-x: hidden;
 }
-#jqwnngwnko .gt_stub {
+#paoyzjvdqn .gt_stub {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -5536,7 +5558,7 @@ border-right-color: #D3D3D3;
 padding-left: 5px;
 padding-right: 5px;
 }
-#jqwnngwnko .gt_stub_row_group {
+#paoyzjvdqn .gt_stub_row_group {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -5549,13 +5571,13 @@ padding-left: 5px;
 padding-right: 5px;
 vertical-align: top;
 }
-#jqwnngwnko .gt_row_group_first td {
+#paoyzjvdqn .gt_row_group_first td {
 border-top-width: 2px;
 }
-#jqwnngwnko .gt_row_group_first th {
+#paoyzjvdqn .gt_row_group_first th {
 border-top-width: 2px;
 }
-#jqwnngwnko .gt_summary_row {
+#paoyzjvdqn .gt_summary_row {
 color: #333333;
 background-color: #FFFFFF;
 text-transform: inherit;
@@ -5564,14 +5586,14 @@ padding-bottom: 8px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#jqwnngwnko .gt_first_summary_row {
+#paoyzjvdqn .gt_first_summary_row {
 border-top-style: solid;
 border-top-color: #D3D3D3;
 }
-#jqwnngwnko .gt_first_summary_row.thick {
+#paoyzjvdqn .gt_first_summary_row.thick {
 border-top-width: 2px;
 }
-#jqwnngwnko .gt_last_summary_row {
+#paoyzjvdqn .gt_last_summary_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -5580,7 +5602,7 @@ border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#jqwnngwnko .gt_grand_summary_row {
+#paoyzjvdqn .gt_grand_summary_row {
 color: #333333;
 background-color: #FFFFFF;
 text-transform: inherit;
@@ -5589,7 +5611,7 @@ padding-bottom: 8px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#jqwnngwnko .gt_first_grand_summary_row {
+#paoyzjvdqn .gt_first_grand_summary_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -5598,7 +5620,7 @@ border-top-style: double;
 border-top-width: 6px;
 border-top-color: #D3D3D3;
 }
-#jqwnngwnko .gt_last_grand_summary_row_top {
+#paoyzjvdqn .gt_last_grand_summary_row_top {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -5607,10 +5629,10 @@ border-bottom-style: double;
 border-bottom-width: 6px;
 border-bottom-color: #D3D3D3;
 }
-#jqwnngwnko .gt_striped {
+#paoyzjvdqn .gt_striped {
 background-color: rgba(128, 128, 128, 0.05);
 }
-#jqwnngwnko .gt_table_body {
+#paoyzjvdqn .gt_table_body {
 border-top-style: solid;
 border-top-width: 2px;
 border-top-color: #D3D3D3;
@@ -5618,7 +5640,7 @@ border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#jqwnngwnko .gt_footnotes {
+#paoyzjvdqn .gt_footnotes {
 color: #333333;
 background-color: #FFFFFF;
 border-bottom-style: none;
@@ -5631,7 +5653,7 @@ border-right-style: none;
 border-right-width: 2px;
 border-right-color: #D3D3D3;
 }
-#jqwnngwnko .gt_footnote {
+#paoyzjvdqn .gt_footnote {
 margin: 0px;
 font-size: 90%;
 padding-top: 4px;
@@ -5639,7 +5661,7 @@ padding-bottom: 4px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#jqwnngwnko .gt_sourcenotes {
+#paoyzjvdqn .gt_sourcenotes {
 color: #333333;
 background-color: #FFFFFF;
 border-bottom-style: none;
@@ -5652,62 +5674,62 @@ border-right-style: none;
 border-right-width: 2px;
 border-right-color: #D3D3D3;
 }
-#jqwnngwnko .gt_sourcenote {
+#paoyzjvdqn .gt_sourcenote {
 font-size: 90%;
 padding-top: 4px;
 padding-bottom: 4px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#jqwnngwnko .gt_left {
+#paoyzjvdqn .gt_left {
 text-align: left;
 }
-#jqwnngwnko .gt_center {
+#paoyzjvdqn .gt_center {
 text-align: center;
 }
-#jqwnngwnko .gt_right {
+#paoyzjvdqn .gt_right {
 text-align: right;
 font-variant-numeric: tabular-nums;
 }
-#jqwnngwnko .gt_font_normal {
+#paoyzjvdqn .gt_font_normal {
 font-weight: normal;
 }
-#jqwnngwnko .gt_font_bold {
+#paoyzjvdqn .gt_font_bold {
 font-weight: bold;
 }
-#jqwnngwnko .gt_font_italic {
+#paoyzjvdqn .gt_font_italic {
 font-style: italic;
 }
-#jqwnngwnko .gt_super {
+#paoyzjvdqn .gt_super {
 font-size: 65%;
 }
-#jqwnngwnko .gt_footnote_marks {
+#paoyzjvdqn .gt_footnote_marks {
 font-size: 75%;
 vertical-align: 0.4em;
 position: initial;
 }
-#jqwnngwnko .gt_asterisk {
+#paoyzjvdqn .gt_asterisk {
 font-size: 100%;
 vertical-align: 0;
 }
-#jqwnngwnko .gt_indent_1 {
+#paoyzjvdqn .gt_indent_1 {
 text-indent: 5px;
 }
-#jqwnngwnko .gt_indent_2 {
+#paoyzjvdqn .gt_indent_2 {
 text-indent: 10px;
 }
-#jqwnngwnko .gt_indent_3 {
+#paoyzjvdqn .gt_indent_3 {
 text-indent: 15px;
 }
-#jqwnngwnko .gt_indent_4 {
+#paoyzjvdqn .gt_indent_4 {
 text-indent: 20px;
 }
-#jqwnngwnko .gt_indent_5 {
+#paoyzjvdqn .gt_indent_5 {
 text-indent: 25px;
 }
 </style>
-<div id="jqwnngwnko" class="reactable html-widget " style="width:auto;height:auto;"></div>
-<script type="application/json" data-for="jqwnngwnko">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Variable":["name","type","description","vertical","bod_removal","cod_removal","tn_removal","nh4_removal","no3_removal","p_removal","pathogens_reduction","raw_domestic_wastewater","pretreated_domestic_wastewater","greywater","secondary_treated_wastewater","cso_discharge_water","river_diluted_wastewater","offices_wastewater","camping_wastewater","m2_pe_tropical","m2_pe_dry","m2_pe_temperate","m2_pe_continental","gr_bod_m2_tropical","gr_bod_m2_dry","gr_bod_m2_temperate","gr_bod_m2_continental","gr_nh4_m2_tropical","gr_nh4_m2_dry","gr_nh4_m2_temperate","gr_nh4_m2_continental","es_biodiversity_fauna","es_biodiversity_flora","es_temperature_regulation","es_flood_mitigation","es_cso_mitigation","es_carbon_sequestration","es_biomass_production","es_aesthetic_value","es_recreation","es_pollination","es_food_source","es_water_reuse","es_biosolids","household_building_solutions","energy","inv_es_manpower","inv_es_skills","inv_es_biohazard","infiltration","storage_capacity","hc","cost"],"Description":["The name of the technology","The group of the technology","A brief description of the technology","Is the technology a vertical structure (i.e., a green wall)?","What percentage of organic matter (biochemical oxygen demand) can the technology remove?","What percentage of organic matter (chemical oxygen demand) can the technology remove?","What percentage of total nitrogen can the technology remove?","What percentage of ammonia can the technology remove?","Is the technology actively doing denitrification (removing nitrates and nitrites)?","Is the technology actively removing total phosphorus?","Is the technology actively removing pathogens, such as E.coli or Helminth eggs?","Is the technology appropriate (active) for treating raw domestic wastewater?","Is the technology appropriate (active) for treating pretreated domestic wastewater (primary treated effluent)?","Is the technology appropriate (active) for treating greywater?","Is the technology appropriate (active) for treating secondary treated wastewater?","Is the technology appropriate (active) for treating water from CSO discharge?","Is the technology appropriate (active) for treating river diluted wastewater?","Is the technology appropriate (active) for treating wastewater from offices?","Is the technology appropriate (active) for treating wastewater from camping?","How many square meters are needed to treat one person equivalent (60 gr of BOD) in a tropical climate","How many square meters are needed to treat one person equivalent (60 gr of BOD) in a dry climate","How many square meters are needed to treat one person equivalent (60 gr of BOD) in a temperate climate","How many square meters are needed to treat one person equivalent (60 gr of BOD) in a continental climate","How many grams of BOD5 can be treated by square meter in a tropical climate?","How many grams of BOD5 can be treated by square meter in a dry climate?","How many grams of BOD5 can be treated by square meter in a temperate climate?","How many grams of BOD5 can be treated by square meter in a continental climate?","How many grams of NH4 can be treated by square meter in a tropical climate?","How many grams of NH4 can be treated by square meter in a dry climate?","How many grams of NH4 can be treated by square meter in a temperate climate?","How many grams of NH4 can be treated by square meter in a continental climate?","To what extent is the technology increasing the variability among living organisms from all sources, including diversity within species, between species and of ecosystems. Fauna including animals, fungi and various groups of bacteria.","To what extent is the technology increasing the variability among living organisms from all sources, including diversity within species, between species and of ecosystems. Flora includes any organism in the kingdom Plantae.","To what extent the technology provides the regulation of humidity and localised temperatures during hot weather conditions, including through ventilation and transpiration.","To what extent the technology provides mitigation or prevention of potential damage to human use, health or safety caused by stormwater.","To what extent the technology helps to reduce the combined sewer overflows produced by storm events.","To what extent the technology is removing carbon from the atmosphere and depositing it in a carbon sink, such as oceans, plants or soils.","To what extent the technology is providing above-ground (i.e., not roots) plant material trough regular harvesting and removal.","To what extent the technology is aesthetically pleasant as a component of the landscape.","To what extent the technology is providing recreation opportunities to citizens, such as walking or relaxing.","To what extent the technology is providing a habitat for pollinators, mainly insects, but also birds and bats.","To what extent the technology is providing food from wild plants and animals, including parts of the standing biomass that can be harvested and used for the production of food.","To what extent the water treated by the technology is appropriate for beneficial purposes such as irrigation, drinking water supplies, groundwater rechargement, industrial processes, and environmental restoration.","To what extent the technology is providing sludge that is rich in nutrients and can be reused as fertilizer.","Is the technology appropriate (active) to be build for a single household or building? Or, on the contrary, it needs a bigger scale?","Is the technology using energy for its normal operation? Does it needs water or air pumps? Any other kind of similar energy demand?","What level of manpower is required for its operation? Including all kinds of regular works required to keep the technology working.","What level of skills are required to operate the technology?","To what extent the technology presents biohazard risks, including microorganisms, virus and toxins that can affect human health?","Does the techology allow infiltration into the ground?","The granulometry of the retention layer (phi)","Hydraulic conductivity of the retention layer","Construction costs"],"Values or units":["--","BS: Bioretention systems<br>\n                                     CW: Constructed wetlands<br>\n                                     DB: Detention basins<br>\n                                     FS: Filter strips<br>\n                                     GR: Green roofs<br>\n                                     GW: Green walls<br>\n                                     HA: Hydroponics and Aquaponics<br>\n                                     I-SRS: In-stream restoration systems<br>\n                                     MS: Multi-stage systems,<br>\n                                     NW: Natural wetlands<br>\n                                     PL: Ponds and lagoons<br>\n                                     PO: Ponds<br>\n                                     PP: Pervious pavemen<br>\n                                     SIS: Soil infiltration systems<br>\n                                     SW: Swales<br>\n                                     TR: Trees<br>\n                                     WS: Willow systems","--","yes-no","%","%","%","%","active-inactive-not ideal","active-inactive-not ideal","active-inactive-not ideal","active-inactive-not ideal","active-inactive-not ideal","active-inactive-not ideal","active-inactive-not ideal","active-inactive-not ideal","active-inactive-not ideal","active-inactive-not ideal","active-inactive-not ideal","m<sup>2<\/sup> / pe","m<sup>2<\/sup> / pe","m<sup>2<\/sup> / pe","m<sup>2<\/sup> / pe","grams / m<sup>2<\/sup>","grams / m<sup>2<\/sup>","grams / m<sup>2<\/sup>","grams / m<sup>2<\/sup>","grams / m<sup>2<\/sup>","grams / m<sup>2<\/sup>","grams / m<sup>2<\/sup>","grams / m<sup>2<\/sup>","inactive-low-medium-high","inactive-low-medium-high","inactive-low-medium-high","inactive-low-medium-high","inactive-low-medium-high","inactive-low-medium-high","inactive-low-medium-high","inactive-low-medium-high","inactive-low-medium-high","inactive-low-medium-high","inactive-low-medium-high","inactive-low-medium-high","inactive-low-medium-high","active-inactive-not ideal","yes-no","inactive-low-medium-high","inactive-low-medium-high","inactive-low-medium-high","yes-no","m<sup>3<\/sup>/m<sup>3<\/sup>","mm/s","€/m<sup>2<\/sup>"]},"columns":[{"id":"Variable","name":"Variable","type":"character","style":"function(rowInfo, colInfo) {\nconst rowIndex = rowInfo.index + 1\n}","cell":["name","type","description","vertical","bod_removal","cod_removal","tn_removal","nh4_removal","no3_removal","p_removal","pathogens_reduction","raw_domestic_wastewater","pretreated_domestic_wastewater","greywater","secondary_treated_wastewater","cso_discharge_water","river_diluted_wastewater","offices_wastewater","camping_wastewater","m2_pe_tropical","m2_pe_dry","m2_pe_temperate","m2_pe_continental","gr_bod_m2_tropical","gr_bod_m2_dry","gr_bod_m2_temperate","gr_bod_m2_continental","gr_nh4_m2_tropical","gr_nh4_m2_dry","gr_nh4_m2_temperate","gr_nh4_m2_continental","es_biodiversity_fauna","es_biodiversity_flora","es_temperature_regulation","es_flood_mitigation","es_cso_mitigation","es_carbon_sequestration","es_biomass_production","es_aesthetic_value","es_recreation","es_pollination","es_food_source","es_water_reuse","es_biosolids","household_building_solutions","energy","inv_es_manpower","inv_es_skills","inv_es_biohazard","infiltration","storage_capacity","hc","cost"],"html":true,"align":"left","headerStyle":{"font-weight":"normal"}},{"id":"Description","name":"Description","type":"character","style":"function(rowInfo, colInfo) {\nconst rowIndex = rowInfo.index + 1\n}","cell":["The name of the technology","The group of the technology","A brief description of the technology","Is the technology a vertical structure (i.e., a green wall)?","What percentage of organic matter (biochemical oxygen demand) can the technology remove?","What percentage of organic matter (chemical oxygen demand) can the technology remove?","What percentage of total nitrogen can the technology remove?","What percentage of ammonia can the technology remove?","Is the technology actively doing denitrification (removing nitrates and nitrites)?","Is the technology actively removing total phosphorus?","Is the technology actively removing pathogens, such as E.coli or Helminth eggs?","Is the technology appropriate (active) for treating raw domestic wastewater?","Is the technology appropriate (active) for treating pretreated domestic wastewater (primary treated effluent)?","Is the technology appropriate (active) for treating greywater?","Is the technology appropriate (active) for treating secondary treated wastewater?","Is the technology appropriate (active) for treating water from CSO discharge?","Is the technology appropriate (active) for treating river diluted wastewater?","Is the technology appropriate (active) for treating wastewater from offices?","Is the technology appropriate (active) for treating wastewater from camping?","How many square meters are needed to treat one person equivalent (60 gr of BOD) in a tropical climate","How many square meters are needed to treat one person equivalent (60 gr of BOD) in a dry climate","How many square meters are needed to treat one person equivalent (60 gr of BOD) in a temperate climate","How many square meters are needed to treat one person equivalent (60 gr of BOD) in a continental climate","How many grams of BOD5 can be treated by square meter in a tropical climate?","How many grams of BOD5 can be treated by square meter in a dry climate?","How many grams of BOD5 can be treated by square meter in a temperate climate?","How many grams of BOD5 can be treated by square meter in a continental climate?","How many grams of NH4 can be treated by square meter in a tropical climate?","How many grams of NH4 can be treated by square meter in a dry climate?","How many grams of NH4 can be treated by square meter in a temperate climate?","How many grams of NH4 can be treated by square meter in a continental climate?","To what extent is the technology increasing the variability among living organisms from all sources, including diversity within species, between species and of ecosystems. Fauna including animals, fungi and various groups of bacteria.","To what extent is the technology increasing the variability among living organisms from all sources, including diversity within species, between species and of ecosystems. Flora includes any organism in the kingdom Plantae.","To what extent the technology provides the regulation of humidity and localised temperatures during hot weather conditions, including through ventilation and transpiration.","To what extent the technology provides mitigation or prevention of potential damage to human use, health or safety caused by stormwater.","To what extent the technology helps to reduce the combined sewer overflows produced by storm events.","To what extent the technology is removing carbon from the atmosphere and depositing it in a carbon sink, such as oceans, plants or soils.","To what extent the technology is providing above-ground (i.e., not roots) plant material trough regular harvesting and removal.","To what extent the technology is aesthetically pleasant as a component of the landscape.","To what extent the technology is providing recreation opportunities to citizens, such as walking or relaxing.","To what extent the technology is providing a habitat for pollinators, mainly insects, but also birds and bats.","To what extent the technology is providing food from wild plants and animals, including parts of the standing biomass that can be harvested and used for the production of food.","To what extent the water treated by the technology is appropriate for beneficial purposes such as irrigation, drinking water supplies, groundwater rechargement, industrial processes, and environmental restoration.","To what extent the technology is providing sludge that is rich in nutrients and can be reused as fertilizer.","Is the technology appropriate (active) to be build for a single household or building? Or, on the contrary, it needs a bigger scale?","Is the technology using energy for its normal operation? Does it needs water or air pumps? Any other kind of similar energy demand?","What level of manpower is required for its operation? Including all kinds of regular works required to keep the technology working.","What level of skills are required to operate the technology?","To what extent the technology presents biohazard risks, including microorganisms, virus and toxins that can affect human health?","Does the techology allow infiltration into the ground?","The granulometry of the retention layer (phi)","Hydraulic conductivity of the retention layer","Construction costs"],"html":true,"align":"left","headerStyle":{"font-weight":"normal"}},{"id":"Values or units","name":"Values or units","type":"character","style":"function(rowInfo, colInfo) {\nconst rowIndex = rowInfo.index + 1\n}","cell":["<div class='gt_from_md'><p>–<\/p>\n<\/div>","<div class='gt_from_md'><p>BS: Bioretention systems<br>\nCW: Constructed wetlands<br>\nDB: Detention basins<br>\nFS: Filter strips<br>\nGR: Green roofs<br>\nGW: Green walls<br>\nHA: Hydroponics and Aquaponics<br>\nI-SRS: In-stream restoration systems<br>\nMS: Multi-stage systems,<br>\nNW: Natural wetlands<br>\nPL: Ponds and lagoons<br>\nPO: Ponds<br>\nPP: Pervious pavemen<br>\nSIS: Soil infiltration systems<br>\nSW: Swales<br>\nTR: Trees<br>\nWS: Willow systems<\/p>\n<\/div>","<div class='gt_from_md'><p>–<\/p>\n<\/div>","<div class='gt_from_md'><p>yes-no<\/p>\n<\/div>","<div class='gt_from_md'><p>%<\/p>\n<\/div>","<div class='gt_from_md'><p>%<\/p>\n<\/div>","<div class='gt_from_md'><p>%<\/p>\n<\/div>","<div class='gt_from_md'><p>%<\/p>\n<\/div>","<div class='gt_from_md'><p>active-inactive-not ideal<\/p>\n<\/div>","<div class='gt_from_md'><p>active-inactive-not ideal<\/p>\n<\/div>","<div class='gt_from_md'><p>active-inactive-not ideal<\/p>\n<\/div>","<div class='gt_from_md'><p>active-inactive-not ideal<\/p>\n<\/div>","<div class='gt_from_md'><p>active-inactive-not ideal<\/p>\n<\/div>","<div class='gt_from_md'><p>active-inactive-not ideal<\/p>\n<\/div>","<div class='gt_from_md'><p>active-inactive-not ideal<\/p>\n<\/div>","<div class='gt_from_md'><p>active-inactive-not ideal<\/p>\n<\/div>","<div class='gt_from_md'><p>active-inactive-not ideal<\/p>\n<\/div>","<div class='gt_from_md'><p>active-inactive-not ideal<\/p>\n<\/div>","<div class='gt_from_md'><p>active-inactive-not ideal<\/p>\n<\/div>","<div class='gt_from_md'><p>m<sup>2<\/sup> / pe<\/p>\n<\/div>","<div class='gt_from_md'><p>m<sup>2<\/sup> / pe<\/p>\n<\/div>","<div class='gt_from_md'><p>m<sup>2<\/sup> / pe<\/p>\n<\/div>","<div class='gt_from_md'><p>m<sup>2<\/sup> / pe<\/p>\n<\/div>","<div class='gt_from_md'><p>grams / m<sup>2<\/sup><\/p>\n<\/div>","<div class='gt_from_md'><p>grams / m<sup>2<\/sup><\/p>\n<\/div>","<div class='gt_from_md'><p>grams / m<sup>2<\/sup><\/p>\n<\/div>","<div class='gt_from_md'><p>grams / m<sup>2<\/sup><\/p>\n<\/div>","<div class='gt_from_md'><p>grams / m<sup>2<\/sup><\/p>\n<\/div>","<div class='gt_from_md'><p>grams / m<sup>2<\/sup><\/p>\n<\/div>","<div class='gt_from_md'><p>grams / m<sup>2<\/sup><\/p>\n<\/div>","<div class='gt_from_md'><p>grams / m<sup>2<\/sup><\/p>\n<\/div>","<div class='gt_from_md'><p>inactive-low-medium-high<\/p>\n<\/div>","<div class='gt_from_md'><p>inactive-low-medium-high<\/p>\n<\/div>","<div class='gt_from_md'><p>inactive-low-medium-high<\/p>\n<\/div>","<div class='gt_from_md'><p>inactive-low-medium-high<\/p>\n<\/div>","<div class='gt_from_md'><p>inactive-low-medium-high<\/p>\n<\/div>","<div class='gt_from_md'><p>inactive-low-medium-high<\/p>\n<\/div>","<div class='gt_from_md'><p>inactive-low-medium-high<\/p>\n<\/div>","<div class='gt_from_md'><p>inactive-low-medium-high<\/p>\n<\/div>","<div class='gt_from_md'><p>inactive-low-medium-high<\/p>\n<\/div>","<div class='gt_from_md'><p>inactive-low-medium-high<\/p>\n<\/div>","<div class='gt_from_md'><p>inactive-low-medium-high<\/p>\n<\/div>","<div class='gt_from_md'><p>inactive-low-medium-high<\/p>\n<\/div>","<div class='gt_from_md'><p>inactive-low-medium-high<\/p>\n<\/div>","<div class='gt_from_md'><p>active-inactive-not ideal<\/p>\n<\/div>","<div class='gt_from_md'><p>yes-no<\/p>\n<\/div>","<div class='gt_from_md'><p>inactive-low-medium-high<\/p>\n<\/div>","<div class='gt_from_md'><p>inactive-low-medium-high<\/p>\n<\/div>","<div class='gt_from_md'><p>inactive-low-medium-high<\/p>\n<\/div>","<div class='gt_from_md'><p>yes-no<\/p>\n<\/div>","<div class='gt_from_md'><p>m<sup>3<\/sup>/m<sup>3<\/sup><\/p>\n<\/div>","<div class='gt_from_md'><p>mm/s<\/p>\n<\/div>","<div class='gt_from_md'><p>€/m<sup>2<\/sup><\/p>\n<\/div>"],"html":true,"align":"left","headerStyle":{"font-weight":"normal"}}],"searchable":true,"defaultPageSize":10,"showPageSizeOptions":true,"pageSizeOptions":[10,25,50,100],"paginationType":"numbers","showPagination":true,"showPageInfo":true,"minRows":1,"showSortable":true,"height":"auto","theme":{"color":"#333333","backgroundColor":"#FFFFFF","stripedColor":"rgba(128,128,128,0.05)","style":{"fontFamily":"system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"},"headerStyle":{"borderTopStyle":"solid","borderTopWidth":"2px","borderTopColor":"#D3D3D3","borderBottomStyle":"solid","borderBottomWidth":"2px","borderBottomColor":"#D3D3D3"}},"elementId":"jqwnngwnko","dataKey":"c7e893b0ece2a2110eff394c44cd6401"},"children":[]},"class":"reactR_markup"},"evals":["tag.attribs.columns.0.style","tag.attribs.columns.1.style","tag.attribs.columns.2.style"],"jsHooks":[]}</script>
+<div id="paoyzjvdqn" class="reactable html-widget " style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="paoyzjvdqn">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Variable":["name","type","description","vertical","bod_removal","cod_removal","tn_removal","nh4_removal","no3_removal","p_removal","pathogens_reduction","raw_domestic_wastewater","pretreated_domestic_wastewater","greywater","secondary_treated_wastewater","cso_discharge_water","river_diluted_wastewater","offices_wastewater","camping_wastewater","m2_pe_tropical","m2_pe_dry","m2_pe_temperate","m2_pe_continental","gr_bod_m2_tropical","gr_bod_m2_dry","gr_bod_m2_temperate","gr_bod_m2_continental","gr_nh4_m2_tropical","gr_nh4_m2_dry","gr_nh4_m2_temperate","gr_nh4_m2_continental","es_biodiversity_fauna","es_biodiversity_flora","es_temperature_regulation","es_flood_mitigation","es_cso_mitigation","es_carbon_sequestration","es_biomass_production","es_aesthetic_value","es_recreation","es_pollination","es_food_source","es_water_reuse","es_biosolids","household_building_solutions","energy","inv_es_manpower","inv_es_skills","inv_es_biohazard","infiltration","storage_capacity","hc","cost"],"Description":["The name of the technology","The group of the technology","A brief description of the technology","Is the technology a vertical structure (i.e., a green wall)?","What percentage of organic matter (biochemical oxygen demand) can the technology remove?","What percentage of organic matter (chemical oxygen demand) can the technology remove?","What percentage of total nitrogen can the technology remove?","What percentage of ammonia can the technology remove?","Is the technology actively doing denitrification (removing nitrates and nitrites)?","Is the technology actively removing total phosphorus?","Is the technology actively removing pathogens, such as E.coli or Helminth eggs?","Is the technology appropriate (active) for treating raw domestic wastewater?","Is the technology appropriate (active) for treating pretreated domestic wastewater (primary treated effluent)?","Is the technology appropriate (active) for treating greywater?","Is the technology appropriate (active) for treating secondary treated wastewater?","Is the technology appropriate (active) for treating water from CSO discharge?","Is the technology appropriate (active) for treating river diluted wastewater?","Is the technology appropriate (active) for treating wastewater from offices?","Is the technology appropriate (active) for treating wastewater from camping?","How many square meters are needed to treat one person equivalent (60 gr of BOD) in a tropical climate","How many square meters are needed to treat one person equivalent (60 gr of BOD) in a dry climate","How many square meters are needed to treat one person equivalent (60 gr of BOD) in a temperate climate","How many square meters are needed to treat one person equivalent (60 gr of BOD) in a continental climate","How many grams of BOD5 can be treated by square meter in a tropical climate?","How many grams of BOD5 can be treated by square meter in a dry climate?","How many grams of BOD5 can be treated by square meter in a temperate climate?","How many grams of BOD5 can be treated by square meter in a continental climate?","How many grams of NH4 can be treated by square meter in a tropical climate?","How many grams of NH4 can be treated by square meter in a dry climate?","How many grams of NH4 can be treated by square meter in a temperate climate?","How many grams of NH4 can be treated by square meter in a continental climate?","To what extent is the technology increasing the variability among living organisms from all sources, including diversity within species, between species and of ecosystems. Fauna including animals, fungi and various groups of bacteria.","To what extent is the technology increasing the variability among living organisms from all sources, including diversity within species, between species and of ecosystems. Flora includes any organism in the kingdom Plantae.","To what extent the technology provides the regulation of humidity and localised temperatures during hot weather conditions, including through ventilation and transpiration.","To what extent the technology provides mitigation or prevention of potential damage to human use, health or safety caused by stormwater.","To what extent the technology helps to reduce the combined sewer overflows produced by storm events.","To what extent the technology is removing carbon from the atmosphere and depositing it in a carbon sink, such as oceans, plants or soils.","To what extent the technology is providing above-ground (i.e., not roots) plant material trough regular harvesting and removal.","To what extent the technology is aesthetically pleasant as a component of the landscape.","To what extent the technology is providing recreation opportunities to citizens, such as walking or relaxing.","To what extent the technology is providing a habitat for pollinators, mainly insects, but also birds and bats.","To what extent the technology is providing food from wild plants and animals, including parts of the standing biomass that can be harvested and used for the production of food.","To what extent the water treated by the technology is appropriate for beneficial purposes such as irrigation, drinking water supplies, groundwater rechargement, industrial processes, and environmental restoration.","To what extent the technology is providing sludge that is rich in nutrients and can be reused as fertilizer.","Is the technology appropriate (active) to be build for a single household or building? Or, on the contrary, it needs a bigger scale?","Is the technology using energy for its normal operation? Does it needs water or air pumps? Any other kind of similar energy demand?","What level of manpower is required for its operation? Including all kinds of regular works required to keep the technology working.","What level of skills are required to operate the technology?","To what extent the technology presents biohazard risks, including microorganisms, virus and toxins that can affect human health?","Does the techology allow infiltration into the ground?","The granulometry of the retention layer (phi)","Hydraulic conductivity of the retention layer","Construction costs"],"Values or units":["--","BS: Bioretention systems<br>\n                                     CW: Constructed wetlands<br>\n                                     DB: Detention basins<br>\n                                     FS: Filter strips<br>\n                                     GR: Green roofs<br>\n                                     GW: Green walls<br>\n                                     HA: Hydroponics and Aquaponics<br>\n                                     I-SRS: In-stream restoration systems<br>\n                                     MS: Multi-stage systems,<br>\n                                     NW: Natural wetlands<br>\n                                     PL: Ponds and lagoons<br>\n                                     PO: Ponds<br>\n                                     PP: Pervious pavemen<br>\n                                     SIS: Soil infiltration systems<br>\n                                     SW: Swales<br>\n                                     TR: Trees<br>\n                                     WS: Willow systems","--","yes-no","%","%","%","%","active-inactive-not ideal","active-inactive-not ideal","active-inactive-not ideal","active-inactive-not ideal","active-inactive-not ideal","active-inactive-not ideal","active-inactive-not ideal","active-inactive-not ideal","active-inactive-not ideal","active-inactive-not ideal","active-inactive-not ideal","m<sup>2<\/sup> / pe","m<sup>2<\/sup> / pe","m<sup>2<\/sup> / pe","m<sup>2<\/sup> / pe","grams / m<sup>2<\/sup>","grams / m<sup>2<\/sup>","grams / m<sup>2<\/sup>","grams / m<sup>2<\/sup>","grams / m<sup>2<\/sup>","grams / m<sup>2<\/sup>","grams / m<sup>2<\/sup>","grams / m<sup>2<\/sup>","inactive-low-medium-high","inactive-low-medium-high","inactive-low-medium-high","inactive-low-medium-high","inactive-low-medium-high","inactive-low-medium-high","inactive-low-medium-high","inactive-low-medium-high","inactive-low-medium-high","inactive-low-medium-high","inactive-low-medium-high","inactive-low-medium-high","inactive-low-medium-high","active-inactive-not ideal","yes-no","inactive-low-medium-high","inactive-low-medium-high","inactive-low-medium-high","yes-no","m<sup>3<\/sup>/m<sup>3<\/sup>","mm/s","€/m<sup>2<\/sup>"]},"columns":[{"id":"Variable","name":"Variable","type":"character","style":"function(rowInfo, colInfo) {\nconst rowIndex = rowInfo.index + 1\n}","cell":["name","type","description","vertical","bod_removal","cod_removal","tn_removal","nh4_removal","no3_removal","p_removal","pathogens_reduction","raw_domestic_wastewater","pretreated_domestic_wastewater","greywater","secondary_treated_wastewater","cso_discharge_water","river_diluted_wastewater","offices_wastewater","camping_wastewater","m2_pe_tropical","m2_pe_dry","m2_pe_temperate","m2_pe_continental","gr_bod_m2_tropical","gr_bod_m2_dry","gr_bod_m2_temperate","gr_bod_m2_continental","gr_nh4_m2_tropical","gr_nh4_m2_dry","gr_nh4_m2_temperate","gr_nh4_m2_continental","es_biodiversity_fauna","es_biodiversity_flora","es_temperature_regulation","es_flood_mitigation","es_cso_mitigation","es_carbon_sequestration","es_biomass_production","es_aesthetic_value","es_recreation","es_pollination","es_food_source","es_water_reuse","es_biosolids","household_building_solutions","energy","inv_es_manpower","inv_es_skills","inv_es_biohazard","infiltration","storage_capacity","hc","cost"],"html":true,"align":"left","headerStyle":{"font-weight":"normal"}},{"id":"Description","name":"Description","type":"character","style":"function(rowInfo, colInfo) {\nconst rowIndex = rowInfo.index + 1\n}","cell":["The name of the technology","The group of the technology","A brief description of the technology","Is the technology a vertical structure (i.e., a green wall)?","What percentage of organic matter (biochemical oxygen demand) can the technology remove?","What percentage of organic matter (chemical oxygen demand) can the technology remove?","What percentage of total nitrogen can the technology remove?","What percentage of ammonia can the technology remove?","Is the technology actively doing denitrification (removing nitrates and nitrites)?","Is the technology actively removing total phosphorus?","Is the technology actively removing pathogens, such as E.coli or Helminth eggs?","Is the technology appropriate (active) for treating raw domestic wastewater?","Is the technology appropriate (active) for treating pretreated domestic wastewater (primary treated effluent)?","Is the technology appropriate (active) for treating greywater?","Is the technology appropriate (active) for treating secondary treated wastewater?","Is the technology appropriate (active) for treating water from CSO discharge?","Is the technology appropriate (active) for treating river diluted wastewater?","Is the technology appropriate (active) for treating wastewater from offices?","Is the technology appropriate (active) for treating wastewater from camping?","How many square meters are needed to treat one person equivalent (60 gr of BOD) in a tropical climate","How many square meters are needed to treat one person equivalent (60 gr of BOD) in a dry climate","How many square meters are needed to treat one person equivalent (60 gr of BOD) in a temperate climate","How many square meters are needed to treat one person equivalent (60 gr of BOD) in a continental climate","How many grams of BOD5 can be treated by square meter in a tropical climate?","How many grams of BOD5 can be treated by square meter in a dry climate?","How many grams of BOD5 can be treated by square meter in a temperate climate?","How many grams of BOD5 can be treated by square meter in a continental climate?","How many grams of NH4 can be treated by square meter in a tropical climate?","How many grams of NH4 can be treated by square meter in a dry climate?","How many grams of NH4 can be treated by square meter in a temperate climate?","How many grams of NH4 can be treated by square meter in a continental climate?","To what extent is the technology increasing the variability among living organisms from all sources, including diversity within species, between species and of ecosystems. Fauna including animals, fungi and various groups of bacteria.","To what extent is the technology increasing the variability among living organisms from all sources, including diversity within species, between species and of ecosystems. Flora includes any organism in the kingdom Plantae.","To what extent the technology provides the regulation of humidity and localised temperatures during hot weather conditions, including through ventilation and transpiration.","To what extent the technology provides mitigation or prevention of potential damage to human use, health or safety caused by stormwater.","To what extent the technology helps to reduce the combined sewer overflows produced by storm events.","To what extent the technology is removing carbon from the atmosphere and depositing it in a carbon sink, such as oceans, plants or soils.","To what extent the technology is providing above-ground (i.e., not roots) plant material trough regular harvesting and removal.","To what extent the technology is aesthetically pleasant as a component of the landscape.","To what extent the technology is providing recreation opportunities to citizens, such as walking or relaxing.","To what extent the technology is providing a habitat for pollinators, mainly insects, but also birds and bats.","To what extent the technology is providing food from wild plants and animals, including parts of the standing biomass that can be harvested and used for the production of food.","To what extent the water treated by the technology is appropriate for beneficial purposes such as irrigation, drinking water supplies, groundwater rechargement, industrial processes, and environmental restoration.","To what extent the technology is providing sludge that is rich in nutrients and can be reused as fertilizer.","Is the technology appropriate (active) to be build for a single household or building? Or, on the contrary, it needs a bigger scale?","Is the technology using energy for its normal operation? Does it needs water or air pumps? Any other kind of similar energy demand?","What level of manpower is required for its operation? Including all kinds of regular works required to keep the technology working.","What level of skills are required to operate the technology?","To what extent the technology presents biohazard risks, including microorganisms, virus and toxins that can affect human health?","Does the techology allow infiltration into the ground?","The granulometry of the retention layer (phi)","Hydraulic conductivity of the retention layer","Construction costs"],"html":true,"align":"left","headerStyle":{"font-weight":"normal"}},{"id":"Values or units","name":"Values or units","type":"character","style":"function(rowInfo, colInfo) {\nconst rowIndex = rowInfo.index + 1\n}","cell":["<div class='gt_from_md'><p>–<\/p>\n<\/div>","<div class='gt_from_md'><p>BS: Bioretention systems<br>\nCW: Constructed wetlands<br>\nDB: Detention basins<br>\nFS: Filter strips<br>\nGR: Green roofs<br>\nGW: Green walls<br>\nHA: Hydroponics and Aquaponics<br>\nI-SRS: In-stream restoration systems<br>\nMS: Multi-stage systems,<br>\nNW: Natural wetlands<br>\nPL: Ponds and lagoons<br>\nPO: Ponds<br>\nPP: Pervious pavemen<br>\nSIS: Soil infiltration systems<br>\nSW: Swales<br>\nTR: Trees<br>\nWS: Willow systems<\/p>\n<\/div>","<div class='gt_from_md'><p>–<\/p>\n<\/div>","<div class='gt_from_md'><p>yes-no<\/p>\n<\/div>","<div class='gt_from_md'><p>%<\/p>\n<\/div>","<div class='gt_from_md'><p>%<\/p>\n<\/div>","<div class='gt_from_md'><p>%<\/p>\n<\/div>","<div class='gt_from_md'><p>%<\/p>\n<\/div>","<div class='gt_from_md'><p>active-inactive-not ideal<\/p>\n<\/div>","<div class='gt_from_md'><p>active-inactive-not ideal<\/p>\n<\/div>","<div class='gt_from_md'><p>active-inactive-not ideal<\/p>\n<\/div>","<div class='gt_from_md'><p>active-inactive-not ideal<\/p>\n<\/div>","<div class='gt_from_md'><p>active-inactive-not ideal<\/p>\n<\/div>","<div class='gt_from_md'><p>active-inactive-not ideal<\/p>\n<\/div>","<div class='gt_from_md'><p>active-inactive-not ideal<\/p>\n<\/div>","<div class='gt_from_md'><p>active-inactive-not ideal<\/p>\n<\/div>","<div class='gt_from_md'><p>active-inactive-not ideal<\/p>\n<\/div>","<div class='gt_from_md'><p>active-inactive-not ideal<\/p>\n<\/div>","<div class='gt_from_md'><p>active-inactive-not ideal<\/p>\n<\/div>","<div class='gt_from_md'><p>m<sup>2<\/sup> / pe<\/p>\n<\/div>","<div class='gt_from_md'><p>m<sup>2<\/sup> / pe<\/p>\n<\/div>","<div class='gt_from_md'><p>m<sup>2<\/sup> / pe<\/p>\n<\/div>","<div class='gt_from_md'><p>m<sup>2<\/sup> / pe<\/p>\n<\/div>","<div class='gt_from_md'><p>grams / m<sup>2<\/sup><\/p>\n<\/div>","<div class='gt_from_md'><p>grams / m<sup>2<\/sup><\/p>\n<\/div>","<div class='gt_from_md'><p>grams / m<sup>2<\/sup><\/p>\n<\/div>","<div class='gt_from_md'><p>grams / m<sup>2<\/sup><\/p>\n<\/div>","<div class='gt_from_md'><p>grams / m<sup>2<\/sup><\/p>\n<\/div>","<div class='gt_from_md'><p>grams / m<sup>2<\/sup><\/p>\n<\/div>","<div class='gt_from_md'><p>grams / m<sup>2<\/sup><\/p>\n<\/div>","<div class='gt_from_md'><p>grams / m<sup>2<\/sup><\/p>\n<\/div>","<div class='gt_from_md'><p>inactive-low-medium-high<\/p>\n<\/div>","<div class='gt_from_md'><p>inactive-low-medium-high<\/p>\n<\/div>","<div class='gt_from_md'><p>inactive-low-medium-high<\/p>\n<\/div>","<div class='gt_from_md'><p>inactive-low-medium-high<\/p>\n<\/div>","<div class='gt_from_md'><p>inactive-low-medium-high<\/p>\n<\/div>","<div class='gt_from_md'><p>inactive-low-medium-high<\/p>\n<\/div>","<div class='gt_from_md'><p>inactive-low-medium-high<\/p>\n<\/div>","<div class='gt_from_md'><p>inactive-low-medium-high<\/p>\n<\/div>","<div class='gt_from_md'><p>inactive-low-medium-high<\/p>\n<\/div>","<div class='gt_from_md'><p>inactive-low-medium-high<\/p>\n<\/div>","<div class='gt_from_md'><p>inactive-low-medium-high<\/p>\n<\/div>","<div class='gt_from_md'><p>inactive-low-medium-high<\/p>\n<\/div>","<div class='gt_from_md'><p>inactive-low-medium-high<\/p>\n<\/div>","<div class='gt_from_md'><p>active-inactive-not ideal<\/p>\n<\/div>","<div class='gt_from_md'><p>yes-no<\/p>\n<\/div>","<div class='gt_from_md'><p>inactive-low-medium-high<\/p>\n<\/div>","<div class='gt_from_md'><p>inactive-low-medium-high<\/p>\n<\/div>","<div class='gt_from_md'><p>inactive-low-medium-high<\/p>\n<\/div>","<div class='gt_from_md'><p>yes-no<\/p>\n<\/div>","<div class='gt_from_md'><p>m<sup>3<\/sup>/m<sup>3<\/sup><\/p>\n<\/div>","<div class='gt_from_md'><p>mm/s<\/p>\n<\/div>","<div class='gt_from_md'><p>€/m<sup>2<\/sup><\/p>\n<\/div>"],"html":true,"align":"left","headerStyle":{"font-weight":"normal"}}],"searchable":true,"defaultPageSize":10,"showPageSizeOptions":true,"pageSizeOptions":[10,25,50,100],"paginationType":"numbers","showPagination":true,"showPageInfo":true,"minRows":1,"showSortable":true,"height":"auto","theme":{"color":"#333333","backgroundColor":"#FFFFFF","stripedColor":"rgba(128,128,128,0.05)","style":{"fontFamily":"system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"},"headerStyle":{"borderTopStyle":"solid","borderTopWidth":"2px","borderTopColor":"#D3D3D3","borderBottomStyle":"solid","borderBottomWidth":"2px","borderBottomColor":"#D3D3D3"}},"elementId":"paoyzjvdqn","dataKey":"c7e893b0ece2a2110eff394c44cd6401"},"children":[]},"class":"reactR_markup"},"evals":["tag.attribs.columns.0.style","tag.attribs.columns.1.style","tag.attribs.columns.2.style"],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -5728,16 +5750,16 @@ Aknowledgement
 </div>
 </div>
 </section>
-<section id="scientific-case-studies" class="level2">
-<h2 class="anchored" data-anchor-id="scientific-case-studies">Scientific case-studies</h2>
-<p>Scientific case studies are the result of several systematic scientific reviews, as explained <a href="https://iwaponline.com/bgs/article/5/2/235/99349/Development-of-a-decision-support-system-to-select?searchresult=1">here</a> and <a href="https://zenodo.org/records/10688075">here</a>. User can upload new scientific case studies that are published after a peer-review process. The case studies, especially for water treatment, are used by machine learning models to estimate the surface based on inflow and concentration in the inlet and outlet.</p>
+<section id="scientific-case-studies" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="scientific-case-studies"><span class="header-section-number">1.2</span> Scientific case-studies</h2>
+<p>Scientific case studies are the result of several systematic scientific reviews, as explained in <span class="citation" data-cites="Acuna2024">Acuña et al. (<a href="#ref-Acuna2024" role="doc-biblioref">2023</a>)</span> and in <a href="https://zenodo.org/records/10688075">Deliverable 4.2</a> of the MULTISOURCE project. User can upload new scientific case studies that are published after a peer-review process. The case studies, especially for water treatment, are used by machine learning models to estimate the surface based on inflow and concentration in the inlet and outlet.</p>
 </section>
-<section id="commercial-case-studies" class="level2">
-<h2 class="anchored" data-anchor-id="commercial-case-studies">Commercial case-studies</h2>
+<section id="commercial-case-studies" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="commercial-case-studies"><span class="header-section-number">1.3</span> Commercial case-studies</h2>
 <p>Commerical case studies are provided by companies with expertise in building the technologies avaiable in the tool. To upload a commercial case, a company needs to register as a company and upload the required information. The commercial cases are published after a peer-review process.</p>
 </section>
-<section id="water-inputs-and-transformations" class="level2">
-<h2 class="anchored" data-anchor-id="water-inputs-and-transformations">Water inputs and transformations</h2>
+<section id="water-inputs-and-transformations" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="water-inputs-and-transformations"><span class="header-section-number">1.4</span> Water inputs and transformations</h2>
 <p>The water types is the primary selector of technologies. In the knowledge base, each technology is assigned to one or several types of water. In treatment scenarios, if any more data is provided, the BOD concentration and the inflow as estimated from the type of water according to the values in <a href="#tbl-water-types" class="quarto-xref">Table 3</a>.</p>
 <div class="cell">
 <div id="tbl-water-types" class="cell quarto-float anchored">
@@ -5747,20 +5769,20 @@ Table 3: Water types accepted as input
 </figcaption>
 <div aria-describedby="tbl-water-types-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="vnbyxheqds" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#vnbyxheqds table {
+<div id="zfevkeidir" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#zfevkeidir table {
 font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 -webkit-font-smoothing: antialiased;
 -moz-osx-font-smoothing: grayscale;
 }
-#vnbyxheqds thead, #vnbyxheqds tbody, #vnbyxheqds tfoot, #vnbyxheqds tr, #vnbyxheqds td, #vnbyxheqds th {
+#zfevkeidir thead, #zfevkeidir tbody, #zfevkeidir tfoot, #zfevkeidir tr, #zfevkeidir td, #zfevkeidir th {
 border-style: none;
 }
-#vnbyxheqds p {
+#zfevkeidir p {
 margin: 0;
 padding: 0;
 }
-#vnbyxheqds .gt_table {
+#zfevkeidir .gt_table {
 display: table;
 border-collapse: collapse;
 line-height: normal;
@@ -5785,11 +5807,11 @@ border-left-style: none;
 border-left-width: 2px;
 border-left-color: #D3D3D3;
 }
-#vnbyxheqds .gt_caption {
+#zfevkeidir .gt_caption {
 padding-top: 4px;
 padding-bottom: 4px;
 }
-#vnbyxheqds .gt_title {
+#zfevkeidir .gt_title {
 color: #333333;
 font-size: 125%;
 font-weight: initial;
@@ -5800,7 +5822,7 @@ padding-right: 5px;
 border-bottom-color: #FFFFFF;
 border-bottom-width: 0;
 }
-#vnbyxheqds .gt_subtitle {
+#zfevkeidir .gt_subtitle {
 color: #333333;
 font-size: 85%;
 font-weight: initial;
@@ -5811,7 +5833,7 @@ padding-right: 5px;
 border-top-color: #FFFFFF;
 border-top-width: 0;
 }
-#vnbyxheqds .gt_heading {
+#zfevkeidir .gt_heading {
 background-color: #FFFFFF;
 text-align: center;
 border-bottom-color: #FFFFFF;
@@ -5822,12 +5844,12 @@ border-right-style: none;
 border-right-width: 1px;
 border-right-color: #D3D3D3;
 }
-#vnbyxheqds .gt_bottom_border {
+#zfevkeidir .gt_bottom_border {
 border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#vnbyxheqds .gt_col_headings {
+#zfevkeidir .gt_col_headings {
 border-top-style: solid;
 border-top-width: 2px;
 border-top-color: #D3D3D3;
@@ -5841,7 +5863,7 @@ border-right-style: none;
 border-right-width: 1px;
 border-right-color: #D3D3D3;
 }
-#vnbyxheqds .gt_col_heading {
+#zfevkeidir .gt_col_heading {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -5860,7 +5882,7 @@ padding-left: 5px;
 padding-right: 5px;
 overflow-x: hidden;
 }
-#vnbyxheqds .gt_column_spanner_outer {
+#zfevkeidir .gt_column_spanner_outer {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -5871,13 +5893,13 @@ padding-bottom: 0;
 padding-left: 4px;
 padding-right: 4px;
 }
-#vnbyxheqds .gt_column_spanner_outer:first-child {
+#zfevkeidir .gt_column_spanner_outer:first-child {
 padding-left: 0;
 }
-#vnbyxheqds .gt_column_spanner_outer:last-child {
+#zfevkeidir .gt_column_spanner_outer:last-child {
 padding-right: 0;
 }
-#vnbyxheqds .gt_column_spanner {
+#zfevkeidir .gt_column_spanner {
 border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
@@ -5888,10 +5910,10 @@ overflow-x: hidden;
 display: inline-block;
 width: 100%;
 }
-#vnbyxheqds .gt_spanner_row {
+#zfevkeidir .gt_spanner_row {
 border-bottom-style: hidden;
 }
-#vnbyxheqds .gt_group_heading {
+#zfevkeidir .gt_group_heading {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -5916,7 +5938,7 @@ border-right-color: #D3D3D3;
 vertical-align: middle;
 text-align: left;
 }
-#vnbyxheqds .gt_empty_group_heading {
+#zfevkeidir .gt_empty_group_heading {
 padding: 0.5px;
 color: #333333;
 background-color: #FFFFFF;
@@ -5930,13 +5952,13 @@ border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 vertical-align: middle;
 }
-#vnbyxheqds .gt_from_md > :first-child {
+#zfevkeidir .gt_from_md > :first-child {
 margin-top: 0;
 }
-#vnbyxheqds .gt_from_md > :last-child {
+#zfevkeidir .gt_from_md > :last-child {
 margin-bottom: 0;
 }
-#vnbyxheqds .gt_row {
+#zfevkeidir .gt_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -5954,7 +5976,7 @@ border-right-color: #D3D3D3;
 vertical-align: middle;
 overflow-x: hidden;
 }
-#vnbyxheqds .gt_stub {
+#zfevkeidir .gt_stub {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -5966,7 +5988,7 @@ border-right-color: #D3D3D3;
 padding-left: 5px;
 padding-right: 5px;
 }
-#vnbyxheqds .gt_stub_row_group {
+#zfevkeidir .gt_stub_row_group {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -5979,13 +6001,13 @@ padding-left: 5px;
 padding-right: 5px;
 vertical-align: top;
 }
-#vnbyxheqds .gt_row_group_first td {
+#zfevkeidir .gt_row_group_first td {
 border-top-width: 2px;
 }
-#vnbyxheqds .gt_row_group_first th {
+#zfevkeidir .gt_row_group_first th {
 border-top-width: 2px;
 }
-#vnbyxheqds .gt_summary_row {
+#zfevkeidir .gt_summary_row {
 color: #333333;
 background-color: #FFFFFF;
 text-transform: inherit;
@@ -5994,14 +6016,14 @@ padding-bottom: 8px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#vnbyxheqds .gt_first_summary_row {
+#zfevkeidir .gt_first_summary_row {
 border-top-style: solid;
 border-top-color: #D3D3D3;
 }
-#vnbyxheqds .gt_first_summary_row.thick {
+#zfevkeidir .gt_first_summary_row.thick {
 border-top-width: 2px;
 }
-#vnbyxheqds .gt_last_summary_row {
+#zfevkeidir .gt_last_summary_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -6010,7 +6032,7 @@ border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#vnbyxheqds .gt_grand_summary_row {
+#zfevkeidir .gt_grand_summary_row {
 color: #333333;
 background-color: #FFFFFF;
 text-transform: inherit;
@@ -6019,7 +6041,7 @@ padding-bottom: 8px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#vnbyxheqds .gt_first_grand_summary_row {
+#zfevkeidir .gt_first_grand_summary_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -6028,7 +6050,7 @@ border-top-style: double;
 border-top-width: 6px;
 border-top-color: #D3D3D3;
 }
-#vnbyxheqds .gt_last_grand_summary_row_top {
+#zfevkeidir .gt_last_grand_summary_row_top {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -6037,10 +6059,10 @@ border-bottom-style: double;
 border-bottom-width: 6px;
 border-bottom-color: #D3D3D3;
 }
-#vnbyxheqds .gt_striped {
+#zfevkeidir .gt_striped {
 background-color: rgba(128, 128, 128, 0.05);
 }
-#vnbyxheqds .gt_table_body {
+#zfevkeidir .gt_table_body {
 border-top-style: solid;
 border-top-width: 2px;
 border-top-color: #D3D3D3;
@@ -6048,7 +6070,7 @@ border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#vnbyxheqds .gt_footnotes {
+#zfevkeidir .gt_footnotes {
 color: #333333;
 background-color: #FFFFFF;
 border-bottom-style: none;
@@ -6061,7 +6083,7 @@ border-right-style: none;
 border-right-width: 2px;
 border-right-color: #D3D3D3;
 }
-#vnbyxheqds .gt_footnote {
+#zfevkeidir .gt_footnote {
 margin: 0px;
 font-size: 90%;
 padding-top: 4px;
@@ -6069,7 +6091,7 @@ padding-bottom: 4px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#vnbyxheqds .gt_sourcenotes {
+#zfevkeidir .gt_sourcenotes {
 color: #333333;
 background-color: #FFFFFF;
 border-bottom-style: none;
@@ -6082,57 +6104,57 @@ border-right-style: none;
 border-right-width: 2px;
 border-right-color: #D3D3D3;
 }
-#vnbyxheqds .gt_sourcenote {
+#zfevkeidir .gt_sourcenote {
 font-size: 90%;
 padding-top: 4px;
 padding-bottom: 4px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#vnbyxheqds .gt_left {
+#zfevkeidir .gt_left {
 text-align: left;
 }
-#vnbyxheqds .gt_center {
+#zfevkeidir .gt_center {
 text-align: center;
 }
-#vnbyxheqds .gt_right {
+#zfevkeidir .gt_right {
 text-align: right;
 font-variant-numeric: tabular-nums;
 }
-#vnbyxheqds .gt_font_normal {
+#zfevkeidir .gt_font_normal {
 font-weight: normal;
 }
-#vnbyxheqds .gt_font_bold {
+#zfevkeidir .gt_font_bold {
 font-weight: bold;
 }
-#vnbyxheqds .gt_font_italic {
+#zfevkeidir .gt_font_italic {
 font-style: italic;
 }
-#vnbyxheqds .gt_super {
+#zfevkeidir .gt_super {
 font-size: 65%;
 }
-#vnbyxheqds .gt_footnote_marks {
+#zfevkeidir .gt_footnote_marks {
 font-size: 75%;
 vertical-align: 0.4em;
 position: initial;
 }
-#vnbyxheqds .gt_asterisk {
+#zfevkeidir .gt_asterisk {
 font-size: 100%;
 vertical-align: 0;
 }
-#vnbyxheqds .gt_indent_1 {
+#zfevkeidir .gt_indent_1 {
 text-indent: 5px;
 }
-#vnbyxheqds .gt_indent_2 {
+#zfevkeidir .gt_indent_2 {
 text-indent: 10px;
 }
-#vnbyxheqds .gt_indent_3 {
+#zfevkeidir .gt_indent_3 {
 text-indent: 15px;
 }
-#vnbyxheqds .gt_indent_4 {
+#zfevkeidir .gt_indent_4 {
 text-indent: 20px;
 }
-#vnbyxheqds .gt_indent_5 {
+#zfevkeidir .gt_indent_5 {
 text-indent: 25px;
 }
 </style>
@@ -6233,8 +6255,8 @@ text-indent: 25px;
 <!-- If people served is provided, daily inflow is estimated as $people · litresPerson$. -->
 </section>
 </section>
-<section id="selection-of-technologies" class="level1">
-<h1>Selection of technologies</h1>
+<section id="selection-of-technologies" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Selection of technologies</h1>
 <p>The selection of technologies is based on the information provided by experts (<a href="#tbl-techs" class="quarto-xref">Table 1</a> and <a href="#tbl-vars-description" class="quarto-xref">Table 2</a>). The inputs from the user are matched with the information of each technology and technologies not fulfilling one of the conditions are rejected.</p>
 <ul>
 <li><p>If “Any wastewater” is selected, technologies for stormwater management are rejected, but all technologies for water treatment are selected, regardless of the type of wastewater they can handle.</p></li>
@@ -6243,12 +6265,17 @@ text-indent: 25px;
 <li><p>When some input values for an ecosystem service are provided, all technologies with a smaller score in that ecosystem service are rejected, but not the ones with larger scores. For instance, if a user selects level 2 in temperature regulation, only technologies with scores 2 or 3 in temperature regulation are selected.</p></li>
 <li><p>On the other hand, when an input value is provided for an operational constraint (required manpower, required skills or biohazard risks), technologies with larger scores are rejected. For instance, if a user selects level 2 in required skills, only technologies with scores 0, 1 or 2 in required skills are selected.</p></li>
 <li><p>If energy requirements are selected as yes, all technologies that need electrical energy to work are selected. On the other hand, if energy requirements are selected as no, all technologies that need electrical energy to work are rejected.</p></li>
+<li><p>In case of NBS for water treatment, the technologies can be filtered according the pollutants they can remove. In that case, BOD, COD, TN and NH<sub>4</sub> have information about removal percentages while NO<sub>3</sub>, P and pathogens are presented as binary variables (active - inactive).</p>
+<ul>
+<li><p>BOD, COD, TN, NH<sub>4</sub>: If these pollutants are selected, all technologies with a removal percentage lower than 80% are rejected. However, if the user enter input and output (or target) concentrations, then the required removal percentage is calculated and the technologies are filtered accordingly. For instance, an aerated treatment wetlands has a removal of TN of 60%. Therefore, if the user only selects TN in the list of pollutants of interest, aerated treatment wetlands are rejected. However, if the user, apart from selecting TN, also enters an input concentration of 20 mg/L and a required concentration in the output of 10 mg/L, aerated treatment wetlands are selected because the required removal percentage is 50% (<span class="math inline">\((20 - 10)/20\)</span>) and aerated treatment wetlands can satisfy this requirement.</p></li>
+<li><p>NO<sub>3</sub>, P and pathogens: If these pollutants are selected, the technologies that are inactive for the selected pollutants are rejected.</p></li>
+</ul></li>
 </ul>
 </section>
-<section id="sec-surface-estimation" class="level1">
-<h1>Surface estimation</h1>
-<section id="treatment-surface" class="level2">
-<h2 class="anchored" data-anchor-id="treatment-surface">Treatment surface</h2>
+<section id="sec-surface-estimation" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Surface estimation</h1>
+<section id="treatment-surface" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="treatment-surface"><span class="header-section-number">3.1</span> Treatment surface</h2>
 <p>The method to estimate the surface of a technology for water treatment depends on two factors (<a href="#fig-cascade_model" class="quarto-xref">Figure 1</a>):</p>
 <ul>
 <li>The information provided by the user about the water requirements.</li>
@@ -6265,8 +6292,8 @@ Figure 1: Cascade model diagram
 </figure>
 </div>
 <p>If input and output concentrations are provided for more than one pollutant, the surface returned is the minimal surface to fulfil all removal requirements (i.e. the maximum surface among pollutants used in the estimation).</p>
-<section id="data-driven-models" class="level3">
-<h3 class="anchored" data-anchor-id="data-driven-models">Data-driven models</h3>
+<section id="data-driven-models" class="level3" data-number="3.1.1">
+<h3 data-number="3.1.1" class="anchored" data-anchor-id="data-driven-models"><span class="header-section-number">3.1.1</span> Data-driven models</h3>
 <p>Three different regression models were fitted for each combination of technology and pollutant provided that there were more than five observations for that combination. The three regression models were linear, exponential and power, from the original models, we isolated surface to facilitate future operations with the models:</p>
 <ul>
 <li>Linear model: <span class="math inline">\(L_o = L_i - \beta{S}\)</span> ► <span class="math inline">\(S = \beta (L_i-L_o)\)</span></li>
@@ -6277,16 +6304,83 @@ Figure 1: Cascade model diagram
 <p>Once, the three models were fitted, we calculated the RMAE (Relative Median Absolute Error) is calculated for each model, we used the meadian instead of the mean to make the errors more robust to outliers, since the distribution of the values is not normally distributed. Likewise, we used relative errors instead of absolute to use more sensible errors. We considered that from the point of view of the end users, a percentual error is more meaningful. For instance, an absolute error of 2m<sup>2</sup> is an error of 50% in a NBS of 4m<sup>2</sup> but an error of 5% in a NBS of 40m<sup>2</sup>.</p>
 <p>Then, we chose the model with the lowest RMAE. If the RMAE was lower than 25%, the model was marked as suitable for predicting the surface of new technologies. However, this model is only used when the input from the user is within the range that was used to fit the model, with a tolerance of 25%. For instance, if the BOD loads found in the for a horizontal flow green wall were between 10 and 30 gr of BOD per day, if the loads entered by the user were lower than 7.5 or greater than 37.5, the model is not used and the surface is estimated using the next step in the cascade, if available.</p>
 </section>
-<section id="mechanistic-models" class="level3">
-<h3 class="anchored" data-anchor-id="mechanistic-models">Mechanistic models</h3>
-<section id="tank-in-series-model" class="level4">
-<h4 class="anchored" data-anchor-id="tank-in-series-model">Tank-in-Series model</h4>
-<p>lore ipsum</p>
+<section id="mechanistic-models" class="level3" data-number="3.1.2">
+<h3 data-number="3.1.2" class="anchored" data-anchor-id="mechanistic-models"><span class="header-section-number">3.1.2</span> Mechanistic models</h3>
+<p>If there are no model available, the algorithm searchers for an available mechanistic model for each technology. Available mechanistic models are described below:</p>
+<section id="tank-in-series-model" class="level4" data-number="3.1.2.1">
+<h4 data-number="3.1.2.1" class="anchored" data-anchor-id="tank-in-series-model"><span class="header-section-number">3.1.2.1</span> Tank-in-Series model</h4>
+<p>A Tank-in-Series model is used for horizontal flow subsurface wetlands and green walls <span class="citation" data-cites="Kadlec2009">(<a href="#ref-Kadlec2009" role="doc-biblioref">Kadlec and Wallace 2009</a>)</span>. The model calculates the outflow concentrations as a function of several parameters:</p>
+<p><span class="math display">\[
+C_o = C_* + (C_i - C_*)(1 + \frac{kS}{QN})^{-N}
+\]</span> Where:</p>
+<ul>
+<li><em>C<sub>o</sub></em>: Outflow concentration.</li>
+<li>_C~*~_: Background concentration.</li>
+<li><em>C<sub>i</sub></em>: Inflow concentration.</li>
+<li><em>k</em>: Kinetics ratio.</li>
+<li><em>S</em>: Treatment surface.</li>
+<li><em>Q</em>: Inflow.</li>
+<li><em>N</em>: Number of beds.</li>
+</ul>
+<p>From that, we isolated the surface, which is our unknown parameter:</p>
+<p><span class="math display">\[
+S = [(\frac{C_o - C_*}{C_i - C_*})^{-\frac{1}{N}}-1]Q\frac{N}{k}
+\]</span></p>
+<p>Kinetics (<em>k</em>) and background concentrations (_C~*~_) are defined based on literature values as follows:</p>
+<ul>
+<li>BOD:
+<ul>
+<li><span class="math inline">\(C_* = 0.6 + 0.4C_i^{0.55}\)</span></li>
+<li>For <em>C<sub>i</sub></em> &gt; 200: <span class="math inline">\(k = 66\)</span></li>
+<li>For <em>C<sub>i</sub></em> &gt; 100: <span class="math inline">\(k = 25\)</span></li>
+<li>For <em>C<sub>i</sub></em> &gt; 30: <span class="math inline">\(k = 37\)</span></li>
+<li>For <em>C<sub>i</sub></em> &gt; 3: <span class="math inline">\(k = 86\)</span></li>
+</ul></li>
+<li>COD:
+<ul>
+<li><span class="math inline">\(C_* = 0\)</span></li>
+<li><span class="math inline">\(k = 37.6\)</span></li>
+</ul></li>
+<li>TN:
+<ul>
+<li><span class="math inline">\(C_* = 1\)</span></li>
+<li><span class="math inline">\(k = 8.4\)</span></li>
+</ul></li>
+<li>NH<sub>4</sub>:
+<ul>
+<li><span class="math inline">\(C_* = 0\)</span></li>
+<li><span class="math inline">\(k = 11.4\)</span></li>
+</ul></li>
+</ul>
+<p>The other parameter to define is the number of beds (<em>N</em>). <em>N</em> is calculated as follows:</p>
+<p><span class="math display">\[
+N = 0.686(\frac{L}{h})^{0.0671}
+\]</span> Where <em>L</em> is the length of the bed and <em>h</em> is the depth. We use predefined values for <em>h</em> of 0.7 for wetlands and 0.2 for green walls. To calculate <em>L</em> we use the ratio length:width (<em>r</em>) to calculate <em>L</em> from the surface:</p>
+<p><span class="math display">\[
+L = \sqrt{Sr}
+\]</span> We use a ratio of 2:1 for wetlands and 10:1 for green walls. Yet, <em>S</em> remains unknown, it is indeed our parameter of interest. Therefore, to calculate <em>N</em> we estimate a prior surface using the rule of thumb method, based on the people equivalent served by the technology (<a href="#sec-ruleofthumb" class="quarto-xref">Section 3.1.4</a>).</p>
 </section>
 </section>
-<section id="target-concentrations-in-the-receiving-environment" class="level3">
-<h3 class="anchored" data-anchor-id="target-concentrations-in-the-receiving-environment">Target concentrations in the receiving environment</h3>
-<p>In case that the user provides target concentrations in the receiving environment (instead of outlet concentrations), a mass balance is used to calculate the required concentrations in the outlet tio fulfil the condition. For that, the user must provide river inflow and river’s upstream concentrations for each pollutant of interest. The required oulet concentration is calculated as follows:</p>
+<section id="sec-olr" class="level3" data-number="3.1.3">
+<h3 data-number="3.1.3" class="anchored" data-anchor-id="sec-olr"><span class="header-section-number">3.1.3</span> Organic loading rate</h3>
+<p>If any of the above steps is available, or if the user only entered inflow concentrations for BOD but not required outflow or target concentrations, the organic loading rate is used.</p>
+<p>The organic loading rate defines the load of organic matter (in grams of BOD/day) that a technology can handle. Based on the expert assessment, we defined a value for each technology and for four different climates based on <a href="https://www.britannica.com/science/Koppen-climate-classification">Köppen classification</a> (tropical, dry, temperate and continental). The user can also provide the average temperature of the coolest month in their are. In that case the climate is classified as follows:</p>
+<ul>
+<li>average temperature &lt; -3: continental</li>
+<li>average temperature &lt; 18: temperate</li>
+<li>average temperature &gt;= 18: tropical</li>
+</ul>
+<p>In terms of the temperature, there are no differences between tropical and dry, as there aren’t in terms of the organic loading rate.</p>
+</section>
+<section id="sec-ruleofthumb" class="level3" data-number="3.1.4">
+<h3 data-number="3.1.4" class="anchored" data-anchor-id="sec-ruleofthumb"><span class="header-section-number">3.1.4</span> Rule of thumb</h3>
+<p>If the user only entered inflow or people served, or any of the above steps is available, the surface is estimated using the rule of thumb. The rule of thumb is also based in expert assessment as the organic loading rate. It defines the squared meters needed for each person equivalent (p.e.). The person equivalent is calculated based on the people served and the water type. In <a href="#tbl-water-types" class="quarto-xref">Table 3</a> there is a column of equivalencies between people served and people equivalent for each type of water. For instance, 10 people served by a technology receiving greywater is equivalent to 3 p.e.</p>
+<p>In case the user enters the inflow instead of the people served, the latter is calculated using the litres/person/day of each type of water, also defined in <a href="#tbl-water-types" class="quarto-xref">Table 3</a>.</p>
+<p>As with the organic loading rate (<a href="#sec-olr" class="quarto-xref">Section 3.1.3</a>), the rule of thumb is defined for the same four climates, that are classified using the same criteria as above.</p>
+</section>
+<section id="target-concentrations-in-the-receiving-environment" class="level3" data-number="3.1.5">
+<h3 data-number="3.1.5" class="anchored" data-anchor-id="target-concentrations-in-the-receiving-environment"><span class="header-section-number">3.1.5</span> Target concentrations in the receiving environment</h3>
+<p>In case that the user provides target concentrations in the receiving environment (instead of outlet concentrations), a mass balance is used to calculate the required concentrations in the outlet to fulfill the condition. For that, the user must provide river inflow and river’s upstream concentrations for each pollutant of interest. The required oulet concentration is calculated as follows:</p>
 <p><span class="math display">\[
 C_o = \frac{Q_r~(C_u - C_t)}{Q_i}
 \]</span></p>
@@ -6300,8 +6394,8 @@ C_o = \frac{Q_r~(C_u - C_t)}{Q_i}
 </ul>
 </section>
 </section>
-<section id="retention---infiltration-surface" class="level2">
-<h2 class="anchored" data-anchor-id="retention---infiltration-surface">Retention - infiltration surface</h2>
+<section id="retention---infiltration-surface" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="retention---infiltration-surface"><span class="header-section-number">3.2</span> Retention - infiltration surface</h2>
 <p>The volume that the technology can manage can be calculated with the following equation:</p>
 <div class="columns">
 <div class="column" style="width:50%;">
@@ -6379,60 +6473,68 @@ Q_d = A\frac{1}{n}(\frac{A}{P})^{\frac{2}{3}}S^{\frac{1}{2}}
 <p>When the user also provides the available area, the surface estimated is to manage all the volume reported, regardless of the available area. However, the <code>max_volume</code> reports the maximum volume that can be retained or infiltrated by the technology using the available area. If the surface needed is lower than the available area, the <code>max_volume</code> always equal to the volume reported by the user (= <code>cumRain</code> x <code>catchmentArea</code> x 0.001). A flag named <code>enough_area</code> indicates when the available area is larger than the surface needed to manage the reported flow.</p>
 </section>
 </section>
-<section id="multicriteria-decision-analysis" class="level1">
-<h1>Multicriteria decision analysis</h1>
+<section id="multicriteria-decision-analysis" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Multicriteria decision analysis</h1>
 <p>Multicriteria decision analysis (MCDA) is a method to weight different criteria to get a final score for each technology. Each criteria is weighted between 0 and 5 regarding the importance that the criteria has in the use case.</p>
-<section id="criteria" class="level2">
-<h2 class="anchored" data-anchor-id="criteria">Criteria</h2>
-<section id="environmental-impact" class="level3">
-<h3 class="anchored" data-anchor-id="environmental-impact">Environmental impact</h3>
+<section id="criteria" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="criteria"><span class="header-section-number">4.1</span> Criteria</h2>
+<section id="environmental-impact" class="level3" data-number="4.1.1">
+<h3 data-number="4.1.1" class="anchored" data-anchor-id="environmental-impact"><span class="header-section-number">4.1.1</span> Environmental impact</h3>
 <p>It is calculated as a combination of energy use, eutrophication risks and biohazard risks, at this moment it is not calculated from rain and runoff technologies because all variables used have the same value and, therefore, the environmental impact is the same for all technologies:</p>
 <p><span class="math display">\[
 EI = \frac{(1 - e) + r_{NH_4} + r_{NO_2} + (1 - \frac{br}{3})}{4}
 \]</span></p>
 <p>Where <span class="math inline">\(EI\)</span> is environmental impact (<span class="math inline">\(\in[0,1]\)</span>) being 1 the lowest impact; <span class="math inline">\(e\)</span> is energy use (<span class="math inline">\(\in{0,1}\)</span>); <span class="math inline">\(r_{NH_4}\)</span> is the capacity of the technology to remove ammonia (<span class="math inline">\(\in\{0,1\}\)</span>); <span class="math inline">\(r_{NO_2}\)</span> is the capacity of the technology to remove nitrates (<span class="math inline">\(\in\{0,1\}\)</span>); and <span class="math inline">\(br\)</span> is the biohazard risk of the technology (<span class="math inline">\(\in[0,3]\)</span>).</p>
 </section>
-<section id="multifunctionality" class="level3">
-<h3 class="anchored" data-anchor-id="multifunctionality">Multifunctionality</h3>
+<section id="multifunctionality" class="level3" data-number="4.1.2">
+<h3 data-number="4.1.2" class="anchored" data-anchor-id="multifunctionality"><span class="header-section-number">4.1.2</span> Multifunctionality</h3>
 <p>Multifunctionality considers the capacity of the tehcnology to provide cobenefits and ecosystem services. It is calculated as an average of all cobenefits:</p>
 <p><span class="math display">\[
 M = \frac{1}{N}\sum_{i = 1}^N{\frac{cb_i}{3}}
 \]</span></p>
 <p>Where <span class="math inline">\(M\)</span> stands for multifunctionality (<span class="math inline">\(\in[0,1]\)</span>) being 1 the highest multifunctionality; <span class="math inline">\(N\)</span> is the number of considered cobenefits; and <span class="math inline">\(cb_i\)</span> is the score for the cobenefit <span class="math inline">\(i\)</span> (<span class="math inline">\(\in[0,3]\)</span>).</p>
 </section>
-<section id="space-requirements" class="level3">
-<h3 class="anchored" data-anchor-id="space-requirements">Space requirements</h3>
+<section id="space-requirements" class="level3" data-number="4.1.3">
+<h3 data-number="4.1.3" class="anchored" data-anchor-id="space-requirements"><span class="header-section-number">4.1.3</span> Space requirements</h3>
 <p>Space requirements is the surface needed for the technology. In case, the scenario has enough information to estimate the surface, the estimated mean surface is used. Otherwise, the ratio <span class="math inline">\(m2/pe\)</span> for each technology is used instead. The surfaces of compared technologies are normalized as follows:</p>
 <p><span class="math display">\[
 SR_i = \frac{s_{min}}{s_i}
 \]</span> where <span class="math inline">\(SR_i\)</span> is the space requirements (<span class="math inline">\(\in(0,1]\)</span>) for technology <span class="math inline">\(i\)</span>; <span class="math inline">\(s_{min}\)</span> is the minimum surface among all compared technologies and <span class="math inline">\(s_i\)</span> is the surface of technology <span class="math inline">\(i\)</span>. when the data to estimate the surface is not provided, the ratio of <span class="math inline">\(m^2/pe\)</span> is used for treatment technologies (larger ratio equals to smaller score) and <span class="math inline">\(sc * d\)</span> is used for stormwater management technologies. See <a href="#sec-surface-estimation" class="quarto-xref">Section 3</a> for more details about surface estimation.</p>
 </section>
-<section id="operation-and-manteinance" class="level3">
-<h3 class="anchored" data-anchor-id="operation-and-manteinance">Operation and manteinance</h3>
+<section id="operation-and-manteinance" class="level3" data-number="4.1.4">
+<h3 data-number="4.1.4" class="anchored" data-anchor-id="operation-and-manteinance"><span class="header-section-number">4.1.4</span> Operation and manteinance</h3>
 <p>Operation and manteinance is the level of difficulty in keep the technology properly working. It is estimated as a combination of required manpower and required skills:</p>
 <p><span class="math display">\[
 OM = 1 - \frac{m + s}{6}
 \]</span> Where <span class="math inline">\(OM\)</span> is the operation and manteinance score (<span class="math inline">\(\in[0,1]\)</span>) being 1 the lowest operation and manteinance requirements; <span class="math inline">\(m\)</span> is the level of required manpower (<span class="math inline">\(\in[0,3]\)</span>); and <span class="math inline">\(s\)</span> is the level of required skills (<span class="math inline">\(\in[0,3]\)</span>).</p>
 </section>
-<section id="cost" class="level3">
-<h3 class="anchored" data-anchor-id="cost">Cost</h3>
+<section id="cost" class="level3" data-number="4.1.5">
+<h3 data-number="4.1.5" class="anchored" data-anchor-id="cost"><span class="header-section-number">4.1.5</span> Cost</h3>
 <p>The cost is calculated as the total construction cost using the estimated surface. The costs for all technologies are normalized regarding the technology with the minimal cost.</p>
 <p><span class="math display">\[
 \hat{c}_i = \frac{c_{min}}{c_i}
 \]</span> where <span class="math inline">\(\hat{c}_i\)</span> is the normalized construction cost (<span class="math inline">\(\in(0,1]\)</span>) for technology <span class="math inline">\(i\)</span>; <span class="math inline">\(c_{min}\)</span> is the minimum cost among all compared technologies and <span class="math inline">\(c_i\)</span> is the cost of technology <span class="math inline">\(i\)</span>.</p>
 </section>
 </section>
-<section id="weights" class="level2">
-<h2 class="anchored" data-anchor-id="weights">Weights</h2>
+<section id="weights" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="weights"><span class="header-section-number">4.2</span> Weights</h2>
 <p>Each criteria is weighted by the user according to the priorities of the specific case. Each criteria can be weighted using a 5-point Likert scale from “Not important at all” to “Very important”. Then this information is used to weight the score of each criteria.</p>
 <p>Then this weights are converted to proportions (<span class="math inline">\(\Sigma{w} = 1\)</span>). Therefore, weighted all criteria as very important get the same results that weighted all of them as not important:</p>
 <p><span class="math display">\[
 p_{wc} = \frac{w_c}{\Sigma{w}}
 \]</span> where <span class="math inline">\(p_{wc}\)</span> is the proportion (<span class="math inline">\(\in[0,1]\)</span>) of the weight for criteria <span class="math inline">\(c\)</span>; <span class="math inline">\(w_c\)</span> is the weight (<span class="math inline">\(\in[0,5]\)</span>) for criteria <span class="math inline">\(c\)</span> and <span class="math inline">\(\Sigma{w}\)</span> is the sum of the weights of all criteria.</p>
+
 </section>
 </section>
 
-</main>
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-Acuna2024" class="csl-entry" role="listitem">
+Acuña, Vicenç, Laura Castañares, Joana Castellar, Joaquim Comas, Katherine Cross, Darja Istenic, Fabio Masi, et al. 2023. <span>“Development of a Decision-Support System to Select Nature-Based Solutions for Domestic Wastewater Treatment.”</span> <em>Blue-Green Systems</em> 5 (December): 235–51. <a href="https://doi.org/10.2166/BGS.2023.005">https://doi.org/10.2166/BGS.2023.005</a>.
+</div>
+<div id="ref-Kadlec2009" class="csl-entry" role="listitem">
+Kadlec, Robert H., and Scott D. Wallace. 2009. <em>Treatment Wetlands</em>. 2nd ed. CRCS Press. <a href="https://sswm.info/sites/default/files/reference_attachments/KADLEC%20WALLACE%202009%20Treatment%20Wetlands%202nd%20Edition_0.pdf">https://sswm.info/sites/default/files/reference_attachments/KADLEC%20WALLACE%202009%20Treatment%20Wetlands%202nd%20Edition_0.pdf</a>.
+</div>
+</div></section></div></main>
 <!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
