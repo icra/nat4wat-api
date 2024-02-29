@@ -119,8 +119,6 @@ Commerical case studies are provided by companies with expertise in building the
 
 ## Water inputs and transformations
 
-### Water types
-
 The water types is the primary selector of technologies. In the knowledge base, each technology is assigned to one or several types of water. In treatment scenarios, if any more data is provided, the BOD concentration and the inflow as estimated from the type of water according to the values in @tbl-water-types.
 
 ```{r water_types}
