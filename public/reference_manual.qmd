@@ -323,18 +323,18 @@ The volume that the technology can manage can be calculated with the following e
 ::: {.column width="50%"}
 
 $$
-Q = A · (\phi K_tt'_0 + K_st'_1) + Q_dt'_1
+V = A · (\phi K_tt_1 + K_st_2) + Q_dt_2
 $$
 :::
 
 ::: {.column width="50%"}
 
 $$
-if ~ K_tt <= H, ~ then ~ t'_0 = t ~ and ~ t'_1 = 0 
+if ~ K_tt <= H, ~ then ~ t_1 = t ~ and ~ t_2 = 0 
 $$
 
 $$
-otherwise, ~ t'_0 = \frac{H}{K_t} ~ and ~ t'_1 = t - t'_0
+otherwise, ~ t_1 = \frac{H}{K_t} ~ and ~ t_2 = t - t_1
 $$
 
 :::
@@ -343,7 +343,7 @@ $$
 
 where:
 
-- _Q_: Volume at the time _t_ that the technology can retain or infiltrate (m^3^).
+- _V_: Volume at the time _t_ that the technology can retain or infiltrate (m^3^).
 - _A_: surface of the technology (m^2^)
 - _K~t~_: Hydraulic conductivity of the technology's layers (m/s). When the technology stores water in a superficial layer, this is assumed as 10 m/s.
 - _K~s~_: Hydraulic conductivity of the receiving soil (m/s).
@@ -351,6 +351,8 @@ where:
 - $\phi$: storage capacity of the technology (m^3^/m^3^)
 - _H_: height of the technology (m).
 - _Q~d~_: The flow of the drainage pipe (m^3^/s).
+- _t~1~_: Time spent for water to arrive to the bottom of the technology (i.e. time to be filled).
+- _t~2~_: Time since the technology was filled by water.
 
 ![Schema for an infiltration trench](assets/schema_swm.png){#fig-schema_swm}
 
@@ -363,7 +365,7 @@ From the previous equation, the surface can be estimated as follows:
 ::: {.column width="50%"}
 
 $$
-A = \frac{Q - Q_dt'_1}{\phi K_tt'_0 + K_st'_1}
+A = \frac{V - Q_dt'_1}{\phi K_tt'_0 + K_st'_1}
 $$
 
 :::
@@ -371,21 +373,21 @@ $$
 ::: {.column width="50%"}
 
 $$
-if ~ K_tt <= H, ~ then ~ t'_0 = t ~ and ~ t'_1 = 0
+if ~ K_tt <= H, ~ then ~ t_1 = t ~ and ~ t_2 = 0 
 $$
 
 $$
-otherwise, ~ t'_0 = \frac{H}{K_t} ~ and ~ t'_1 = t - t'_0
+otherwise, ~ t_1 = \frac{H}{K_t} ~ and ~ t_2 = t - t_1
 $$
 
 :::
 
 ::::
 
-_Q_ can be approximated as follows:
+_V_ can be approximated as follows:
 
 $$
-Q = \frac{r_{cum(t)}A_c}{1000}
+V = \frac{r_{cum(t)}A_c}{1000}
 $$
 
 where: 
