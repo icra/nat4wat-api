@@ -28,7 +28,11 @@ router.post('/add-sci-publication', auth.auth, async function(req, res){
         res.send(response);
     }
     catch (e){
-        res.send(e)
+        res.send({
+            success:false,
+            error: e,
+            message: 'Something went wrong, please try again.'
+        });
     }
 });
 
@@ -41,7 +45,11 @@ router.post('/publish', auth.auth, async function(req, res){
         res.send(response);
     }
     catch (e){
-        res.send(e)
+        res.send({
+            success:false,
+            error: e,
+            message: 'Something went wrong, please try again.'
+        });
     }
 });
 
@@ -53,7 +61,11 @@ router.post('/publish-treatment', auth.auth, async function(req, res){
         res.send(response);
     }
     catch (e){
-        res.send(e)
+        res.send({
+            success:false,
+            error: e,
+            message: 'Something went wrong, please try again.'
+        });
     }
 });
 
@@ -64,7 +76,11 @@ router.post('/add-sci-study', auth.auth, async function(req, res){
         res.send(response);
     }
     catch (e){
-        res.send(e)
+        res.send({
+            success:false,
+            error: e,
+            message: 'Something went wrong, please try again.'
+        });
     }
 });
 
@@ -81,7 +97,11 @@ router.post('/delete-sci-study', async function(req, res){
         }
     }
     catch (e){
-        res.send(e)
+        res.send({
+            success:false,
+            error: e,
+            message: 'Something went wrong, please try again.'
+        });
     }
 });
 // TODO: remove async and await once working

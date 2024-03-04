@@ -27,9 +27,11 @@ const sciStudies = require('./routes/sci-studies')
 const utils = require('./routes/utils')
 const treatmentDeprecated = require('./routes/treatment-deprecated')
 const users = require('./routes/users')
+const marketCases = require('./routes/market-cases')
 
 
 app.use('/', index);
+app.use('/market-cases', marketCases)
 app.use('/technologies', technologies)
 app.use('/sci-studies', sciStudies)
 app.use('/utils', utils)
