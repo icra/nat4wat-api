@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 const xls = require("../lib/excel_utils")
-const {getScenarios} = require("../lib/database")
+const {getScenarios,deleteScenario} = require("../lib/database")
 const findNBS = require("../lib/find-nbs")
 const mcda = require('../lib/mcda')
 const {saveScenario} = require('../lib/save-scenario')
@@ -78,7 +78,22 @@ router.post('/save-scenario', auth.auth, async function(req, res){
   try {
     req.body.id_user = req.data.id;
     let response = await saveScenario(req.body);
-    console.log('response',response);
+    res.send(response);
+  }
+  catch (e){
+    console.log(e);
+    res.send({
+      success:false,
+      error: e,
+      message: 'Something went wrong, please try again.'
+    });
+  }
+});
+
+router.post('/delete-scenario', auth.auth, async function(req, res){
+  try {
+    req.body.id_user = req.data.id;
+    let response = await deleteScenario(req.body);
     res.send(response);
   }
   catch (e){
@@ -95,7 +110,6 @@ router.get('/scenarios', auth.auth, async function(req, res){
   try {
     req.query.id_user = req.data.id;
     let response = await getScenarios(req.query);
-    console.log('response',response);
     res.send(response);
   }
   catch (e){
