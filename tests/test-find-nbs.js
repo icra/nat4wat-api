@@ -126,7 +126,17 @@ describe("Test /find-nbs", () => {
              let result = await findNBS({waterType: wt})
              expect(result[0]).to.have.any.key('id')
          }
-       })
+       });
+       it("bod_removal and bod_in return some technology", async () => {
+          let result = await findNBS({
+                  waterType: 'greywater',
+                  inflow: 1000,
+                  pollutants: [ 'bod_removal' ],
+                  pollutantsConcentrations: { bod_in: 100 }
+              }
+          )
+          console.log(result)
+       });
        it('techIds returns correspondent ids', async () => {
            let result = await findNBS({techIds: ["TR_TR", "DB_DB"]})
            expect(result.length).eql(2)
@@ -173,9 +183,10 @@ describe("Test /find-nbs", () => {
           expect(avgKey(result, 'p_removal')).lt(1)
        });
        it('pollutants filter based on performance', async () => {
-          let result = await findNBS({pollutants: ['cod_removal', 'tn_removal'], pollutantsConcentrations: {cod_in: 100, cod_out: 10}})
+          let result = await findNBS({pollutants: ['cod_removal', 'tn_removal'], pollutantsConcentrations: {bod_in: 60, cod_in: 100, cod_out: 10}})
           result.map(e => expect(e.cod_removal).gte(90))
           result.map(e => expect(e.tn_removal).gte(80))
+          result.map(e => expect(e.bod_removal).gte(80))
           expect(result.filter(e => e.nh4_removal < 80).length).gt(0)
        });
        it('both surfaces filter properly', async () => {
