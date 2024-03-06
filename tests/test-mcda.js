@@ -33,7 +33,7 @@ describe('Test /mcda', () => {
            expect(await mcda({techIds: ['WW'], weights: {wEnvImpact: 3, wSpaceRequirements: 'a'}}))
         });
         it('returns an error if all technologies are not in the same module', async () => {
-            expect(await mcda({techIds: ['WW', 'I-SRS']})).to.have.key('error')
+            expect(await mcda({techIds: ['WW', 'DB_DB']})).to.have.key('error')
         })
     });
     describe("techs and techIds work", () => {

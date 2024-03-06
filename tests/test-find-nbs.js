@@ -4,7 +4,6 @@ const chai = require("chai")
 const expect = require("chai").expect
 const jstat = require("jstat")
 const chaiAlmost = require('chai-almost');
-const {addTreatmentSciDetails} = require("../lib/add-treatment-sci-details");
 const {waterTypes} = require("../lib/globals");
 chai.use(chaiAlmost(0.0001));
 
@@ -77,7 +76,7 @@ describe("Test /find-nbs", () => {
             expect(await findNBS({household: "true"})).to.have.key('error')
         });
         it('pollutants must be an array and in the list', async () => {
-           expect(await findNBS({pollutants: 'c_removel'})).to.have.key('error')
+           expect(await findNBS({pollutants: 'c_removal'})).to.have.key('error')
            expect(await findNBS({pollutants: ['c_removal', 'phosphours']})).to.have.key('error')
         });
         it('pollutantsConcentrations must be an object', async () => {
@@ -129,9 +128,9 @@ describe("Test /find-nbs", () => {
          }
        })
        it('techIds returns correspondent ids', async () => {
-           let result = await findNBS({techIds: ["I-SRS", "DB_DB"]})
+           let result = await findNBS({techIds: ["TR_TR", "DB_DB"]})
            expect(result.length).eql(2)
-           result.map(e => expect(e.id).to.be.oneOf(["I-SRS", "DB_DB"]))
+           result.map(e => expect(e.id).to.be.oneOf(["TR_TR", "DB_DB"]))
        })
        it('waterType is filtered', async () => {
             let waterType = 'raw_domestic_wastewater'
