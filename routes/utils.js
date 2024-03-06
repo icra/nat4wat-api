@@ -1,10 +1,14 @@
 var express = require('express');
-const {waterTypes, infiltrationSoils} = require("../lib/globals");
+const {waterTypes, infiltrationSoils, wAcceptedNaming} = require("../lib/globals");
 const {insertTokens} = require("../lib/database");
 var router = express.Router();
 
 router.get('/water-types', function(req, res) {
   res.send(waterTypes);
+});
+
+router.get('/weights', function(req, res) {
+  res.send(wAcceptedNaming);
 });
 
 router.get('/infiltration-soils', function(req, res) {
@@ -25,5 +29,7 @@ router.post('/insert-token', async function(req, res){
   }
 
 });
+
+
 
 module.exports = router;
