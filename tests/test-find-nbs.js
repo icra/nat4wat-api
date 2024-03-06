@@ -5,6 +5,7 @@ const expect = require("chai").expect
 const jstat = require("jstat")
 const chaiAlmost = require('chai-almost');
 const {addTreatmentSciDetails} = require("../lib/add-treatment-sci-details");
+const {waterTypes} = require("../lib/globals");
 chai.use(chaiAlmost(0.0001));
 
 describe("Test /find-nbs", () => {
@@ -121,6 +122,12 @@ describe("Test /find-nbs", () => {
         });
     });
     describe("Filters works properly", async () => {
+       it('all types of water returns some technology', async () => {
+         for (wt of Object.keys(waterTypes)){
+             let result = await findNBS({waterType: wt})
+             expect(result[0]).to.have.any.key('id')
+         }
+       })
        it('techIds returns correspondent ids', async () => {
            let result = await findNBS({techIds: ["I-SRS", "DB_DB"]})
            expect(result.length).eql(2)
