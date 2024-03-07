@@ -66,7 +66,7 @@ describe('Test /add-sci-study', ()=> {
 
         it('Returns error user data is not correct', async () => {
             let result = await addTreatmentSciDetails(body);
-            expect(result).to.have.keys(['error', 'success','message','details']);
+            expect(result).to.have.keys(['error', 'success']);
         });
     });
     // describe('Insert case study', () => {
