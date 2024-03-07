@@ -83,7 +83,7 @@ readxl::read_excel("C:/Users/jpueyo/ICRA/MULTISOURCE - WP4/knowledge base/data/d
                                      GR: Green roofs<br>
                                      GW: Green walls<br>
                                      HA: Hydroponics and Aquaponics<br>
-                                     I-SRS: In-stream restoration systems<br>
+                                     ISRS: In-stream restoration systems<br>
                                      MS: Multi-stage systems,<br>
                                      NW: Natural wetlands<br>
                                      PL: Ponds and lagoons<br>

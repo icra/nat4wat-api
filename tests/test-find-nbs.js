@@ -124,6 +124,7 @@ describe("Test /find-nbs", () => {
        it('all types of water returns some technology', async () => {
          for (wt of Object.keys(waterTypes)){
              let result = await findNBS({waterType: wt})
+             if (wt === Object.keys(waterTypes)[0]) console.log(result)
              expect(result[0]).to.have.any.key('id')
          }
        });
@@ -283,21 +284,21 @@ describe("Test /find-nbs", () => {
        });
        it('linear model coincides with R results', async ()=> {
            let result = await findNBS({techIds: ["French_CW"], inflow: 50, pollutantsConcentrations: {tn_in: 80, tn_out: 30}})
-           expect(result[0].surface_method).to.eq("linear")
+           expect(result[0].surface_method).to.eq("linear_regression")
            expect(result[0].surface_mean).to.be.within(650, 655)
            expect(result[0].surface_low).to.be.within(575, 580)
            expect(result[0].surface_high).to.be.within(725, 730)
        });
         it('exponential model coincides with R results', async ()=> {
             let result = await findNBS({techIds: ["French_CW"], inflow: 250, pollutantsConcentrations: {bod_in: 80, bod_out: 20}})
-            expect(result[0].surface_method).to.eq("exponential")
+            expect(result[0].surface_method).to.eq("exponential_regression")
             expect(result[0].surface_mean).to.be.within(357, 358)
             expect(result[0].surface_low).to.be.within(282, 283)
             expect(result[0].surface_high).to.be.within(433, 434)
         });
         it('power model coincides with R results', async ()=> {
             let result = await findNBS({techIds: ["WS"], inflow: 0.2, pollutantsConcentrations: {tn_in: 50, tn_out: 10}})
-            expect(result[0].surface_method).to.eq("power")
+            expect(result[0].surface_method).to.eq("power_regression")
             expect(result[0].surface_mean).to.be.within(215, 216)
             expect(result[0].surface_low).to.be.within(145, 146)
             expect(result[0].surface_high).to.be.within(320, 321)
