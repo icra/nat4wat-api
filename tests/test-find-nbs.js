@@ -124,7 +124,6 @@ describe("Test /find-nbs", () => {
        it('all types of water returns some technology', async () => {
          for (wt of Object.keys(waterTypes)){
              let result = await findNBS({waterType: wt})
-             if (wt === Object.keys(waterTypes)[0]) console.log(result)
              expect(result[0]).to.have.any.key('id')
          }
        });
@@ -136,7 +135,6 @@ describe("Test /find-nbs", () => {
                   pollutantsConcentrations: { bod_in: 100 }
               }
           )
-          console.log(result)
        });
        it('techIds returns correspondent ids', async () => {
            let result = await findNBS({techIds: ["TR_TR", "DB_DB"]})
