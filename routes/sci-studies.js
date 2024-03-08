@@ -9,12 +9,12 @@ const {addSciPublication} = require("../lib/add-sci-publication");
 const auth = require('../middleware/auth');
 
 router.get('/sci-publications', async function(req, res){
-    let db = await readTreatments(req.query);
+    let db = await readPublications(req.query);
     res.send(db)
 });
 
 router.get('/treatments', async function(req, res){
-    let db = await readPublications(req.query);
+    let db = await readTreatments(req.query);
     res.send(db)
 });
 
