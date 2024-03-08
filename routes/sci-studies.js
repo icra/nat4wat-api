@@ -3,12 +3,17 @@ var router = express.Router();
 
 const {addTreatmentSciDetails} = require("../lib/add-treatment-sci-details");
 const {deleteSciStudy} = require("../lib/delete-sci-study");
-const {sciStudiesToPolars, readPublications,publishSciPublication,publishTreatment} = require("../lib/database");
+const {sciStudiesToPolars, readPublications,publishSciPublication,publishTreatment, readTreatments} = require("../lib/database");
 const {trainRegressionModels} = require("../lib/train-regression-models");
 const {addSciPublication} = require("../lib/add-sci-publication");
 const auth = require('../middleware/auth');
 
 router.get('/sci-publications', async function(req, res){
+    let db = await readTreatments(req.query);
+    res.send(db)
+});
+
+router.get('/treatments', async function(req, res){
     let db = await readPublications(req.query);
     res.send(db)
 });
