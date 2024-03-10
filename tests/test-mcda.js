@@ -107,8 +107,8 @@ describe('Test /mcda', () => {
         });
         it("for swm, when sc * d is bigger, the score is bigger", async () => {
             let result = await mcda({techIds: ["DB_DB", "GR_IR"]})
-            expect(result[0].storage_capacity_low * result[0].depth).lt(result[1].storage_capacity_low * result[1].depth)
-            expect(result[0].score_space_requirements).lt(result[1].score_space_requirements)
+            expect(result[0].storage_capacity_low * result[1].depth).lt(result[0].storage_capacity_low * result[0].depth)
+            expect(result[1].score_space_requirements).lt(result[0].score_space_requirements)
         });
     })
     describe('environmental impacts is calculated', () => {
@@ -158,10 +158,10 @@ describe('Test /mcda', () => {
         it('score_cost is larger if cost_high * surface is smaller', async () => {
             let df_with_surface = await findNBS({techIds: ["TR_TR", "BS_BS", "GR_IR"], cumRain: 300, catchmentArea: 1000, duration: 2})
             let result = await mcda({techs: df_with_surface})
-            let cost_1 = result[0].cost_high * result[0].surface_mean
-            let cost_2 = result[1].cost_high * result[1].surface_mean
+            let cost_1 = result[1].cost_high * result[1].surface_mean
+            let cost_2 = result[0].cost_high * result[0].surface_mean
             expect(cost_1).gt(cost_2)
-            expect(result[0].score_cost).lt(result[1].score_cost)
+            expect(result[1].score_cost).lt(result[0].score_cost)
         });
     });
     describe('Weights are calculated correctly', () => {
