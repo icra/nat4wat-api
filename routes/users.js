@@ -39,7 +39,6 @@ router.post('/register', upload.single('file'), async (req, res) => {
         }
 
         let result = await register(user);
-        console.log('result', result);
         res.send(result);
     } catch (e){
         console.log('error',e);
