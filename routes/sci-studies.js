@@ -3,7 +3,7 @@ var router = express.Router();
 
 const {addTreatmentSciDetails} = require("../lib/add-treatment-sci-details");
 const {deleteSciStudy} = require("../lib/delete-sci-study");
-const {sciStudiesToPolars, readPublications,publishSciPublication,publishTreatment, readTreatments} = require("../lib/database");
+const {sciStudiesToPolars, readPublications,publishSciPublication,publishTreatment, readTreatments, deleteSciPublication} = require("../lib/database");
 const {trainRegressionModels} = require("../lib/train-regression-models");
 const {addSciPublication} = require("../lib/add-sci-publication");
 const auth = require('../middleware/auth');
@@ -45,6 +45,22 @@ router.post('/publish', auth.auth, async function(req, res){
     try {
         req.body.id_user = req.data.id;
         let response = await publishSciPublication(req.body);
+        console.log('response',response);
+        res.send(response);
+    }
+    catch (e){
+        res.send({
+            success:false,
+            error: e,
+            message: 'Something went wrong, please try again.'
+        });
+    }
+});
+
+router.post('/delete', auth.auth, async function(req, res){
+    try {
+        req.body.id_user = req.data.id;
+        let response = await deleteSciPublication(req.body);
         console.log('response',response);
         res.send(response);
     }
