@@ -193,19 +193,19 @@ describe('Test /mcda', () => {
             }
             let wDefault = 0.2
             result_treatment.forEach(tech => {
-                expect(tech.weighted_multifuncionality).eq(tech.score_multifunctionality * weights.wMultifunctionality)
+                expect(tech.weighted_multifunctionality).eq(tech.score_multifunctionality * weights.wMultifunctionality)
                 expect(tech.weighted_operation).eq(tech.score_operation * weights.wOperation)
                 expect(tech.weighted_env_impact).eq(tech.score_env_impact * weights.wEnvImpact)
                 expect(tech.weighted_space_requirements).eq(tech.score_space_requirements * weights.wSpaceRequirements)
             });
             result_swm.forEach(tech => {
-                expect(tech.weighted_multifuncionality).eq(tech.score_multifunctionality * weights.wMultifunctionality)
+                expect(tech.weighted_multifunctionality).eq(tech.score_multifunctionality * weights.wMultifunctionality)
                 expect(tech.weighted_operation).eq(tech.score_operation * weights.wOperation)
                 expect(tech.weighted_cost).eq(tech.score_cost * weights.wCost)
                 expect(tech.weighted_space_requirements).eq(tech.score_space_requirements * weights.wSpaceRequirements)
             });
             result2.forEach(tech => {
-                expect(tech.weighted_multifuncionality).eq(tech.score_multifunctionality * wDefault)
+                expect(tech.weighted_multifunctionality).eq(tech.score_multifunctionality * wDefault)
                 expect(tech.weighted_operation).eq(tech.score_operation * wDefault)
                 expect(tech.weighted_env_impact).eq(tech.score_env_impact * wDefault)
                 expect(tech.weighted_space_requirements).eq(tech.score_space_requirements * wDefault)
