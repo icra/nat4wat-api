@@ -123,7 +123,7 @@ router.post('/update-data',upload.single('file'), auth.auth, async function (req
             data.company.img = file.path; // Adding file path to company object
         }
 
-        let result = await updateData(data, req.id);
+        let result = await updateData(data, req.data.id);
         res.send(result);
     } catch (e){
         console.log('error',e);
