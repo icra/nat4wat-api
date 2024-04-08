@@ -416,11 +416,11 @@ When the user also provides the available area, the surface estimated is to mana
 
 ## Surface for combined sewer overflow treatment
 
-The surface of technologies treating combined sewer overflow (CSO) cannot be estimated using the same criteria as water treatment solutions or stormwater management solutions because they are in a middle way. The criteria to estimate the surface of a CSO treatment solutions is based on two parameters: first flush capture and total spilled volume per year.
+The criteria to estimate the surface of a CSO treatment solutions is based on two parameters: first flush capture and total spilled volume per year.
 
 ### First flush capture
 
-The first flush capture is the volume of the first _n_ mm of water (usually 5 mm). This volume is calculated base on the catchment area:
+The first flush capture is the volume of the first _n_ mm of water (usually 5 mm). This volume is calculated based on the catchment area:
 
 $$
 V_{f} = A_c * \frac{H_f}{1000}
@@ -439,8 +439,8 @@ $$
 
 Where:
 
-_S_: surface of the technology in m^2^.
-_H_: height of the technology in m.
+- _S_: surface of the technology in m^2^.
+- _H_: height of the technology in m.
 
 ### Total spilled volume per year
 
@@ -456,7 +456,17 @@ Where:
 - _V~s~_: Volume spilled per year in m^3^year^-1^.
 - _HLR_: Hydraulic loading rate in m^3^m^-2^year^-1^.
 
+In case, the technology has no information regarding the hydraulic loading rate, this can be approximated using the organic loading rate:
 
+$$
+HLR = \frac{OLR * 365}{C_{bod} * 1000}
+$$
+
+Where:
+
+- _HLR_: Hydraulic loading rate in m^3^m^-2^year^-1^.
+- _OLR_: Organic loading rate in l·m^2^day^-1^.
+- _C~bod~_: Concentration of BOD in g·l^-1^ (assumed as 0.25 g·l^-1^).
 
 
 # Multicriteria decision analysis
