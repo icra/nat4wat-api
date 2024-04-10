@@ -297,7 +297,7 @@ describe("Test /find-nbs", () => {
             expect(result[0].surface_high).to.be.within(60000, 90000)
         });
         it('power model coincides with R results', async ()=> {
-            let result = await findNBS({techIds: ["WS"], inflow: 0.2, pollutantsConcentrations: {tn_in: 50, tn_out: 10}})
+            let result = await findNBS({techIds: ["WS"], inflow: 0.2, pollutantsConcentrations: {bod_in: 300, bod_out: 100, tn_in: 50, tn_out: 10}})
             expect(result[0].surface_method).to.eq("power_regression")
             expect(result[0].surface_mean).to.be.within(215, 216)
             expect(result[0].surface_low).to.be.within(145, 146)
@@ -310,8 +310,11 @@ describe("Test /find-nbs", () => {
             expect(result[1].surface_mean).gt(0)
         });
         it('cascade model continues when some pollutants are not estimated by regression', async() => {
-           let result = await findNBS({techIds: ["HF_GW"], inflow: 0.08, pollutantsConcentrations: {bod_in: 300, bod_out: 100, tn_in: 3, tn_out: 2}})
-            // console.log(result[0])
+           let result = await findNBS({techIds: ["HF_GW"], inflow: 0.08, pollutantsConcentrations: {
+               bod_in: 300, bod_out: 100,
+               cod_in: 400, cod_out: 150,
+               tn_in: 3, tn_out: 2}})
+           expect(result[0].surface_method).to.eq("tis_model")
         });
         it('uses organic load ratio when only bod_in is provided', async () => {
             let result = await findNBS({techIds: ["French_CW"], inflow: 500, pollutantsConcentrations: {bod_in: 80}});
