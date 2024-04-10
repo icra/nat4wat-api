@@ -5,6 +5,7 @@ const expect = require("chai").expect
 const jstat = require("jstat")
 const chaiAlmost = require('chai-almost');
 const {waterTypes} = require("../lib/globals");
+const {readTechnologiesExcel} = require("../lib/excel_utils");
 chai.use(chaiAlmost(0.0001));
 
 describe("Test /find-nbs", () => {
@@ -376,4 +377,21 @@ describe("Test /find-nbs", () => {
            result.map(e => expect(e.max_volume).to.almost.equal(200))
        });
     });
+    describe("Filter table works properly", async () => {
+        it("Filter table is returned when asked", async () => {
+            let result = await findNBS({waterType: "cso_discharge_water", filterTable: true})
+            expect(result.length).to.be.eq(readTechnologiesExcel().length)
+            result.map(e => expect(e).to.have.any.keys("name"))
+            expect(result.filter(e => e.water_type === true).length).to.gt(0)
+            expect(result.filter(e => e.water_type === false).length).to.gt(0)
+        });
+        it(" Filter table is returned also when no technologies are returned", async () => {
+            let result = await findNBS({
+                waterType: "cso_discharge_water",
+                ecosystemServices: {es_carbon_sequestration: 3},
+                filterTable: true})
+            expect(result.length).to.be.eq(readTechnologiesExcel().length)
+            result.map(e => expect(e.water_type === false || e.es_carbon_sequestration === false).to.be.true)
+        })
+    })
 });
