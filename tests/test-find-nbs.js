@@ -308,7 +308,11 @@ describe("Test /find-nbs", () => {
             expect(result.every(e => e.surface_method === "tis_model")).to.be.true
             expect(result[0].vertical_surface_mean).gt(0)
             expect(result[1].surface_mean).gt(0)
-        })
+        });
+        it('cascade model continues when some pollutants are not estimated by regression', async() => {
+           let result = await findNBS({techIds: ["HF_GW"], inflow: 0.08, pollutantsConcentrations: {bod_in: 300, bod_out: 100, tn_in: 3, tn_out: 2}})
+            // console.log(result[0])
+        });
         it('uses organic load ratio when only bod_in is provided', async () => {
             let result = await findNBS({techIds: ["French_CW"], inflow: 500, pollutantsConcentrations: {bod_in: 80}});
             expect(result[0].surface_method).to.eq("organic_loading_rate")
