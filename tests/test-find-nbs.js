@@ -145,7 +145,6 @@ describe("Test /find-nbs", () => {
                     pollutantsConcentrations: {tn_in: 100, tn_out: 40}
                 }
             )
-            console.log(result.filter(e => e.nh4_removal < 95))
             result.map(e => expect(e.bod_removal).gte(99))
             result.map(e => expect(e.cod_removal).gte(80))
             result.map(e => expect(e.tn_removal).gte(60))
