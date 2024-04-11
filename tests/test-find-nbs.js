@@ -137,6 +137,21 @@ describe("Test /find-nbs", () => {
               }
           )
        });
+        it("minPerformance filters only if concentrations are not provided", async () => {
+            let result = await findNBS({
+                    inflow: 1000,
+                    pollutants: [ 'bod_removal', 'cod_removal', 'tn_removal', 'nh4_removal' ],
+                    minPerformance: {bod: 99, nh4: 95},
+                    pollutantsConcentrations: {tn_in: 100, tn_out: 40}
+                }
+            )
+            console.log(result.filter(e => e.nh4_removal < 95))
+            result.map(e => expect(e.bod_removal).gte(99))
+            result.map(e => expect(e.cod_removal).gte(80))
+            result.map(e => expect(e.tn_removal).gte(60))
+            result.map(e => expect(e.nh4_removal).gte(95))
+        });
+
        it('techIds returns correspondent ids', async () => {
            let result = await findNBS({techIds: ["TR_TR", "DB_DB"]})
            expect(result.length).eql(2)
