@@ -127,8 +127,10 @@ describe('Test /mcda', () => {
 
         it('the key cost is generated and is the same regardless the surface', async () => {
             let df_with_surface = await findNBS({techIds: ["TR_TR", "BS_BS", "GR_IR"],
-                cumRain: 300, catchmentArea: 1000, duration: 2, infiltration: 0.000001})
+                waterType: "rain_water", cumRain: 300, catchmentArea: 1000, duration: 2, infiltrationSoils: "clay"})
             let result_with_surface = await mcda({techs: df_with_surface})
+            console.log("df_with_surfacd", df_with_surface)
+            // console.log(result_with_surface[0])
             expect(result_with_surface[0]).to.have.property('estimated_cost_mean')
 
             let result_without_surface = await mcda({techIds: ["TR_TR", "BS_BS", "GR_IR"]})
@@ -141,7 +143,8 @@ describe('Test /mcda', () => {
         });
 
         it('surface is only deleted if it was added', async () => {
-            let df_with_surface = await findNBS({techIds: ["TR_TR", "BS_BS", "GR_IR"], cumRain: 300, catchmentArea: 1000, duration: 2})
+            let df_with_surface = await findNBS({techIds: ["TR_TR", "BS_BS", "GR_IR"],
+                waterType: "rain_water", cumRain: 300, catchmentArea: 1000, duration: 2})
             let result_with_surface = await mcda({techs: df_with_surface})
             let result_without_surface = await mcda({techIds: ["TR_TR", "BS_BS", "GR_IR"]})
 
@@ -156,7 +159,8 @@ describe('Test /mcda', () => {
             result.map(e => expect(e.score_cost).to.be.within(0, 1))
         });
         it('score_cost is larger if cost_high * surface is smaller', async () => {
-            let df_with_surface = await findNBS({techIds: ["TR_TR", "BS_BS", "GR_IR"], cumRain: 300, catchmentArea: 1000, duration: 2})
+            let df_with_surface = await findNBS({techIds: ["TR_TR", "BS_BS", "GR_IR"],
+                waterType: "rain_water", cumRain: 300, catchmentArea: 1000, duration: 2})
             let result = await mcda({techs: df_with_surface})
             let cost_1 = result[1].cost_high * result[1].surface_mean
             let cost_2 = result[0].cost_high * result[0].surface_mean
