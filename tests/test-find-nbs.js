@@ -137,6 +137,22 @@ describe("Test /find-nbs", () => {
               }
           )
        });
+        it("minPerformance filters only if concentrations are not provided", async () => {
+            let result = await findNBS({
+                    inflow: 1000,
+                    pollutants: [ 'bod_removal', 'cod_removal'],
+                    minPerformance: {bod: 99, nh4: 95},
+                    pollutantsConcentrations: {tn_in: 100, tn_out: 40}
+                }
+            )
+            result.map(e => expect(e.bod_removal).gte(99))
+            result.map(e => expect(e.cod_removal).gte(80))
+            result.map(e => expect(e.tn_removal).gte(60))
+            result.map(e => expect(e.nh4_removal).gte(95))
+            expect(result.filter(e => e.no3_removal === 0).length).gt(0)
+            expect(result.filter(e => e.no3_removal === 1).length).gt(0)
+        });
+
        it('techIds returns correspondent ids', async () => {
            let result = await findNBS({techIds: ["TR_TR", "DB_DB"], waterType: "rain_water"})
            expect(result.length).eql(2)
@@ -307,7 +323,7 @@ describe("Test /find-nbs", () => {
             expect(result[0].surface_high).to.be.within(60000, 90000)
         });
         it('power model coincides with R results', async ()=> {
-            let result = await findNBS({techIds: ["WS"], inflow: 0.2, pollutantsConcentrations: {tn_in: 50, tn_out: 10}})
+            let result = await findNBS({techIds: ["WS"], inflow: 0.2, pollutantsConcentrations: {bod_in: 300, bod_out: 100, tn_in: 50, tn_out: 10}})
             expect(result[0].surface_method).to.eq("power_regression")
             expect(result[0].surface_mean).to.be.within(215, 216)
             expect(result[0].surface_low).to.be.within(145, 146)
@@ -318,7 +334,14 @@ describe("Test /find-nbs", () => {
             expect(result.every(e => e.surface_method === "tis_model")).to.be.true
             expect(result[0].vertical_surface_mean).gt(0)
             expect(result[1].surface_mean).gt(0)
-        })
+        });
+        it('cascade model continues when some pollutants are not estimated by regression', async() => {
+           let result = await findNBS({techIds: ["HF_GW"], inflow: 0.08, pollutantsConcentrations: {
+               bod_in: 300, bod_out: 100,
+               cod_in: 400, cod_out: 150,
+               tn_in: 3, tn_out: 2}})
+           expect(result[0].surface_method).to.eq("tis_model")
+        });
         it('uses organic load ratio when only bod_in is provided', async () => {
             let result = await findNBS({techIds: ["French_CW"], inflow: 500, pollutantsConcentrations: {bod_in: 80}});
             expect(result[0].surface_method).to.eq("organic_loading_rate")
