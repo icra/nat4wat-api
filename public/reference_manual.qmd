@@ -300,17 +300,17 @@ As with the organic loading rate (@sec-olr), the rule of thumb is defined for th
 
 ### Target concentrations in the receiving environment
 
-In case that the user provides target concentrations in the receiving environment (instead of outlet concentrations), a mass balance is used to calculate the required concentrations in the outlet to fulfill the condition. For that, the user must provide river inflow and river's upstream concentrations for each pollutant of interest. The required oulet concentration is calculated as follows:
+In case that the user request to know target concentrations in the receiving environment (instead of outlet concentrations), a mass balance is used to calculate the downstream concentration. For that, the user must provide river inflow and river's upstream concentrations for each pollutant of interest. The trarget (or downstream) concentration is calculated as follows:
 
 $$
-C_o = \frac{Q_r~(C_t - C_u)}{Q_i}
+C_t = \frac{C_uQ_r + C_oQ_i}{Q_r}
 $$
 
 where:
 
-- C~o~: Required concentration in the outlet
-- C~u~: Upstream river concentration
 - C~t~: Target concentration required in the downstream river
+- C~u~: Upstream river concentration
+- C~o~: Required concentration in the outlet
 - Q~r~: River flow
 - Q~i~: Technology inflow
 
