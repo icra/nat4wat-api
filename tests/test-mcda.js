@@ -32,9 +32,10 @@ describe('Test /mcda', () => {
            expect(await mcda({techIds: ['WW'], weights: {wEnvImpact: 3, wSpaceRequirements: 6}}))
            expect(await mcda({techIds: ['WW'], weights: {wEnvImpact: 3, wSpaceRequirements: 'a'}}))
         });
-        it('returns an error if all technologies are not in the same module', async () => {
-            expect(await mcda({techIds: ['WW', 'DB_DB']})).to.have.key('error')
-        })
+        // This can't happen anymore because now techIds are always passed through the filter and so they are always in the same module
+        // it('returns an error if all technologies are not in the same module', async () => {
+        //     expect(await mcda({techIds: ['WW', 'DB_DB']})).to.have.key('error')
+        // })
     });
     describe("techs and techIds work", () => {
         it('result is an array of the same length as techs', async () => {
@@ -106,7 +107,7 @@ describe('Test /mcda', () => {
             expect(result[0].score_space_requirements).gt(result[1].score_space_requirements)
         });
         it("for swm, when sc * d is bigger, the score is bigger", async () => {
-            let result = await mcda({techIds: ["DB_DB", "GR_IR"]})
+            let result = await mcda({techIds: ["DB_DB", "GR_IR"], waterType: "rain_water"})
             expect(result[0].storage_capacity_low * result[1].depth).lt(result[0].storage_capacity_low * result[0].depth)
             expect(result[1].score_space_requirements).lt(result[0].score_space_requirements)
         });
@@ -123,8 +124,6 @@ describe('Test /mcda', () => {
         });
     });
     describe('cost is calculated', () => {
-
-
         it('the key cost is generated and is the same regardless the surface', async () => {
             let df_with_surface = await findNBS({techIds: ["TR_TR", "BS_BS", "GR_IR"],
                 waterType: "rain_water", cumRain: 300, catchmentArea: 1000, duration: 2, infiltrationSoils: "clay"})
@@ -133,7 +132,7 @@ describe('Test /mcda', () => {
             // console.log(result_with_surface[0])
             expect(result_with_surface[0]).to.have.property('estimated_cost_mean')
 
-            let result_without_surface = await mcda({techIds: ["TR_TR", "BS_BS", "GR_IR"]})
+            let result_without_surface = await mcda({techIds: ["TR_TR", "BS_BS", "GR_IR"], waterType: "rain_water"})
             result_with_surface.map(e => expect(e).to.have.property('score_cost'))
             result_without_surface.map(e => expect(e).to.have.property('score_cost'))
 
@@ -146,7 +145,7 @@ describe('Test /mcda', () => {
             let df_with_surface = await findNBS({techIds: ["TR_TR", "BS_BS", "GR_IR"],
                 waterType: "rain_water", cumRain: 300, catchmentArea: 1000, duration: 2})
             let result_with_surface = await mcda({techs: df_with_surface})
-            let result_without_surface = await mcda({techIds: ["TR_TR", "BS_BS", "GR_IR"]})
+            let result_without_surface = await mcda({techIds: ["TR_TR", "BS_BS", "GR_IR"], waterType: "rain_water"})
 
             result_with_surface.map(e => expect(e).to.have.property('surface_mean'))
             result_with_surface.map(e => expect(e).to.have.property('vertical_surface_low'))
@@ -155,7 +154,7 @@ describe('Test /mcda', () => {
 
         });
         it('score_cost is between 0 and 1', async () => {
-            let result= await mcda({techIds: ["TR_TR", "BS_BS", "GR_IR"]})
+            let result= await mcda({techIds: ["TR_TR", "BS_BS", "GR_IR"], waterType: "rain_water"})
             result.map(e => expect(e.score_cost).to.be.within(0, 1))
         });
         it('score_cost is larger if cost_high * surface is smaller', async () => {
@@ -186,7 +185,7 @@ describe('Test /mcda', () => {
         it('weights are multiplied by scores', async () => {
             let selection_treatment = await findNBS({techIds: ["WW", "A_HA", "SIS_R"], inflow: 1000})
             let result_treatment = await mcda({techs: selection_treatment, weights: {wOperation: 2, wMultifunctionality: 3}})
-            let result_swm = await mcda({techIds: ["DB_DB", "GR_ER", "IS_IT"], weights: {wOperation: 2, wMultifunctionality: 3}})
+            let result_swm = await mcda({techIds: ["DB_DB", "GR_ER", "IS_IT"], waterType: "rain_water", weights: {wOperation: 2, wMultifunctionality: 3}})
             let result2 = await mcda({techIds: ["WW", "A_HA", "SIS_R"]})
             let weights = {
                 wOperation: 0.16,

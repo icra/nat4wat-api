@@ -154,9 +154,14 @@ describe("Test /find-nbs", () => {
         });
 
        it('techIds returns correspondent ids', async () => {
-           let result = await findNBS({techIds: ["TR_TR", "DB_DB"]})
+           let result = await findNBS({techIds: ["TR_TR", "DB_DB"], waterType: "rain_water"})
            expect(result.length).eql(2)
            result.map(e => expect(e.id).to.be.oneOf(["TR_TR", "DB_DB"]))
+       })
+       it('techIds goes through the filters', async () => {
+              let result = await findNBS({techIds: ["FP_PL", "French_CW"], avgTemperature: -4})
+              expect(result.length).eql(1)
+              expect(result[0].id).eq("French_CW")
        })
        it('waterType is filtered', async () => {
             let waterType = 'raw_domestic_wastewater'
@@ -171,7 +176,12 @@ describe("Test /find-nbs", () => {
                expect(tech['module']).to.eql("swm")
             });
        });
-
+       it('continental climate filters', async () => {
+           let result1 = await findNBS({climate: 'continental'})
+           result1.map(e => expect(e.m2_pe_continental).lt(100000))
+           let result2 = await findNBS({avgTemperature: -5})
+           result2.map(e => expect(e.m2_pe_continental).lt(100000))
+       });
        it('household works only when true', async () => {
            let result = await findNBS({household: true})
            result.forEach(tech => {
