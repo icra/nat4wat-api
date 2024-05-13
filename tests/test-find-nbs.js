@@ -5,6 +5,7 @@ const expect = require("chai").expect
 const jstat = require("jstat")
 const chaiAlmost = require('chai-almost');
 const {waterTypes} = require("../lib/globals");
+const {readTechnologiesExcel} = require("../lib/excel_utils");
 chai.use(chaiAlmost(0.0001));
 
 describe("Test /find-nbs", () => {
@@ -136,10 +137,31 @@ describe("Test /find-nbs", () => {
               }
           )
        });
+        it("minPerformance filters only if concentrations are not provided", async () => {
+            let result = await findNBS({
+                    inflow: 1000,
+                    pollutants: [ 'bod_removal', 'cod_removal'],
+                    minPerformance: {bod: 99, nh4: 95},
+                    pollutantsConcentrations: {tn_in: 100, tn_out: 40}
+                }
+            )
+            result.map(e => expect(e.bod_removal).gte(99))
+            result.map(e => expect(e.cod_removal).gte(80))
+            result.map(e => expect(e.tn_removal).gte(60))
+            result.map(e => expect(e.nh4_removal).gte(95))
+            expect(result.filter(e => e.no3_removal === 0).length).gt(0)
+            expect(result.filter(e => e.no3_removal === 1).length).gt(0)
+        });
+
        it('techIds returns correspondent ids', async () => {
-           let result = await findNBS({techIds: ["TR_TR", "DB_DB"]})
+           let result = await findNBS({techIds: ["TR_TR", "DB_DB"], waterType: "rain_water"})
            expect(result.length).eql(2)
            result.map(e => expect(e.id).to.be.oneOf(["TR_TR", "DB_DB"]))
+       })
+       it('techIds goes through the filters', async () => {
+              let result = await findNBS({techIds: ["FP_PL", "French_CW"], avgTemperature: -4})
+              expect(result.length).eql(1)
+              expect(result[0].id).eq("French_CW")
        })
        it('waterType is filtered', async () => {
             let waterType = 'raw_domestic_wastewater'
@@ -154,7 +176,12 @@ describe("Test /find-nbs", () => {
                expect(tech['module']).to.eql("swm")
             });
        });
-
+       it('continental climate filters', async () => {
+           let result1 = await findNBS({climate: 'continental'})
+           result1.map(e => expect(e.m2_pe_continental).lt(100000))
+           let result2 = await findNBS({avgTemperature: -5})
+           result2.map(e => expect(e.m2_pe_continental).lt(100000))
+       });
        it('household works only when true', async () => {
            let result = await findNBS({household: true})
            result.forEach(tech => {
@@ -296,7 +323,7 @@ describe("Test /find-nbs", () => {
             expect(result[0].surface_high).to.be.within(60000, 90000)
         });
         it('power model coincides with R results', async ()=> {
-            let result = await findNBS({techIds: ["WS"], inflow: 0.2, pollutantsConcentrations: {tn_in: 50, tn_out: 10}})
+            let result = await findNBS({techIds: ["WS"], inflow: 0.2, pollutantsConcentrations: {bod_in: 300, bod_out: 100, tn_in: 50, tn_out: 10}})
             expect(result[0].surface_method).to.eq("power_regression")
             expect(result[0].surface_mean).to.be.within(215, 216)
             expect(result[0].surface_low).to.be.within(145, 146)
@@ -307,7 +334,14 @@ describe("Test /find-nbs", () => {
             expect(result.every(e => e.surface_method === "tis_model")).to.be.true
             expect(result[0].vertical_surface_mean).gt(0)
             expect(result[1].surface_mean).gt(0)
-        })
+        });
+        it('cascade model continues when some pollutants are not estimated by regression', async() => {
+           let result = await findNBS({techIds: ["HF_GW"], inflow: 0.08, pollutantsConcentrations: {
+               bod_in: 300, bod_out: 100,
+               cod_in: 400, cod_out: 150,
+               tn_in: 3, tn_out: 2}})
+           expect(result[0].surface_method).to.eq("tis_model")
+        });
         it('uses organic load ratio when only bod_in is provided', async () => {
             let result = await findNBS({techIds: ["French_CW"], inflow: 500, pollutantsConcentrations: {bod_in: 80}});
             expect(result[0].surface_method).to.eq("organic_loading_rate")
@@ -376,4 +410,21 @@ describe("Test /find-nbs", () => {
            result.map(e => expect(e.max_volume).to.almost.equal(200))
        });
     });
+    describe("Filter table works properly", async () => {
+        it("Filter table is returned when asked", async () => {
+            let result = await findNBS({waterType: "cso_discharge_water", filterTable: true})
+            expect(result.length).to.be.eq(readTechnologiesExcel().length)
+            result.map(e => expect(e).to.have.any.keys("name"))
+            expect(result.filter(e => e.water_type === true).length).to.gt(0)
+            expect(result.filter(e => e.water_type === false).length).to.gt(0)
+        });
+        it(" Filter table is returned also when no technologies are returned", async () => {
+            let result = await findNBS({
+                waterType: "cso_discharge_water",
+                ecosystemServices: {es_carbon_sequestration: 3},
+                filterTable: true})
+            expect(result.length).to.be.eq(readTechnologiesExcel().length)
+            result.map(e => expect(e.water_type === false || e.es_carbon_sequestration === false).to.be.true)
+        })
+    })
 });
