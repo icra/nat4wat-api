@@ -137,7 +137,7 @@ describe("Test /find-nbs", () => {
               }
           )
        });
-        it("minPerformance filters only if concentrations are not provided", async () => {
+       it("minPerformance filters only if concentrations are not provided", async () => {
             let result = await findNBS({
                     inflow: 1000,
                     pollutants: [ 'bod_removal', 'cod_removal'],
@@ -152,7 +152,6 @@ describe("Test /find-nbs", () => {
             expect(result.filter(e => e.no3_removal === 0).length).gt(0)
             expect(result.filter(e => e.no3_removal === 1).length).gt(0)
         });
-
        it('techIds returns correspondent ids', async () => {
            let result = await findNBS({techIds: ["TR_TR", "DB_DB"], waterType: "rain_water"})
            expect(result.length).eql(2)
@@ -232,11 +231,11 @@ describe("Test /find-nbs", () => {
            let result = await findNBS({inflow: 1000, area: 0.00001});
            expect(avgKey(result, 'vertical')).to.eq(1)
        });
-        it('when verticalArea is almost 0 no green walls should be returned', async () => {
+       it('when verticalArea is almost 0 no green walls should be returned', async () => {
             let result = await findNBS({inflow: 1000, verticalArea: 0.00001});
             expect(avgKey(result, 'vertical')).to.eq(0)
         });
-        it('ecosystemServices filters properly', async () => {
+       it('ecosystemServices filters properly', async () => {
             let result = await findNBS({ecosystemServices: {es_biodiversity_fauna: 2, es_recreation: 3, es_biosolids: 0}})
             result.forEach(tech => {
                 expect(tech.es_biodiversity_fauna).to.gte(2)
@@ -244,35 +243,35 @@ describe("Test /find-nbs", () => {
             })
             expect(result.filter(e => e.es_biosolids === 0)).to.have.length.gt(0)
         });
-        it('energy filters properly', async () => {
+       it('energy filters properly', async () => {
             let result = await findNBS({energy: 'no'})
             expect(avgKey(result, 'energy')).to.eq(0)
             result = await findNBS({energy: 'yes'})
             expect(avgKey(result, 'energy')).to.eq(1)
         });
-        it('manPower filters properly', async () => {
+       it('manPower filters properly', async () => {
             let result = await findNBS({manPower: 2})
             expect(result.filter(e=> e.inv_es_manpower > 2).length).to.eq(0)
             expect(result.filter(e=> e.inv_es_manpower < 2).length).to.gt(0)
         });
-        it('skills filters properly', async () => {
+       it('skills filters properly', async () => {
             let result = await findNBS({skills: 2})
             expect(result.filter(e=> e.inv_es_skills > 2).length).to.eq(0)
             expect(result.filter(e=> e.inv_es_skills < 2).length).to.gt(0)
         });
-        it('biohazardrisk filters properly', async () => {
+       it('biohazardrisk filters properly', async () => {
             let result = await findNBS({biohazardRisk: 2})
             expect(result.filter(e=> e.inv_es_biohazard > 2).length).to.eq(0)
             expect(result.filter(e=> e.inv_es_biohazard < 2).length).to.gt(0)
         });
-        it('onlyInfiltration filters properly', async () => {
+       it('onlyInfiltration filters properly', async () => {
             let result = await findNBS({onlyInfiltration: true, waterType: 'rain_water'})
             result.map(e => expect(e.infiltration).to.eq(1))
             let result2 = await findNBS({onlyInfiltration: true, waterType: 'runoff_water', cumRain: 100, duration: 24, catchmentArea: 1000})
             result2.map(e => expect(e.infiltration).to.eq(1))
             result2.map(e => expect(e).to.have.any.key('surface_mean'))
         })
-        it('when infiltration and drainage Pipe are not provided, and surface is calculated, technologies with sc == 0 are rejected', async () => {
+       it('when infiltration and drainage Pipe are not provided, and surface is calculated, technologies with sc == 0 are rejected', async () => {
             let result = await findNBS({waterType: "rain_water"})
             expect(result.some(e => e.storage_capacity_low === 0)).to.be.true
             let result2 = await findNBS({waterType: "rain_water", cumRain: 100, duration: 24, catchmentArea: 1000})
@@ -280,7 +279,7 @@ describe("Test /find-nbs", () => {
             let result3 = await findNBS({waterType: "rain_water", cumRain: 100, duration: 24, catchmentArea: 1000, drainagePipeDiameter: 0.1})
             expect(result3.some(e => e.storage_capacity_low === 0)).to.be.true
         });
-        it('when infiltrationSoils is provided, infiltration is calculated', async () => {
+       it('when infiltrationSoils is provided, infiltration is calculated', async () => {
             let result = await findNBS({waterType: "rain_water", cumRain: 100, duration: 24, catchmentArea: 1000, infiltrationSoils: "sand"})
             expect(result.some(e => e.storage_capacity_low === 0)).to.be.true
         })
@@ -409,6 +408,14 @@ describe("Test /find-nbs", () => {
            let result = await findNBS({waterType: "runoff_water", cumRain: 200, duration: 24, catchmentArea: 1000})
            result.map(e => expect(e.max_volume).to.almost.equal(200))
        });
+       it('CSO surface is calculated properly', async () => {
+           let result = await findNBS({waterType: "cso_discharge_water", spilledVolume: 1000})
+           result.map(e => expect(e.surface_mean).to.gt(e.surface_low))
+           result.map(e => expect(e.surface_mean).to.lt(e.surface_high))
+           result.map(e => expect(e.surface_low).to.almost.equal(1000 / e.hlr_m3_m2_year_high))
+           result.map(e => expect(e.surface_high).to.almost.equal(1000 / e.hlr_m3_m2_year_low))
+           // console.log(result)
+       })
     });
     describe("Filter table works properly", async () => {
         it("Filter table is returned when asked", async () => {
