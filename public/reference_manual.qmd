@@ -291,7 +291,7 @@ In terms of the temperature, there are no differences between tropical and dry, 
 
 ### Rule of thumb {#sec-ruleofthumb}
 
-If the user only entered inflow or people served, or any of the above steps is available, the surface is estimated using the rule of thumb. The rule of thumb is also based in expert assessment as the organic loading rate. It defines the squared meters needed for each person equivalent (p.e.). The person equivalent is calculated based on the people served and the water type. In @tbl-water-types there is a column of equivalencies between people served and people equivalent for each type of water. For instance, 10 people served by a technology receiving greywater is equivalent to 3 p.e.
+If the user only entered inflow or people served, or none of the above steps is available, the surface is estimated using the rule of thumb. The rule of thumb is also based in expert assessment as the organic loading rate. It defines the squared meters needed for each person equivalent (p.e.). The person equivalent is calculated based on the people served and the water type. In @tbl-water-types there is a column of equivalencies between people served and people equivalent for each type of water. For instance, 10 people served by a technology receiving greywater is equivalent to 3.3 p.e.
 
 In case the user enters the inflow instead of the people served, the latter is calculated using the litres/person/day of each type of water, also defined in @tbl-water-types.
 
@@ -300,10 +300,10 @@ As with the organic loading rate (@sec-olr), the rule of thumb is defined for th
 
 ### Target concentrations in the receiving environment
 
-In case that the user request to know target concentrations in the receiving environment (instead of outlet concentrations), a mass balance is used to calculate the downstream concentration. For that, the user must provide river inflow and river's upstream concentrations for each pollutant of interest. The trarget (or downstream) concentration is calculated as follows:
+In case that the user request to know target concentrations in the receiving environment (instead of outlet concentrations), a mass balance is used to calculate the downstream concentration. For that, the user must provide river's upstream inflow and concentrations for each pollutant of interest. We assume that flow in the technology is constant from the inlet to the outlet. The target (or downstream) concentration is calculated as follows:
 
 $$
-C_t = \frac{C_uQ_r + C_oQ_i}{Q_r}
+C_t = \frac{C_uQ_u + C_oQ_i}{Q_u + Q_i}
 $$
 
 where:
@@ -311,7 +311,7 @@ where:
 - C~t~: Target concentration required in the downstream river
 - C~u~: Upstream river concentration
 - C~o~: Required concentration in the outlet
-- Q~r~: River flow
+- Q~u~: Upstream river flow
 - Q~i~: Technology inflow
 
 ## Retention - infiltration surface
