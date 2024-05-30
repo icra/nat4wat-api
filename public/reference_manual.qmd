@@ -233,12 +233,12 @@ C_o = C_* + (C_i - C_*)(1 + \frac{kS}{QN})^{-N}
 $$
 Where:
 
-- _C~o~_: Outflow concentration.
-- <i>C<sub>*</sub></i>: Background concentration.
-- _C~i~_: Inflow concentration.
-- _k_: Kinetics ratio.
-- _S_: Treatment surface.
-- _Q_: Inflow.
+- _C~o~_: Outflow concentration (mg/l).
+- <i>C<sub>*</sub></i>: Background concentration (mg/l).
+- _C~i~_: Inflow concentration (mg/l).
+- _k_: Kinetics ratio (m/year).
+- _S_: Treatment surface (m^2^).
+- _Q_: Inflow (m^3^/year).
 - _N_: Number of beds.
 
 From that, we isolated the surface, which is our unknown parameter:
