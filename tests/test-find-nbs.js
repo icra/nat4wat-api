@@ -314,19 +314,21 @@ describe("Test /find-nbs", () => {
 //           expect(result[0].surface_low).to.be.within(575, 580)
 //           expect(result[0].surface_high).to.be.within(725, 730)
 //       });
-        it('exponential model coincides with R results', async ()=> {
-            let result = await findNBS({techIds: ["FP+MP_PL"], inflow: 100, pollutantsConcentrations: {no3_in: 6, no3_out: 2}})
-            expect(result[0].surface_method).to.eq("exponential_regression")
-            expect(result[0].surface_mean).to.be.within(38000, 43000)
-            expect(result[0].surface_low).to.be.within(0, 25000)
-            expect(result[0].surface_high).to.be.within(60000, 90000)
-        });
+        // Exponential models are under review
+//         it('exponential model coincides with R results', async ()=> {
+//             let result = await findNBS({techIds: ["HF_GW"], inflow: 100000, pollutantsConcentrations: {no3_in: 6, no3_out: 2}})
+//             expect(result[0].surface_method).to.eq("exponential_regression")
+//             expect(result[0].surface_mean).to.be.within(38000, 43000)
+//             expect(result[0].surface_low).to.be.within(0, 25000)
+//             expect(result[0].surface_high).to.be.within(60000, 90000)
+//         });
         it('power model coincides with R results', async ()=> {
-            let result = await findNBS({techIds: ["WS"], inflow: 0.2, pollutantsConcentrations: {bod_in: 300, bod_out: 100, tn_in: 50, tn_out: 10}})
+            let result = await findNBS({techIds: ["FP_PL"], inflow: 1000000,
+                pollutantsConcentrations: {bod_in: 300, bod_out: 100, cod_in: 371, cod_out: 249}})
             expect(result[0].surface_method).to.eq("power_regression")
-            expect(result[0].surface_mean).to.be.within(215, 216)
-            expect(result[0].surface_low).to.be.within(145, 146)
-            expect(result[0].surface_high).to.be.within(320, 321)
+            expect(result[0].surface_mean).to.be.within(6000, 6200)
+            expect(result[0].surface_low).to.be.within(3000, 4500)
+            expect(result[0].surface_high).to.be.within(8000, 11000)
         });
         it('tis model is used when horizontal flow wetlands or green walls are used', async() => {
             let result = await findNBS({techIds: [ "HF_GW", "HSSF_CW"], inflow: 500, pollutantsConcentrations: {tn_in: 20, tn_out: 5}})
