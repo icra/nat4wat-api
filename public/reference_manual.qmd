@@ -70,7 +70,7 @@ readxl::read_excel("C:/Users/jpueyo/ICRA/MULTISOURCE - WP4/knowledge base/data/d
       "infiltration", "Does the techology allow infiltration into the ground?", "yes-no",
       "storage_capacity", "The granulometry of the retention layer (phi)", "m3/m3",
       "hc", "Hydraulic conductivity of the retention layer", "mm/s",
-      "cost", "Construction costs", "€/m2"
+      "capex", "Construction capexs", "€/m2"
     )
   ) |> 
   mutate(`Values or units` = str_replace_all(`Values or units`, "2", "<sup>2</sup>")) |> 
@@ -544,14 +544,14 @@ $$
 
 Where $OM$ is the operation and maintenance score ($\in\{0,1\}$) being 1 the lowest operation and manteinance requirements; $mp$ is the level of required manpower ($\in[0,3]$); $sk$ is the level of required skills ($\in[0,3]$); $br$ is the biohazard risk of being exposed to the solution ($\in[0,3]$); and $e$ indicates if energy is required ($\in\{0,1\}$)
 
-#### Construction cost
+#### Construction capex
 
-The cost is calculated as the total construction cost using the estimated surface. The costs for all technologies are normalized regarding the technology with the minimal cost.
+The capex is calculated as the total construction capex using the estimated surface. The capexs for all technologies are normalized regarding the technology with the minimal capex.
 
 $$
 \hat{c}_i = \frac{c_{min}}{c_i}
 $$
-where $\hat{c}_i$ is the normalized construction cost ($\in(0,1]$) for technology $i$; $c_{min}$ is the minimum cost among all compared technologies and $c_i$ is the cost of technology $i$.
+where $\hat{c}_i$ is the normalized construction capex ($\in(0,1]$) for technology $i$; $c_{min}$ is the minimum capex among all compared technologies and $c_i$ is the capex of technology $i$.
 
 #### Removal performance
 
@@ -561,7 +561,7 @@ $$
 RP = \frac{r_{BOD} + r_{COD} + r_{TN} + r_{NH_4} + r_{NO_3} + r_{PO_4^3} + r_p}{7}
 $$
 
-Where $RP$ is the score in removal performance ($\in[0,1]$); $r_{BOD}$ is the removal performance in BOD ($\in[0,1]$); $r_{COD}$ is the removal performance in COD ($\in[0,1]$); $r_{TN}$ is the removal performance in total nitrogen ($\in[0,1]$); $r_{NH_4}$ is the removal performance in ammonia ($\in[0,1]$); $r_{NO_3}$ express the capacity to remove nitrates ($\in{0,1}$); $r_{PO_4^3}$ express the capacity to remove phosphates ($\in{0,1}$); and $r_{p}$ express the capacity to reduce pathogens (_E.coli_ and H.eggs) ($\in{0,1}$). This criteria is only calculated for waswater treatment solutions.
+Where $RP$ is the score in removal performance ($\in[0,1]$); $r_{BOD}$ is the removal performance in BOD ($\in[0,1]$); $r_{COD}$ is the removal performance in COD ($\in[0,1]$); $r_{TN}$ is the removal performance in total nitrogen ($\in[0,1]$); $r_{NH_4}$ is the removal performance in ammonia ($\in[0,1]$); $r_{NO_3}$ express the capacity to remove nitrates ($\in{0,1}$); $r_{PO_4^3}$ express the capacity to remove phosphates ($\in{0,1}$); and $r_{p}$ express the capacity to reduce pathogens (_E.coli_ and H.eggs) ($\in{0,1}$). This criteria is only calculated for wastewater treatment solutions.
 
 The above equation is adapted to the user's interest regarding the pollutants selected in the scenario. If no pollutants are provided, the equation defaults to BOD, COD and Total Nitrogen.
 
