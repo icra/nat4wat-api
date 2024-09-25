@@ -3,7 +3,7 @@ var router = express.Router();
 
 const {addTreatmentSciDetails} = require("../lib/add-treatment-sci-details");
 const {deleteSciStudy} = require("../lib/delete-sci-study");
-const {sciStudiesToPolars, readPublications,publishSciPublication,publishTreatment, readTreatments, deleteSciPublication} = require("../lib/database");
+const {sciStudiesToPolars, readPublications,publishSciPublication,publishTreatment, readTreatments, deleteSciPublication,deleteTreatment} = require("../lib/database");
 const {trainRegressionModels} = require("../lib/train-regression-models");
 const {addSciPublication} = require("../lib/add-sci-publication");
 const auth = require('../middleware/auth');
@@ -104,10 +104,10 @@ router.post('/add-sci-study', auth.auth, async function(req, res){
     }
 });
 
-router.post('/delete-sci-study', async function(req, res){
+router.post('/delete-sci-study',auth.auth, async function(req, res){
     try {
+        req.body.id_user = req.data.id;
         let result = await deleteSciStudy(req.body)
-        // console.log(result)
         if (result.error) {
             res.statusMessage = result.error
             res.status(400)
@@ -124,10 +124,33 @@ router.post('/delete-sci-study', async function(req, res){
         });
     }
 });
+
 // TODO: remove async and await once working
 router.post('/train-models', async function(req, res){
     let result = await trainRegressionModels(req.body)
     res.send(result)
+});
+
+router.post('/delete-treatment',auth.auth, async function(req, res){
+    try {
+        req.body.id_user = req.data.id;
+        let result = await deleteTreatment(req.body)
+        // console.log(result)
+        if (result.error) {
+            res.statusMessage = result.error
+            res.status(400)
+            res.send(result.error)
+        } else {
+            res.send(result)
+        }
+    }
+    catch (e){
+        res.send({
+            success:false,
+            error: e,
+            message: 'Something went wrong, please try again.'
+        });
+    }
 });
 
 module.exports = router;
