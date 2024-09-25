@@ -514,7 +514,7 @@ where $SR_i$ is the space requirements ($\in(0,1]$) for technology $i$; $s_{min}
 Social benefits are the benefits people obtain from the solution. In this case, we consider aesthetic values, recreational functions (which are diminished in case there is biohazard risks around the solution), and temperature regulation:
 
 $$
-CB = \frac{av + \frac{rf(3 - br)}{3} + tr + fm}{12}
+CB = \frac{av + rf(1 - \frac{br}{3}) + tr + fm}{12}
 $$
 
 Where $CB$ is cultural benefits ($\in[0,1]$); $av$ is aesthetic value ($\in[0,3]$), $rf$ is the recreational functions ($\in[0,3]$), $tr$ is the temperature regulation ($\in[0,3]$), $fm$ is flood mitigation ($\in[0,3]$) and $br$ is the biohazard risk of being exposed to the solution ($\in[0,3]$).
@@ -523,14 +523,14 @@ Where $CB$ is cultural benefits ($\in[0,1]$); $av$ is aesthetic value ($\in[0,3]
 
 Circularity is the capacity of the solution to generate resources that can be used in other processes. Specifically, water reuse and materials are estimated from a combination of different variables: 
 
-- Water reuse: lost of flow rate between inlet and outlet, the reduction of pathogens, and the score given by experts on water reuse capacity.
+- Water reuse: lost of flow rate between inlet and outlet, the reduction of pathogens.
 - Materials: Expert assessment on biosolids production, biomass production and food production.
 
 $$
 C = \frac{(1 - lf)(pr + r_{BOD})}{2} + \frac{bsp + bmp + fp}{9}
 $$
 
-Where $C$ is the circularity score ($\in[0,1]$); $lf$ is the lost of flowrate ($\in[0,1]$); $pr$ is the pathogens reduction capacity ($\in\{0,1\}$); $r_{BOD}$ is the removal performance for BOD ($\in[0,1]$); $bsp$, $bmp$ and $fp$ are the scores assessed by experts in water reuse, biosolids production, biomass production, and food production, respectively (all of them $\in[0,3]$)
+Where $C$ is the circularity score ($\in[0,1]$); $lf$ is the lost of flowrate ($\in[0,1]$); $pr$ is the pathogens reduction capacity ($\in\{0,1\}$); $r_{BOD}$ is the removal performance for BOD ($\in[0,1]$); $bsp$, $bmp$ and $fp$ are the scores assessed by experts in biosolids production, biomass production, and food production, respectively (all of them $\in[0,3]$)
 
 ### Operational criteria
 
@@ -539,7 +539,7 @@ Where $C$ is the circularity score ($\in[0,1]$); $lf$ is the lost of flowrate ($
 Operation and maintenance is the level of difficulty in keep the technology properly working. It is estimated as a combination of required manpower, required skills, biohazard risk of exposition and if energy is required:
 
 $$
-OM = 1 - \frac{mp + sk + br + e}{10}
+OM = 1 - \frac{mp + sk + br + 3e}{12}
 $$
 
 Where $OM$ is the operation and maintenance score ($\in\{0,1\}$) being 1 the lowest operation and manteinance requirements; $mp$ is the level of required manpower ($\in[0,3]$); $sk$ is the level of required skills ($\in[0,3]$); $br$ is the biohazard risk of being exposed to the solution ($\in[0,3]$); and $e$ indicates if energy is required ($\in\{0,1\}$)
