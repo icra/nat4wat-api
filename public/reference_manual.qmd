@@ -544,7 +544,7 @@ $$
 
 Where $OM$ is the operation and maintenance score ($\in\{0,1\}$) being 1 the lowest operation and manteinance requirements; $mp$ is the level of required manpower ($\in[0,3]$); $sk$ is the level of required skills ($\in[0,3]$); $br$ is the biohazard risk of being exposed to the solution ($\in[0,3]$); and $e$ indicates if energy is required ($\in\{0,1\}$)
 
-#### Construction capex
+#### Construction cost (CAPEX)
 
 The capex is calculated as the total construction capex using the estimated surface. The capexs for all technologies are normalized regarding the technology with the minimal capex.
 
