@@ -9,7 +9,7 @@ const {insertTokens, getUws} = require("../lib/database");
 
 router.get(['/', '/docs'], async function(req, res){
     res.render('docs.pug', {
-        title: "SNAPP API v2 - documentation",
+        title: "Nat4Wat API - documentation",
         url: process.env.URL,
         technologies: excels.readTechnologiesExcel(),
         waterTypes: Object.keys(gl.waterTypes),

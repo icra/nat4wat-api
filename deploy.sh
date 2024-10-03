@@ -37,7 +37,7 @@ bash ./build_postman_server.sh
 
 echo 'Connecting to server...'
 ssh root@icra.loading.net "
-cd /var/www/vhosts/icradev.cat/snappAPI-v2.icradev.cat/snappAPI-v2 ;
+cd /var/www/vhosts/icradev.cat/nat4wat-API.icradev.cat/nat4wat-api ;
 sudo -u icradev git pull --allow-unrelated-histories ;
 sudo -u icradev npm install ;
 sudo -u icradev find . -type f -exec chmod 644 {} \; ;

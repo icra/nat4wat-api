@@ -1,11 +1,21 @@
 extends layout
 
 block content
+    // GET sci-publications
+    details
+        summary
+            span.route GET sci-studies/sci-publications
+            span Get all scientific publications used in the tool and that passed peer-review.
+        ul <b>Responses</b>
+            li 200: Returns an array with all scientific studies that are used in the tool
+        ul.bold Example
+            div
+                code #{url}/sci-studies/sci-publications
     // GET sci-studies
     details
         summary
             span.route GET sci-studies/sci-studies
-            span Get all scientific studies used in the tool
+            span Get all scientific studies gathering data about wastewater treatment performance used in the tool
         ul <b>Parameters</b>
             li records (string): if records is true, the array returned is object oriented. Otherwise, it is column oriented (polars dataframe).
         ul <b>Responses</b>

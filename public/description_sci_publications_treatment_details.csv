@@ -1,0 +1,21 @@
+Variable;Description;Values or units
+type;Type of technology;Types in the knowledge base
+sub_type;Sub-type of technology, also referred as technology in the knowledge base;Technologies in the knowledge base
+water_type;Water type treated by the technology;Water types of the knowledge base
+uws;Urban water system where the technology operates;WWTP-Household-River
+population;Population served by the technology;Number of people
+surface;Surface of the technology;m2
+inflow;Inflow rate of wastewater;m3/day
+hrt;Hydraulic retention time;days
+water_temp;Temperature of wastewater;ºC
+air_temp;Temperature of air during the sampling;ºC
+year_operation;Year of the sampling;year
+bod_in, bod_out;Biological oxygen demand concentrations in the inflow and the outflow;mg O2/L
+cod_in, cod_out;Chemical oxygen demand concentrations in the inflow and the outflow;mg O2/L
+tn_in, tn_out;Total nitrogen concentrations in the inflow and the outflow;mg N/L
+no3_in, no3_out;Nitrate concentrations in the inflow and the outflow;mg N/L
+nh4_in, nh4_out;Ammonia concentrations in the inflow and the outflow;mg N/L
+tp_in, tp_out;Total phosphorus concentrations in the inflow and the outflow;mg P/L
+po43_in, po43_out;Phosphate concentrations in the inflow and the outflow;mg P/L
+ecoli_in, ecoli_out;Escherichia coli concentrations in the inflow and the outflow;cfu/L
+heggs_in, heggs_out;Helminth eggs in the inflow and the outflow;eggs/L
