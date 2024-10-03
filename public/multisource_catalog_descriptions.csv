@@ -1,0 +1,62 @@
+﻿Variable;Description;Values or units
+name;The name of the technology;--
+type;The group of the technology;"BS: Bioretention systems; CW: Constructed wetlands; DB: Detention basins; FS: Filter strips; GR: Green roofs; GW: Green walls; HA: Hydroponics and Aquaponics; IS: Infiltration system; ISRS: In-stream restoration systems; MS: Multi-stage systems; NW: Natural wetlands; PL: Ponds and lagoons; PO: Ponds;  PP: Pervious pavemen; SIS: Soil infiltration systems; SW: Swales; TR: Trees; WS: Willow systems"
+description;A brief description of the technology;--
+vertical;Is the technology a vertical structure (i.e., a green wall)?;"0 (no); 1 (yes)"
+lost_flowrate;The proportion of flowrate that is lost due to evapotranspiration;--
+bod_removal;Performace removal for biological organic matter;%
+cod_removal;Performace removal for chemical organic matter;%
+nh4_removal;Performace removal for ammonia;%
+tn_removal;Performace removal for total nitrogen;%
+no3_removal;Is the technology actively doing denitrification (removing nitrates and nitrites)?;"0 (no); 1 (yes)"
+p_removal;Is the technology actively removing total phosphorus?;"0 (no); 1 (yes)"
+pathogens_reduction;Is the technology actively removing pathogens, such as E.coli or Helminth eggs?;"0 (no); 1 (yes)"
+raw_domestic_wastewater;Is the technology appropriate (active) for treating raw domestic wastewater?;"0 (no); 1 (yes); 2 (not ideal)"
+pretreated_domestic_wastewater;Is the technology appropriate (active) for treating pretreated domestic wastewater (primary treated effluent)?;"0 (no); 1 (yes); 2 (not ideal)"
+greywater;Is the technology appropriate (active) for treating greywater?;"0 (no); 1 (yes); 2 (not ideal)"
+secondary_treated_wastewater;Is the technology appropriate (active) for treating secondary treated wastewater?;"0 (no); 1 (yes); 2 (not ideal)"
+cso_discharge_water;Is the technology appropriate (active) for treating water from CSO discharge?;"0 (no); 1 (yes); 2 (not ideal)"
+river_diluted_wastewater;Is the technology appropriate (active) for treating river diluted wastewater?;"0 (no); 1 (yes); 2 (not ideal)"
+offices_wastewater;Is the technology appropriate (active) for treating wastewater from offices?;"0 (no); 1 (yes); 2 (not ideal)"
+camping_wastewater;Is the technology appropriate (active) for treating wastewater from camping?;"0 (no); 1 (yes); 2 (not ideal)"
+rain_water;Is the technology appropriate (active) for storing or infiltrating rainwater?;"0 (no); 1 (yes); 2 (not ideal)"
+runoff_water;Is the technology appropriate (active) for storing or infiltrating after treating runoff water?;"0 (no); 1 (yes); 2 (not ideal)"
+m2_pe_tropical;How many square meters are needed to treat one person equivalent (60 gr of BOD) in a tropical climate;m2 / pe
+m2_pe_dry;How many square meters are needed to treat one person equivalent (60 gr of BOD) in a dry climate;m2 / pe
+m2_pe_temperate;How many square meters are needed to treat one person equivalent (60 gr of BOD) in a temperate climate;m2 / pe
+m2_pe_continental;How many square meters are needed to treat one person equivalent (60 gr of BOD) in a continental climate;m2 / pe
+hlr_m3_m2_year_low;Yearly hydraulic loading ratio of the technology (low boundary);m3 / m2
+hlr_m3_m2_year_high;Yearly hydraulic loading ratio of the technology (high boundary);m3 / m2
+gr_bod_m2_tropical;How many grams of BOD5 can be treated by square meter in a tropical climate?;grams / m2
+gr_bod_m2_dry;How many grams of BOD5 can be treated by square meter in a dry climate?;grams / m2
+gr_bod_m2_temperate;How many grams of BOD5 can be treated by square meter in a temperate climate?;grams / m2
+gr_bod_m2_continental;How many grams of BOD5 can be treated by square meter in a continental climate?;grams / m2
+es_biodiversity_fauna;To what extent is the technology increasing the variability among living organisms from all sources, including diversity within species, between species and of ecosystems. Fauna including animals, fungi and various groups of bacteria.;0 (none) - 3 (high)
+es_biodiversity_flora;To what extent is the technology increasing the variability among living organisms from all sources, including diversity within species, between species and of ecosystems. Flora includes any organism in the kingdom Plantae.;0 (none) - 3 (high)
+es_temperature_regulation;To what extent the technology provides the regulation of humidity and localised temperatures during hot weather conditions, including through ventilation and transpiration.;0 (none) - 3 (high)
+es_flood_mitigation;To what extent the technology provides mitigation or prevention of potential damage to human use, health or safety caused by stormwater.;0 (none) - 3 (high)
+es_cso_mitigation;To what extent the technology helps to reduce the combined sewer overflows produced by storm events.;0 (none) - 3 (high)
+es_carbon_sequestration;To what extent the technology is removing carbon from the atmosphere and depositing it in a carbon sink, such as oceans, plants or soils.;0 (none) - 3 (high)
+es_biomass_production;To what extent the technology is providing above-ground (i.e., not roots) plant material trough regular harvesting and removal.;0 (none) - 3 (high)
+es_aesthetic_value;To what extent the technology is aesthetically pleasant as a component of the landscape.;0 (none) - 3 (high)
+es_recreation;To what extent the technology is providing recreation opportunities to citizens, such as walking or relaxing.;0 (none) - 3 (high)
+es_pollination;To what extent the technology is providing a habitat for pollinators, mainly insects, but also birds and bats.;0 (none) - 3 (high)
+es_food_source;To what extent the technology is providing food from wild plants and animals, including parts of the standing biomass that can be harvested and used for the production of food.;0 (none) - 3 (high)
+es_water_reuse;To what extent the water treated by the technology is appropriate for beneficial purposes such as irrigation, drinking water supplies, groundwater rechargement, industrial processes, and environmental restoration.;0 (none) - 3 (high)
+es_biosolids;To what extent the technology is providing sludge that is rich in nutrients and can be reused as fertilizer.;0 (none) - 3 (high)
+household_building_solutions;Is the technology appropriate (active) to be build for a single household or building? Or, on the contrary, it needs a bigger scale?;"0 (no); 1 (yes); 2 (not ideal)"
+energy;Is the technology using energy for its normal operation? Does it needs water or air pumps? Any other kind of similar energy demand?;"0 (no); 1 (yes)"
+inv_es_manpower;What level of manpower is required for its operation? Including all kinds of regular works required to keep the technology working.;0 (none) - 3 (high)
+inv_es_skills;What level of skills are required to operate the technology?;0 (none) - 3 (high)
+inv_es_biohazard;To what extent the technology presents biohazard risks, including microorganisms, virus and toxins that can affect human health?;0 (none) - 3 (high)
+capex_low;Construction costs (low boundary);€
+capex_high;Construction costs (high boundary);€
+opex_low;Operational costs (low boundary);€
+opex_high;Operational costs (high boundary);€
+module;Is the solutions for wastewater treatment or for stormwater management?;"treatment; swm"
+infiltration;Does the techology allow infiltration into the ground?;"0 (no); 1 (yes)"
+storage_capacity_low;The granulometry of the retention layer (phi) (low boundary);--
+storage_capacity_high;The granulometry of the retention layer (phi) (high boundary);--
+hc_low;Hydraulic conductivity of the retention layer (low boundary);mm/hour
+hc_high;Hydraulic conductivity of the retention layer (high boundary);mm/hour
+depth;The standard depth of the solution;m

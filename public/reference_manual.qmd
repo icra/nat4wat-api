@@ -60,40 +60,44 @@ read_csv(here::here("public/technologies.csv")) |>
 #| label: tbl-vars-description
 #| tbl-cap: Information provided by experts for each technology
 
-readxl::read_excel("C:/Users/jpueyo/ICRA/MULTISOURCE - WP4/knowledge base/data/delphi/first_round.xlsx",
-                   sheet = "Descriptions") |> 
-  filter(!is.na(Description)) |> 
-  filter(Variable != "confidence_level") |> 
-  add_row(
-    tribble(
-      ~ Variable, ~ Description, ~ `Values or units`,
-      "infiltration", "Does the techology allow infiltration into the ground?", "yes-no",
-      "storage_capacity", "The granulometry of the retention layer (phi)", "m3/m3",
-      "hc", "Hydraulic conductivity of the retention layer", "mm/s",
-      "capex", "Construction capexs", "€/m2"
-    )
-  ) |> 
-  mutate(`Values or units` = str_replace_all(`Values or units`, "2", "<sup>2</sup>")) |> 
-  mutate(`Values or units` = str_replace_all(`Values or units`, "3", "<sup>3</sup>")) |> 
-  mutate(`Values or units` = if_else(Variable == "type", 
-                                     "BS: Bioretention systems<br>
-                                     CW: Constructed wetlands<br>
-                                     DB: Detention basins<br>
-                                     FS: Filter strips<br>
-                                     GR: Green roofs<br>
-                                     GW: Green walls<br>
-                                     HA: Hydroponics and Aquaponics<br>
-                                     ISRS: In-stream restoration systems<br>
-                                     MS: Multi-stage systems,<br>
-                                     NW: Natural wetlands<br>
-                                     PL: Ponds and lagoons<br>
-                                     PO: Ponds<br>
-                                     PP: Pervious pavemen<br>
-                                     SIS: Soil infiltration systems<br>
-                                     SW: Swales<br>
-                                     TR: Trees<br>
-                                     WS: Willow systems",
-                                     `Values or units`)) |> 
+# readxl::read_excel("multisource_knowledge_base.xlsx",
+#                    sheet = "Descriptions") |> 
+#   filter(!is.na(Description)) |> 
+#   filter(Variable != "confidence_level") |> 
+#   add_row(
+#     tribble(
+#       ~ Variable, ~ Description, ~ `Values or units`,
+#       "infiltration", "Does the techology allow infiltration into the ground?", "yes-no",
+#       "storage_capacity", "The granulometry of the retention layer (phi)", "m3/m3",
+#       "hc", "Hydraulic conductivity of the retention layer", "mm/s",
+#       "capex", "Construction capexs", "€/m2"
+#     )
+#   ) |> 
+#   mutate(`Values or units` = str_replace_all(`Values or units`, "2", "<sup>2</sup>")) |> 
+#   mutate(`Values or units` = str_replace_all(`Values or units`, "3", "<sup>3</sup>")) |> 
+#   mutate(`Values or units` = if_else(Variable == "type", 
+#                                      "BS: Bioretention systems<br>
+#                                      CW: Constructed wetlands<br>
+#                                      DB: Detention basins<br>
+#                                      FS: Filter strips<br>
+#                                      GR: Green roofs<br>
+#                                      GW: Green walls<br>
+#                                      HA: Hydroponics and Aquaponics<br>
+#                                      ISRS: In-stream restoration systems<br>
+#                                      MS: Multi-stage systems,<br>
+#                                      NW: Natural wetlands<br>
+#                                      PL: Ponds and lagoons<br>
+#                                      PO: Ponds<br>
+#                                      PP: Pervious pavemen<br>
+#                                      SIS: Soil infiltration systems<br>
+#                                      SW: Swales<br>
+#                                      TR: Trees<br>
+#                                      WS: Willow systems",
+#                                      `Values or units`)) |> 
+read_csv2("multisource_catalog_descriptions.csv") |>
+  mutate(`Values or units` = str_replace_all(`Values or units`, ";", "<br>")) |>
+  mutate(`Values or units` = str_replace_all(`Values or units`, "m2", "m<sup>2</sup>")) |>
+  mutate(`Values or units` = str_replace_all(`Values or units`, "m3", "m<sup>3</sup>")) |>
   gt() |> 
   fmt_markdown(columns = c(`Values or units`)) |>
   opt_interactive(
