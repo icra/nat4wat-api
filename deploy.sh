@@ -32,8 +32,8 @@ fi
 
 bash ./build_postman_server.sh
 
-echo 'Copying .env file to server...'
-scp ./.env root@icra.loading.net:/var/www/vhosts/icradev.cat/snappAPI-v2.icradev.cat/snappAPI-v2
+#echo 'Copying .env file to server...'
+#scp ./.env root@icra.loading.net:/var/www/vhosts/icradev.cat/snappAPI-v2.icradev.cat/snappAPI-v2
 
 echo 'Connecting to server...'
 ssh root@icra.loading.net "
