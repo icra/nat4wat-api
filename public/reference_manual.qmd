@@ -94,7 +94,7 @@ read_csv(here::here("public/technologies.csv")) |>
 #                                      TR: Trees<br>
 #                                      WS: Willow systems",
 #                                      `Values or units`)) |> 
-read_csv2("multisource_catalog_descriptions.csv") |>
+read_csv2("description_catalog.csv") |>
   mutate(`Values or units` = str_replace_all(`Values or units`, ";", "<br>")) |>
   mutate(`Values or units` = str_replace_all(`Values or units`, "m2", "m<sup>2</sup>")) |>
   mutate(`Values or units` = str_replace_all(`Values or units`, "m3", "m<sup>3</sup>")) |>
@@ -269,7 +269,7 @@ Kinetics (_k_) and background concentrations (<i>C<sub>*</sub></i>) are defined 
   - $C_* = 0$
   - $k = 11.4$
   
-The other parameter to define is the number of beds (_N_). _N_ is calculated as follows:
+The other parameter to define is the number of beds (_N_). _N_ is calculated as follows [@vonSperling2023]:
 
 $$
 N = 0.686(\frac{L}{h})^{0.0671}
