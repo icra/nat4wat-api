@@ -115,13 +115,13 @@ The illustrations of the technologies showed in Nat4Wat were made by Lide Jaurri
 :::
 
 
-## Scientific case-studies
+## Scientific publications
 
-Scientific case studies are the result of several systematic scientific reviews, as explained in @Acuna2024 and in [Deliverable 4.2](https://zenodo.org/records/10688075) of the MULTISOURCE project. User can upload new scientific case studies that are published after a peer-review process. The case studies, especially for water treatment, are used by machine learning models to estimate the surface based on inflow and concentration in the inlet and outlet.
+Scientific publications are the result of several systematic scientific reviews, as explained in @Acuna2024 and in [Deliverable 4.2](https://zenodo.org/records/10688075) of the MULTISOURCE project. User can upload new scientific publications that are published after a peer-review process. This data, especially for water treatment, is used by machine learning models to estimate the surface based on inflow and concentration in the inlet and outlet.
 
-## Commercial case-studies
+## Market cases
 
-Commerical case studies are provided by companies with expertise in building the technologies avaiable in the tool. To upload a commercial case, a company needs to register as a company and upload the required information. The commercial cases are published after a peer-review process.
+Market cases are provided by companies with expertise in building the technologies avaiable in the tool. To upload a market case, a company needs to register as a company and upload the required information. The market cases are published after a peer-review process.
 
 ## Water inputs and transformations
 
