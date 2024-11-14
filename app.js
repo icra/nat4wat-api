@@ -28,6 +28,7 @@ const utils = require('./routes/utils')
 const treatmentDeprecated = require('./routes/treatment-deprecated')
 const users = require('./routes/users')
 const marketCases = require('./routes/market-cases')
+const pdfs = require('./routes/pdfs')
 
 
 app.use('/', index);
@@ -36,12 +37,14 @@ app.use('/technologies', technologies)
 app.use('/sci-studies', sciStudies)
 app.use('/utils', utils)
 app.use('/users', users)
+app.use('/pdfs', pdfs)
 
 // Deprecation warning
 app.use('/treatment', treatmentDeprecated)
 
 app.use(express.static('public'))
 app.use('/images', express.static('images'));
+app.use('/generated-pdfs', express.static('generated_pdfs'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
