@@ -12,3 +12,4 @@
 queries/
 images*
 generated_pdfs*
+/.nvmrc
