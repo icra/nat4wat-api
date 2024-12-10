@@ -21,6 +21,18 @@ describe("Test /find-nbs", () => {
            result.map(e => expect(e.module).eq("treatment"))
        })
     });
+    describe("returnLength returns the number of filtered solutions", async () => {
+        it('returnLength returns the number of filtered solutions', async () => {
+            let result = await findNBS({returnLength: true})
+            expect(result.solutions).to.eq(33)
+            let result2 = await findNBS({waterType: "rain_water", returnLength: true})
+            expect(result2.solutions).to.eq(19)
+            let result3 = await findNBS({waterType: "raw_domestic_wastewater", area: 1, returnLength: true})
+            expect(result3.solutions).to.eq(9)
+            let result4 = await findNBS({waterType: "raw_domestic_wastewater", area: 1, inhabitants: 100, returnLength: true})
+            expect(result4.solutions).to.eq(0)
+        });
+    });
     describe("Raise error if some value is not correct", async () => {
         it('not accepted fields in body raise an error', async () => {
             let result = await findNBS({incorrect: 123})

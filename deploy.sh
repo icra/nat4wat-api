@@ -39,11 +39,10 @@ echo 'Connecting to server...'
 ssh root@icra.loading.net "
 cd /var/www/vhosts/icradev.cat/nat4wat-API.icradev.cat/nat4wat-api ;
 sudo -u icradev git pull --allow-unrelated-histories ;
-sudo -u icradev npm install ;
+#sudo -u icradev npm install ;
 sudo -u icradev find . -type f -exec chmod 644 {} \; ;
 sudo -u icradev find . -type d -exec chmod 755 {} \; ;
 touch ./tmp/restart.txt ;
-echo 'Deployment done!'
 "
 
 newman run ./postman/server.json
