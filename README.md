@@ -1,10 +1,10 @@
-# SNAPP API v-2
+# NAT4WAT API
 
 This repository contains a REST API developed in `express.js`. 
 The API allows to select nature-based solutions for water treatment and 
 runoff mitigation providing a case scenario.
 
-[API documentation](https://snappAPI-v2.icradev.cat)
+[API documentation](https://nat4wat-api.icradev.cat)
 
 ### Acknowledgments
 
