@@ -10,7 +10,9 @@ const {saveScenario} = require('../lib/save-scenario')
 const auth = require('../middleware/auth');
 
 router.get('/return-ip', function(req, res) {
-  res.send(req.ip)
+  const clientIP = req.headers['x-forwarded-for']?.split(',')[0] || req.connection.remoteAddress;
+  const userAgent = req.headers['user-agent'];
+  res.json({ip: clientIP, userAgent: userAgent});
 });
 
 router.get('/technologies', function(req, res) {
