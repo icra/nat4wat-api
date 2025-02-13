@@ -2,20 +2,20 @@ var express = require('express');
 var router = express.Router();
 
 const xls = require("../lib/excel_utils")
-const {getScenarios,deleteScenario} = require("../lib/database")
+const {getScenarios,deleteScenario, identifyRequest} = require("../lib/database")
 const findNBS = require("../lib/find-nbs")
 const mcda = require('../lib/mcda')
 const {saveScenario} = require('../lib/save-scenario')
 
 const auth = require('../middleware/auth');
 
-router.get('/return-ip', function(req, res) {
-  const clientIP = req.headers['x-forwarded-for']?.split(',')[0] || req.connection.remoteAddress;
-  const userAgent = req.headers['user-agent'];
-  res.json({ip: clientIP, userAgent: userAgent});
-});
-
 router.get('/technologies', function(req, res) {
+  if (req.headers['user-agent'] !== 'nat4wat') {
+    identifyRequest(req)
+        .then(result => console.log(result))
+        .catch(e => console.log(e))
+  }
+
   let id = req.query.id;
   let result = xls.readTechnologiesExcel(id);
   if (result.error) {
@@ -27,6 +27,11 @@ router.get('/technologies', function(req, res) {
 });
 
 router.post('/find-nbs', async function(req, res){
+  if (req.headers['user-agent'] !== 'nat4wat') {
+    identifyRequest(req)
+        .then(result => console.log(result))
+        .catch(e => console.log(e))
+  }
 
   try {
     let result = await findNBS.findNBS(req.body)
@@ -45,6 +50,12 @@ router.post('/find-nbs', async function(req, res){
 });
 
 router.post('/find-nbs-multiple', async function(req, res){
+  if (req.headers['user-agent'] !== 'nat4wat') {
+    identifyRequest(req)
+        .then(result => console.log(result))
+        .catch(e => console.log(e))
+  }
+
   try {
     let result = await findNBS.findNBSMultiple(req.body)
     console.log(result.length)
@@ -64,6 +75,12 @@ router.post('/find-nbs-multiple', async function(req, res){
 })
 
 router.post('/mcda', async function (req, res) {
+  if (req.headers['user-agent'] !== 'nat4wat') {
+    identifyRequest(req)
+        .then(result => console.log(result))
+        .catch(e => console.log(e))
+  }
+
   try {
     let result = await mcda.mcda(req.body)
     if (result.error) {
