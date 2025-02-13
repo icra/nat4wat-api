@@ -14,6 +14,9 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+// To trust proxy
+app.set('trust proxy', true);
+
 app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
