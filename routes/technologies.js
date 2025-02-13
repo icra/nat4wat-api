@@ -9,6 +9,10 @@ const {saveScenario} = require('../lib/save-scenario')
 
 const auth = require('../middleware/auth');
 
+router.get('/return-ip', function(req, res) {
+  res.send(req.ip)
+});
+
 router.get('/technologies', function(req, res) {
   let id = req.query.id;
   let result = xls.readTechnologiesExcel(id);
@@ -21,6 +25,7 @@ router.get('/technologies', function(req, res) {
 });
 
 router.post('/find-nbs', async function(req, res){
+
   try {
     let result = await findNBS.findNBS(req.body)
     res.send(result)
