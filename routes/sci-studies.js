@@ -3,12 +3,20 @@ var router = express.Router();
 
 const {addTreatmentSciDetails} = require("../lib/add-treatment-sci-details");
 const {deleteSciStudy} = require("../lib/delete-sci-study");
-const {sciStudiesToPolars, readPublications,publishSciPublication,publishTreatment, readTreatments, deleteSciPublication,deleteTreatment} = require("../lib/database");
+const {sciStudiesToPolars, readPublications,publishSciPublication,publishTreatment, readTreatments, deleteSciPublication,deleteTreatment,
+    identifyRequest
+} = require("../lib/database");
 const {trainRegressionModels} = require("../lib/train-regression-models");
 const {addSciPublication} = require("../lib/add-sci-publication");
 const auth = require('../middleware/auth');
 
 router.get('/sci-publications', async function(req, res){
+    if (req.headers['user-agent'] !== 'nat4wat') {
+        identifyRequest(req)
+            .then(result => console.log(result))
+            .catch(e => console.log(e))
+    }
+
     let db = await readPublications(req.query);
     res.send(db)
 });
@@ -19,6 +27,12 @@ router.get('/treatments', async function(req, res){
 });
 
 router.get('/sci-studies', async function(req, res){
+    if (req.headers['user-agent'] !== 'nat4wat') {
+        identifyRequest(req)
+            .then(result => console.log(result))
+            .catch(e => console.log(e))
+    }
+
     let recordsParam = false
     if (req.query.records === 'true') recordsParam = true
     let db = await sciStudiesToPolars(records = recordsParam);
@@ -26,6 +40,12 @@ router.get('/sci-studies', async function(req, res){
 });
 
 router.post('/add-sci-publication', auth.auth, async function(req, res){
+    if (req.headers['user-agent'] !== 'nat4wat') {
+        identifyRequest(req)
+            .then(result => console.log(result))
+            .catch(e => console.log(e))
+    }
+
     try {
         req.body.id_user = req.data.id;
         let response = await addSciPublication(req.body);
