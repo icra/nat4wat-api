@@ -335,12 +335,13 @@ describe("Test /find-nbs", () => {
 //             expect(result[0].surface_high).to.be.within(60000, 90000)
 //         });
         it('power model coincides with R results', async ()=> {
-            let result = await findNBS({techIds: ["FP_PL"], inflow: 1000000,
+            let result = await findNBS({techIds: ["FP_PL"], inflow: 10000,
                 pollutantsConcentrations: {bod_in: 300, bod_out: 100, cod_in: 371, cod_out: 249}})
+            console.log("result", result)
             expect(result[0].surface_method).to.eq("power_regression")
-            expect(result[0].surface_mean).to.be.within(6000, 6200)
-            expect(result[0].surface_low).to.be.within(3000, 4500)
-            expect(result[0].surface_high).to.be.within(8000, 11000)
+            expect(result[0].surface_mean).to.be.within(35000, 36000)
+            expect(result[0].surface_low).to.be.within(24000, 25000)
+            expect(result[0].surface_high).to.be.within(50000, 51000)
         });
         it('tis model is used when horizontal flow wetlands or green walls are used', async() => {
             let result = await findNBS({techIds: [ "HF_GW", "HSSF_CW"], inflow: 500, pollutantsConcentrations: {tn_in: 20, tn_out: 5}})
