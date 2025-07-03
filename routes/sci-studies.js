@@ -65,7 +65,6 @@ router.post('/publish', auth.auth, async function(req, res){
     try {
         req.body.id_user = req.data.id;
         let response = await publishSciPublication(req.body);
-        console.log('response',response);
         res.send(response);
     }
     catch (e){
@@ -81,7 +80,6 @@ router.post('/delete', auth.auth, async function(req, res){
     try {
         req.body.id_user = req.data.id;
         let response = await deleteSciPublication(req.body);
-        console.log('response',response);
         res.send(response);
     }
     catch (e){
@@ -97,7 +95,6 @@ router.post('/publish-treatment', auth.auth, async function(req, res){
     try {
         req.body.id_user = req.data.id;
         let response = await publishTreatment(req.body);
-        console.log('response',response);
         res.send(response);
     }
     catch (e){
