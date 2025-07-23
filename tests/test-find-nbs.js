@@ -337,7 +337,6 @@ describe("Test /find-nbs", () => {
         it('power model coincides with R results', async ()=> {
             let result = await findNBS({techIds: ["FP_PL"], inflow: 10000,
                 pollutantsConcentrations: {bod_in: 300, bod_out: 100, cod_in: 371, cod_out: 249}})
-            console.log("result", result)
             expect(result[0].surface_method).to.eq("power_regression")
             expect(result[0].surface_mean).to.be.within(35000, 36000)
             expect(result[0].surface_low).to.be.within(24000, 25000)
@@ -431,6 +430,24 @@ describe("Test /find-nbs", () => {
            result.map(e => expect(e.surface_high).to.almost.equal(1000 / e.hlr_m3_m2_year_low))
            // console.log(result)
        })
+    });
+    describe('CAPEX are estimated properly', async () => {
+       it('CAPEX is estimated properly', async () => {
+              let result = await findNBS({waterType: "greywater", inflow: 1000})
+              result.map(e => expect(e.estimated_capex_mean).to.gt(0))
+        });
+       it('CAPEX is calculated properly for horizontal systems', async() => {
+           let result = await findNBS({waterType: "greywater", inflow: 1000})
+           let ia_cw = result.filter(e => e.id === "IA_CW")[0]
+           expect(ia_cw.estimated_capex_low).eq(ia_cw.surface_low * ia_cw.capex_low)
+           expect(ia_cw.estimated_capex_high).eq(ia_cw.surface_high * ia_cw.capex_high)
+       });
+        it('CAPEX is calculated properly for vertical systems', async() => {
+            let result = await findNBS({waterType: "greywater", inflow: 1000})
+            let hf_gw = result.filter(e => e.id === "HF_GW")[0]
+            expect(hf_gw.estimated_capex_low).eq(hf_gw.vertical_surface_low * hf_gw.capex_low)
+            expect(hf_gw.estimated_capex_high).eq(hf_gw.vertical_surface_high * hf_gw.capex_high)
+        })
     });
     describe("Filter table works properly", async () => {
         it("Filter table is returned when asked", async () => {
