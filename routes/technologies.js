@@ -27,11 +27,11 @@ router.get('/technologies', function(req, res) {
 });
 
 router.post('/find-nbs', async function(req, res){
-  if (req.headers['user-agent'] !== 'nat4wat') {
-    identifyRequest(req)
-        .then(result => console.log(result))
-        .catch(e => console.log(e))
-  }
+  // if (req.headers['user-agent'] !== 'nat4wat') {
+  //   identifyRequest(req)
+  //       .then(result => console.log(result))
+  //       .catch(e => console.log(e))
+  // }
 
   try {
     let result = await findNBS.findNBS(req.body)
@@ -75,11 +75,11 @@ router.post('/find-nbs-multiple', async function(req, res){
 })
 
 router.post('/mcda', async function (req, res) {
-  if (req.headers['user-agent'] !== 'nat4wat') {
-    identifyRequest(req)
-        .then(result => console.log(result))
-        .catch(e => console.log(e))
-  }
+  // if (req.headers['user-agent'] !== 'nat4wat') {
+  //   identifyRequest(req)
+  //       .then(result => console.log(result))
+  //       .catch(e => console.log(e))
+  // }
 
   try {
     let result = await mcda.mcda(req.body)
