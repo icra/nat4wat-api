@@ -22,7 +22,7 @@ library(httr2)
 library(jsonlite)
 library(gt)
 
-url_api <- "https://snappapi-v2.icradev.cat/"
+url_api <- "https://nat4wat-api.icradev.cat/"
 ```
 
 
@@ -38,7 +38,7 @@ This document is work in progress. Content will evolve as the tool evolves.
 
 [@tbl-techs] shows all available technologies and [@tbl-vars-description] all the information included in the table. Technologies were collected using expert-based knowledge as explained [here](https://iwaponline.com/bgs/article/5/2/235/99349/Development-of-a-decision-support-system-to-select?searchresult=1) and [here](https://zenodo.org/records/10688075). 
 
-The available technologies can be consulted in the tool or can be downloaded as [csv](http://snappapi-v2.icradev.cat/technologies.csv) or [json](https://snappapi-v2.icradev.cat/technologies/technologies).
+The available technologies can be consulted in the tool or can be downloaded as [csv](http://nat4wat-api.icradev.cat/technologies.csv) or [json](https://nat4wat-api.icradev.cat/technologies/technologies).
 
 ```{r list_tech}
 #| label: tbl-techs
